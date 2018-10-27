@@ -1,0 +1,10 @@
+# basic settings
+sudo: required
+
+script:
+- curl https://get.haskellstack.org | bash
+- stack build
+
+# don't send any notifications to me
+notification:
+- email: false
