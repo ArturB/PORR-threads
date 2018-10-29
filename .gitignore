@@ -1,3 +1,4 @@
 .stack-work/
 PORR-thread.cabal
 *~
+./python-input-creator/image_60k.csv
