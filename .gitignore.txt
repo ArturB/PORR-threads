@@ -1,2 +1,1 @@
-./.stack-work
-./Multilinear/.stack-work
+*.stack-work*
