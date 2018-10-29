@@ -1,0 +1,75 @@
+
+==================== FINAL INTERFACE ====================
+2018-10-29 09:52:41.877257 UTC
+
+interface PORR-thread-0.1.0.0-B5mfDgBH5diIAuRFQbT9q3:Lib 8022
+  interface hash: e964fe3e35d4a70fd23a5976f4c08cdd
+  ABI hash: 8c3160f3c666382c0d070a02ba82bdee
+  export-list hash: ab92035ae2e57e557998f4ef5cfad49e
+  orphan hash: 693e9af84d3dfcc71e640e005bdc5e2e
+  flag hash: 7ea0df93fc54221e3eb909cd5d26969e
+  sig of: Nothing
+  used TH splices: False
+  where
+exports:
+  Lib.someFunc
+module dependencies:
+package dependencies: base-4.10.1.0* ghc-prim-0.5.1.1
+                      integer-gmp-1.0.1.0
+orphans: base-4.10.1.0:GHC.Float base-4.10.1.0:GHC.Base
+family instance modules: base-4.10.1.0:Control.Applicative
+                         base-4.10.1.0:Data.Either base-4.10.1.0:Data.Functor.Const
+                         base-4.10.1.0:Data.Functor.Identity base-4.10.1.0:Data.Monoid
+                         base-4.10.1.0:Data.Type.Equality base-4.10.1.0:GHC.Generics
+                         base-4.10.1.0:GHC.IO.Exception base-4.10.1.0:GHC.TypeLits
+                         base-4.10.1.0:GHC.TypeNats
+import  -/  base-4.10.1.0:Prelude a93a9400cc0c816c2ee5f39399baa7a0
+import  -/  base-4.10.1.0:System.IO 1fb8f1d116df69c8750950ac088a90e6
+import  -/  ghc-prim-0.5.1.1:GHC.Types b1fd0716441595db508c1a74387bf394
+003418402c27325c89c976e70425bc4b
+  $trModule :: GHC.Types.Module
+  {- HasNoCafRefs, Strictness: m,
+     Unfolding: (GHC.Types.Module Lib.$trModule3 Lib.$trModule1) -}
+b4a71c0df38dea89f94f83befbaee13d
+  $trModule1 :: GHC.Types.TrName
+  {- HasNoCafRefs, Strictness: m1,
+     Unfolding: (GHC.Types.TrNameS Lib.$trModule2) -}
+cc82e1a74e596e3e2433c8bb93f7aa17
+  $trModule2 :: GHC.Prim.Addr#
+  {- HasNoCafRefs, Unfolding: ("Lib"#) -}
+241aaf35361e02172f9ad32ed7979bac
+  $trModule3 :: GHC.Types.TrName
+  {- HasNoCafRefs, Strictness: m1,
+     Unfolding: (GHC.Types.TrNameS Lib.$trModule4) -}
+04b7b63e63dd6211fb23ad02b7b0ea78
+  $trModule4 :: GHC.Prim.Addr#
+  {- HasNoCafRefs,
+     Unfolding: ("PORR-thread-0.1.0.0-B5mfDgBH5diIAuRFQbT9q3"#) -}
+ac45c62433d86ced098efa660caf9635
+  someFunc :: GHC.Types.IO ()
+  {- Arity: 1,
+     Unfolding: InlineRule (0, True, True)
+                Lib.someFunc1 `cast` (Sym (GHC.Types.N:IO[0] <()>_R)) -}
+87746f8252a7c160dbbe88303e84301f
+  someFunc1 ::
+    GHC.Prim.State# GHC.Prim.RealWorld
+    -> (# GHC.Prim.State# GHC.Prim.RealWorld, () #)
+  {- Arity: 1,
+     Unfolding: (GHC.IO.Handle.Text.hPutStr2
+                   GHC.IO.Handle.FD.stdout
+                   Lib.someFunc2
+                   GHC.Types.True) -}
+d05857aef36064d2bac1393a99d8c2c2
+  someFunc2 :: [GHC.Types.Char]
+  {- Unfolding: (GHC.CString.unpackCString# Lib.someFunc3) -}
+e7e10ffc3b748a19593ca73dcc497a8a
+  someFunc3 :: GHC.Prim.Addr#
+  {- HasNoCafRefs, Unfolding: ("someFunc"#) -}
+vectorised variables:
+vectorised tycons:
+vectorised reused tycons:
+parallel variables:
+parallel tycons:
+trusted: safe
+require own pkg trusted: False
+

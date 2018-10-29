@@ -1,0 +1,373 @@
+
+==================== FINAL INTERFACE ====================
+2018-10-29 09:29:09.3666772 UTC
+
+interface Multilinear-0.8.0.0-4dpV53DlxV5EwwV6FZreVP:Multilinear.Library 8022
+  interface hash: 6b7b040b6a653bacdd54de67a623d0ad
+  ABI hash: 8471fbfbc63396aecb1a5c968ddd1b06
+  export-list hash: fbe5d2b2dad0ee2ab4b2db37f42bfcf0
+  orphan hash: 693e9af84d3dfcc71e640e005bdc5e2e
+  flag hash: 4e8964e2102b5f84d5f0729e134505fa
+  sig of: Nothing
+  used TH splices: False
+  where
+exports:
+  Multilinear.Generic.!
+  Multilinear.Generic._elemByElem
+  Multilinear.Generic._standardize
+  Multilinear.Generic.contractionErr
+  Multilinear.Generic.dot
+  Multilinear.Generic.isFiniteTensor
+  Multilinear.Generic.isInfiniteTensor
+  Multilinear.Generic.isScalar
+  Multilinear.Generic.isSimple
+  Multilinear.Generic.mergeScalars
+  Multilinear.Generic.tensorIndex
+  Control.Exception.Base.bracket
+  Control.Exception.Base.bracketOnError
+  Control.Exception.Base.bracket_
+  Control.Exception.Base.catchJust
+  Control.Exception.Base.finally
+  Control.Exception.Base.handle
+  Control.Exception.Base.handleJust
+  Control.Exception.Base.mapException
+  Control.Exception.Base.nestedAtomically
+  Control.Exception.Base.nonTermination
+  Control.Exception.Base.onException
+  Control.Exception.Base.try
+  Control.Exception.Base.tryJust
+  GHC.Base.assert
+  GHC.Conc.Sync.throwTo
+  GHC.Exception.throw
+  GHC.IO.catch
+  GHC.IO.evaluate
+  GHC.IO.getMaskingState
+  GHC.IO.mask
+  GHC.IO.mask_
+  GHC.IO.throwIO
+  GHC.IO.uninterruptibleMask
+  GHC.IO.uninterruptibleMask_
+  GHC.IO.Exception.asyncExceptionFromException
+  GHC.IO.Exception.asyncExceptionToException
+  GHC.IO.Exception.ioError
+  GHC.IO.Unsafe.unsafeDupablePerformIO
+  GHC.IO.Unsafe.unsafeInterleaveIO
+  GHC.IO.Unsafe.unsafePerformIO
+  System.IO.Unsafe.unsafeFixIO
+  Control.Monad.Trans.Either.bimapEitherT
+  Control.Monad.Trans.Either.bracketEitherT
+  Control.Monad.Trans.Either.bracketEitherT_
+  Control.Monad.Trans.Either.eitherT
+  Control.Monad.Trans.Either.firstEitherT
+  Control.Monad.Trans.Either.hoistEither
+  Control.Monad.Trans.Either.left
+  Control.Monad.Trans.Either.mapEitherT
+  Control.Monad.Trans.Either.right
+  Control.Monad.Trans.Either.swapEitherT
+  Statistics.Distribution.findRoot
+  Statistics.Distribution.genContinous
+  Statistics.Distribution.genContinuous
+  Statistics.Distribution.sumProbabilities
+  Statistics.Distribution.Beta.betaDistr
+  Statistics.Distribution.Beta.betaDistrE
+  Statistics.Distribution.Beta.improperBetaDistr
+  Statistics.Distribution.Beta.improperBetaDistrE
+  Statistics.Distribution.Binomial.binomial
+  Statistics.Distribution.Binomial.binomialE
+  Statistics.Distribution.CauchyLorentz.cauchyDistribution
+  Statistics.Distribution.CauchyLorentz.cauchyDistributionE
+  Statistics.Distribution.CauchyLorentz.standardCauchy
+  Statistics.Distribution.ChiSquared.chiSquared
+  Statistics.Distribution.ChiSquared.chiSquaredE
+  Statistics.Distribution.Exponential.exponential
+  Statistics.Distribution.Exponential.exponentialE
+  Statistics.Distribution.FDistribution.fDistribution
+  Statistics.Distribution.FDistribution.fDistributionE
+  Statistics.Distribution.FDistribution.fDistributionReal
+  Statistics.Distribution.FDistribution.fDistributionRealE
+  Statistics.Distribution.Gamma.gammaDistr
+  Statistics.Distribution.Gamma.gammaDistrE
+  Statistics.Distribution.Gamma.improperGammaDistr
+  Statistics.Distribution.Gamma.improperGammaDistrE
+  Statistics.Distribution.Geometric.geometric
+  Statistics.Distribution.Geometric.geometric0
+  Statistics.Distribution.Geometric.geometric0E
+  Statistics.Distribution.Geometric.geometricE
+  Statistics.Distribution.Hypergeometric.hypergeometric
+  Statistics.Distribution.Hypergeometric.hypergeometricE
+  Statistics.Distribution.Laplace.laplace
+  Statistics.Distribution.Laplace.laplaceE
+  Statistics.Distribution.Normal.normalDistr
+  Statistics.Distribution.Normal.normalDistrE
+  Statistics.Distribution.Normal.standard
+  Statistics.Distribution.StudentT.studentT
+  Statistics.Distribution.StudentT.studentTE
+  Statistics.Distribution.StudentT.studentTUnstandardized
+  Statistics.Distribution.Uniform.uniformDistr
+  Statistics.Distribution.Uniform.uniformDistrE
+  Control.Exception.Base.absentError
+  Control.Exception.Base.irrefutPatError
+  Control.Exception.Base.noMethodBindingError
+  Control.Exception.Base.nonExhaustiveGuardsError
+  Control.Exception.Base.patError
+  Control.Exception.Base.recConError
+  Control.Exception.Base.recSelError
+  Control.Exception.Base.runtimeError
+  Control.Exception.Base.typeError
+  Multilinear.Generic.Tensor{Multilinear.Generic.Err Multilinear.Generic.FiniteTensor Multilinear.Generic.InfiniteTensor Multilinear.Generic.Scalar Multilinear.Generic.SimpleFinite errMessage scalarVal tensorFiniteIndex tensorInfiniteIndex tensorScalars tensorsFinite tensorsInfinite}
+  Control.Exception.Base.NestedAtomically{Control.Exception.Base.NestedAtomically}
+  Control.Exception.Base.NoMethodError{Control.Exception.Base.NoMethodError}
+  Control.Exception.Base.NonTermination{Control.Exception.Base.NonTermination}
+  Control.Exception.Base.PatternMatchFail{Control.Exception.Base.PatternMatchFail}
+  Control.Exception.Base.RecConError{Control.Exception.Base.RecConError}
+  Control.Exception.Base.RecSelError{Control.Exception.Base.RecSelError}
+  Control.Exception.Base.RecUpdError{Control.Exception.Base.RecUpdError}
+  Control.Exception.Base.TypeError{Control.Exception.Base.TypeError}
+  GHC.Exception.ArithException{GHC.Exception.Denormal GHC.Exception.DivideByZero GHC.Exception.LossOfPrecision GHC.Exception.Overflow GHC.Exception.RatioZeroDenominator GHC.Exception.Underflow}
+  GHC.Exception.ErrorCall{GHC.Exception.ErrorCall GHC.Exception.ErrorCallWithLocation}
+  GHC.Exception.Exception{GHC.Exception.displayException GHC.Exception.fromException GHC.Exception.toException}
+  GHC.Exception.SomeException{GHC.Exception.SomeException}
+  GHC.IO.MaskingState{GHC.IO.MaskedInterruptible GHC.IO.MaskedUninterruptible GHC.IO.Unmasked}
+  GHC.IO.Exception.AllocationLimitExceeded{GHC.IO.Exception.AllocationLimitExceeded}
+  GHC.IO.Exception.ArrayException{GHC.IO.Exception.IndexOutOfBounds GHC.IO.Exception.UndefinedElement}
+  GHC.IO.Exception.AssertionFailed{GHC.IO.Exception.AssertionFailed}
+  GHC.IO.Exception.AsyncException{GHC.IO.Exception.HeapOverflow GHC.IO.Exception.StackOverflow GHC.IO.Exception.ThreadKilled GHC.IO.Exception.UserInterrupt}
+  GHC.IO.Exception.BlockedIndefinitelyOnMVar{GHC.IO.Exception.BlockedIndefinitelyOnMVar}
+  GHC.IO.Exception.BlockedIndefinitelyOnSTM{GHC.IO.Exception.BlockedIndefinitelyOnSTM}
+  GHC.IO.Exception.CompactionFailed{GHC.IO.Exception.CompactionFailed}
+  GHC.IO.Exception.Deadlock{GHC.IO.Exception.Deadlock}
+  GHC.IO.Exception.IOException
+  GHC.IO.Exception.SomeAsyncException{GHC.IO.Exception.SomeAsyncException}
+  Control.Monad.Trans.Either.EitherT{Control.Monad.Trans.Either.EitherT runEitherT}
+  Statistics.Distribution.ContDistr{Statistics.Distribution.complQuantile Statistics.Distribution.density Statistics.Distribution.logDensity Statistics.Distribution.quantile}
+  Statistics.Distribution.ContGen{Statistics.Distribution.genContVar}
+  Statistics.Distribution.DiscreteDistr{Statistics.Distribution.logProbability Statistics.Distribution.probability}
+  Statistics.Distribution.DiscreteGen{Statistics.Distribution.genDiscreteVar}
+  Statistics.Distribution.Distribution{Statistics.Distribution.complCumulative Statistics.Distribution.cumulative}
+  Statistics.Distribution.Entropy{Statistics.Distribution.entropy}
+  Statistics.Distribution.FromSample{Statistics.Distribution.fromSample}
+  Statistics.Distribution.MaybeEntropy{Statistics.Distribution.maybeEntropy}
+  Statistics.Distribution.MaybeMean{Statistics.Distribution.maybeMean}
+  Statistics.Distribution.MaybeVariance{Statistics.Distribution.maybeStdDev Statistics.Distribution.maybeVariance}
+  Statistics.Distribution.Mean{Statistics.Distribution.mean}
+  Statistics.Distribution.Variance{Statistics.Distribution.stdDev Statistics.Distribution.variance}
+  Statistics.Distribution.Beta.BetaDistribution{bdAlpha bdBeta}
+  Statistics.Distribution.Binomial.BinomialDistribution{bdProbability bdTrials}
+  Statistics.Distribution.CauchyLorentz.CauchyDistribution{cauchyDistribMedian cauchyDistribScale}
+  Statistics.Distribution.ChiSquared.ChiSquared{chiSquaredNDF}
+  Statistics.Distribution.Exponential.ExponentialDistribution{edLambda}
+  Statistics.Distribution.FDistribution.FDistribution{fDistributionNDF1 fDistributionNDF2}
+  Statistics.Distribution.Gamma.GammaDistribution{gdScale gdShape}
+  Statistics.Distribution.Geometric.GeometricDistribution{gdSuccess}
+  Statistics.Distribution.Geometric.GeometricDistribution0{gdSuccess0}
+  Statistics.Distribution.Hypergeometric.HypergeometricDistribution{hdK hdL hdM}
+  Statistics.Distribution.Laplace.LaplaceDistribution{ldLocation ldScale}
+  Statistics.Distribution.Normal.NormalDistribution
+  Statistics.Distribution.StudentT.StudentT{studentTndf}
+  Statistics.Distribution.Uniform.UniformDistribution{uniformA uniformB}
+  Control.Monad.Trans.Class.MonadTrans{Control.Monad.Trans.Class.lift}
+module dependencies: Multilinear Multilinear.Form
+                     Multilinear.Generic Multilinear.Index Multilinear.Index.Finite
+                     Multilinear.Index.Infinite Multilinear.Matrix Multilinear.NForm
+                     Multilinear.NVector Multilinear.Tensor Multilinear.Vector
+package dependencies: MonadRandom-0.5.1 Win32-2.5.4.1 aeson-1.2.4.0
+                      array-0.5.2.0 attoparsec-0.13.2.2 attoparsec-enumerator-0.3.4
+                      base-4.10.1.0 base-compat-0.9.3 base-orphans-0.6 bifunctors-5.5.2
+                      binary-0.8.5.1 bytestring-0.10.8.2 cereal-0.5.5.0
+                      cereal-vector-0.2.0.1 comonad-5.0.3 containers-0.5.10.2
+                      csv-enumerator-0.10.2.0 deepseq-1.4.3.0 directory-1.3.0.2
+                      distributive-0.5.3 dlist-0.8.0.4 either-4.5 enumerator-0.4.20
+                      exceptions-0.8.3 filepath-1.4.1.2 free-4.12.4 ghc-boot-th-8.2.2
+                      ghc-prim-0.5.1.1 hashable-1.2.6.1 integer-gmp-1.0.1.0
+                      integer-logarithms-1.0.2 math-functions-0.2.1.0 mmorph-1.1.0
+                      monad-control-1.0.2.2 mtl-2.2.1 mwc-random-0.13.6.0 pretty-1.1.3.3
+                      primitive-0.6.3.0 random-1.1 safe-0.3.15 scientific-0.3.5.2
+                      semigroupoids-5.2.1 statistics-0.14.0.2 stm-2.4.5.0 tagged-0.8.5
+                      template-haskell-2.12.0.0 text-1.2.2.2 time-1.8.0.2
+                      time-locale-compat-0.1.1.3 transformers-0.5.2.0
+                      transformers-base-0.4.4 unix-compat-0.5.0.1
+                      unordered-containers-0.2.8.0 uuid-types-1.0.3 vector-0.12.0.1
+                      vector-algorithms-0.7.0.1 vector-th-unbox-0.2.1.6 zlib-0.6.1.2
+orphans: cereal-vector-0.2.0.1:Data.Vector.Serialize
+         attoparsec-0.13.2.2:Data.Attoparsec.Text.Internal
+         attoparsec-0.13.2.2:Data.Attoparsec.ByteString.Char8
+         vector-0.12.0.1:Data.Vector.Unboxed
+         vector-0.12.0.1:Data.Vector.Fusion.Bundle
+         stm-2.4.5.0:Control.Monad.STM time-1.8.0.2:Data.Time.Format.Parse
+         time-1.8.0.2:Data.Time.LocalTime.Internal.ZonedTime
+         time-1.8.0.2:Data.Time.LocalTime.Internal.LocalTime
+         time-1.8.0.2:Data.Time.Calendar.Gregorian
+         transformers-0.5.2.0:Control.Monad.Trans.Error
+         hashable-1.2.6.1:Data.Hashable.Generic text-1.2.2.2:Data.Text.Lazy
+         text-1.2.2.2:Data.Text binary-0.8.5.1:Data.Binary.Generic
+         bytestring-0.10.8.2:Data.ByteString.Builder
+         text-1.2.2.2:Data.Text.Show base-4.10.1.0:GHC.Float
+         base-4.10.1.0:GHC.Base
+family instance modules: MonadRandom-0.5.1:Control.Monad.Trans.Random.Lazy
+                         Multilinear-0.8.0.0-4dpV53DlxV5EwwV6FZreVP:Multilinear.Generic
+                         Multilinear-0.8.0.0-4dpV53DlxV5EwwV6FZreVP:Multilinear.Index
+                         Multilinear-0.8.0.0-4dpV53DlxV5EwwV6FZreVP:Multilinear.Index.Finite
+                         Multilinear-0.8.0.0-4dpV53DlxV5EwwV6FZreVP:Multilinear.Index.Infinite
+                         aeson-1.2.4.0:Data.Aeson.Types.Internal
+                         attoparsec-0.13.2.2:Data.Attoparsec.Internal.Types
+                         base-4.10.1.0:Control.Applicative base-4.10.1.0:Data.Complex
+                         base-4.10.1.0:Data.Either base-4.10.1.0:Data.Functor.Compose
+                         base-4.10.1.0:Data.Functor.Const
+                         base-4.10.1.0:Data.Functor.Identity
+                         base-4.10.1.0:Data.Functor.Product base-4.10.1.0:Data.Functor.Sum
+                         base-4.10.1.0:Data.List.NonEmpty base-4.10.1.0:Data.Monoid
+                         base-4.10.1.0:Data.Semigroup base-4.10.1.0:Data.Type.Equality
+                         base-4.10.1.0:Data.Version base-4.10.1.0:Data.Void
+                         base-4.10.1.0:GHC.Exts base-4.10.1.0:GHC.Generics
+                         base-4.10.1.0:GHC.IO.Exception base-4.10.1.0:GHC.TypeLits
+                         base-4.10.1.0:GHC.TypeNats bifunctors-5.5.2:Data.Bifunctor.Biff
+                         bifunctors-5.5.2:Data.Bifunctor.Clown
+                         bifunctors-5.5.2:Data.Bifunctor.Flip
+                         bifunctors-5.5.2:Data.Bifunctor.Join
+                         bifunctors-5.5.2:Data.Bifunctor.Joker
+                         bifunctors-5.5.2:Data.Bifunctor.Product
+                         bifunctors-5.5.2:Data.Bifunctor.Tannen
+                         bifunctors-5.5.2:Data.Bifunctor.Wrapped
+                         containers-0.5.10.2:Data.IntMap.Internal
+                         containers-0.5.10.2:Data.IntSet.Internal
+                         containers-0.5.10.2:Data.Map.Internal
+                         containers-0.5.10.2:Data.Sequence.Internal
+                         containers-0.5.10.2:Data.Set.Internal containers-0.5.10.2:Data.Tree
+                         dlist-0.8.0.4:Data.DList either-4.5:Control.Monad.Trans.Either
+                         ghc-boot-th-8.2.2:GHC.ForeignSrcLang.Type
+                         ghc-boot-th-8.2.2:GHC.LanguageExtensions.Type
+                         math-functions-0.2.1.0:Numeric.RootFinding
+                         math-functions-0.2.1.0:Numeric.Sum
+                         monad-control-1.0.2.2:Control.Monad.Trans.Control
+                         mwc-random-0.13.6.0:System.Random.MWC
+                         pretty-1.1.3.3:Text.PrettyPrint.Annotated.HughesPJ
+                         pretty-1.1.3.3:Text.PrettyPrint.HughesPJ
+                         primitive-0.6.3.0:Control.Monad.Primitive
+                         primitive-0.6.3.0:Data.Primitive.Array
+                         primitive-0.6.3.0:Data.Primitive.ByteArray
+                         statistics-0.14.0.2:Statistics.Distribution.Beta
+                         statistics-0.14.0.2:Statistics.Distribution.Binomial
+                         statistics-0.14.0.2:Statistics.Distribution.CauchyLorentz
+                         statistics-0.14.0.2:Statistics.Distribution.ChiSquared
+                         statistics-0.14.0.2:Statistics.Distribution.Exponential
+                         statistics-0.14.0.2:Statistics.Distribution.FDistribution
+                         statistics-0.14.0.2:Statistics.Distribution.Gamma
+                         statistics-0.14.0.2:Statistics.Distribution.Geometric
+                         statistics-0.14.0.2:Statistics.Distribution.Hypergeometric
+                         statistics-0.14.0.2:Statistics.Distribution.Laplace
+                         statistics-0.14.0.2:Statistics.Distribution.Normal
+                         statistics-0.14.0.2:Statistics.Distribution.StudentT
+                         statistics-0.14.0.2:Statistics.Distribution.Transform
+                         statistics-0.14.0.2:Statistics.Distribution.Uniform
+                         tagged-0.8.5:Data.Tagged
+                         template-haskell-2.12.0.0:Language.Haskell.TH.Syntax
+                         text-1.2.2.2:Data.Text text-1.2.2.2:Data.Text.Lazy
+                         unordered-containers-0.2.8.0:Data.HashMap.Base
+                         unordered-containers-0.2.8.0:Data.HashSet
+                         uuid-types-1.0.3:Data.UUID.Types.Internal
+                         uuid-types-1.0.3:Data.UUID.Types.Internal.Builder
+                         vector-0.12.0.1:Data.Vector vector-0.12.0.1:Data.Vector.Primitive
+                         vector-0.12.0.1:Data.Vector.Storable
+                         vector-0.12.0.1:Data.Vector.Unboxed
+                         vector-0.12.0.1:Data.Vector.Unboxed.Base
+                         zlib-0.6.1.2:Codec.Compression.Zlib.Stream
+import  -/  Multilinear 4c6d471e83f8257782aa106e88cffd2a
+  exports: 67d691b487a9d31758cbc46d5c37211f
+import  -/  Multilinear.Form f1aa5d3b06368f38073a5cd40b5983ad
+  exports: 295d4e5157e98031c20d6e80c96c05aa
+import  -/  Multilinear.Generic 35d6137e116dc30a68e3019328f60c00
+  exports: 6803917b9ea3c5897cebb5b68db2f4c4
+  ! 3065e43e05260f7d94b5303b27053802
+  Err d5ed70a4458652705d7936ab019ae051
+  FiniteTensor e25764918ce693c395c93af606e25c0a
+  InfiniteTensor d30f6998ebe799c0b80e700090c506f7
+  Scalar 671e28ba309b313c7bc53bc517dd79e0
+  SimpleFinite afa5b94884dee232bd70a9b786e63e17
+  Tensor 3435455de223a292a66afccee7caf4fd
+  _elemByElem 32924ca84eae46f80c32b6a2715d3a0f
+  _standardize 1289665b7078452bbea28c36f93a5184
+  contractionErr 155b66cca210d0aa062cfee2ea4e962d
+  dot 3435455de223a292a66afccee7caf4fd
+  errMessage 3435455de223a292a66afccee7caf4fd
+  isFiniteTensor 1afa4e686eb335b04641b90d112d6375
+  isInfiniteTensor 3a2b0df16ea855e78a76ada2cee32e78
+  isScalar 5084651f919359eff7fab5489c296755
+  isSimple 0acdda33d3d4ef0e7a1c6b512595b6ff
+  mergeScalars 3435455de223a292a66afccee7caf4fd
+  scalarVal 3435455de223a292a66afccee7caf4fd
+  tensorFiniteIndex 3435455de223a292a66afccee7caf4fd
+  tensorIndex af27ed4ec21f4196d2bb65cbc6dfd814
+  tensorInfiniteIndex 3435455de223a292a66afccee7caf4fd
+  tensorScalars 3435455de223a292a66afccee7caf4fd
+  tensorsFinite 3435455de223a292a66afccee7caf4fd
+  tensorsInfinite 3435455de223a292a66afccee7caf4fd
+import  -/  Multilinear.Index bdc4f33dfbfbc46388fe9f046d315e73
+  exports: 4645a9e87e184e91bd100d37c757003c
+import  -/  Multilinear.Index.Finite 14058e0dbe724865308af46da8e8471d
+  exports: dd8397fb15c17dfad021d67ccd8dbbd7
+import  -/  Multilinear.Index.Infinite 8efc3537c6e04783d09e6a3cbce996e9
+  exports: 49dee7d62fa0dcbae071152de4cbc0f4
+import  -/  Multilinear.Matrix 78fc362adbb8a1c848ec5fb665ae478a
+  exports: eabae68ca3c48c4711163f217178f5ac
+import  -/  Multilinear.NForm f9aa6d4b0a6a0ceeb139f8117852801f
+  exports: 4ec3e8b9d5fb10d0646f0319518bef06
+import  -/  Multilinear.NVector fd8eb7838e9f1c05e2c09bbd82b6be14
+  exports: 237f7bcd403286bbc270076445ac245a
+import  -/  Multilinear.Tensor dbc76d7c390453a030e3ba2f2e982ba6
+  exports: 60023a59918e2264950b46b2648956fb
+import  -/  Multilinear.Vector 64c0f7605f17d947c6970e8a5fe3ca7a
+  exports: 3803a8cc73ddacff6f2707ea7ed7b6d3
+import  -/  base-4.10.1.0:Control.Exception.Base 0428c9e06e604617a0f7b58a9c69e0a7
+import  -/  base-4.10.1.0:GHC.Base 8f949d675e49677c272f02ab7a85fe18
+import  -/  base-4.10.1.0:GHC.Conc.Sync c5df0438eca3b3f5822430018ebbc96d
+import  -/  base-4.10.1.0:GHC.Exception 4d53fc5d47ee70e037dcc7a598df700e
+import  -/  base-4.10.1.0:GHC.IO ffb6b887fa949015e657b932c980d82f
+import  -/  base-4.10.1.0:GHC.IO.Exception 38ca48fbdecf2c387d8befe4fee9e9ed
+import  -/  base-4.10.1.0:GHC.IO.Unsafe ae6608836f5ccf8c3e61d478aef3c2f9
+import  -/  base-4.10.1.0:Prelude a93a9400cc0c816c2ee5f39399baa7a0
+import  -/  base-4.10.1.0:System.IO.Unsafe ae8f1232dffa3c1ee82b9bc4a8f82c09
+import  -/  either-4.5:Control.Monad.Trans.Either 92ceeab29a4c772761f5a438d6f764e3
+import  -/  statistics-0.14.0.2:Statistics.Distribution 8fdcebe1659cddad7300a9b663ff7a10
+import  -/  statistics-0.14.0.2:Statistics.Distribution.Beta acb62726597d76d7d1171d8ded3876b2
+import  -/  statistics-0.14.0.2:Statistics.Distribution.Binomial b111cc140d3665ade5377d0d35fff723
+import  -/  statistics-0.14.0.2:Statistics.Distribution.CauchyLorentz 8415aca5f83f2c0617c1ad653aaa26b5
+import  -/  statistics-0.14.0.2:Statistics.Distribution.ChiSquared 67ceea823aa88796c5d3383241786786
+import  -/  statistics-0.14.0.2:Statistics.Distribution.Exponential dcdcf3ead47de455f7274859d508c9e5
+import  -/  statistics-0.14.0.2:Statistics.Distribution.FDistribution 94701e3bb894a68060ab63ff3a891270
+import  -/  statistics-0.14.0.2:Statistics.Distribution.Gamma 03ceafe9af53b4012b4b0945ac527761
+import  -/  statistics-0.14.0.2:Statistics.Distribution.Geometric 9f0ac4a253e3d95440e37e8a52b27b20
+import  -/  statistics-0.14.0.2:Statistics.Distribution.Hypergeometric aea38748473eb2c4327b9410e4e75460
+import  -/  statistics-0.14.0.2:Statistics.Distribution.Laplace 254e94a2fd7e5078e3f531798fe1a53f
+import  -/  statistics-0.14.0.2:Statistics.Distribution.Normal 37af784a2402b5827ff9a7ada30f7751
+import  -/  statistics-0.14.0.2:Statistics.Distribution.StudentT 856589af5a039d5de23ff04977bd7bc5
+import  -/  statistics-0.14.0.2:Statistics.Distribution.Uniform ce9b73eeaf88ed6b50441158e13e1d5c
+import  -/  transformers-0.5.2.0:Control.Monad.Trans.Class 085128d0890537d8b31af6ac84523aee
+6d0d3b21e724fa8f311d68c279e42c90
+  $trModule :: GHC.Types.Module
+  {- HasNoCafRefs, Strictness: m,
+     Unfolding: (GHC.Types.Module
+                   Multilinear.Library.$trModule3
+                   Multilinear.Library.$trModule1) -}
+1a98cb8d8f9edfd306cf3e93873ecb86
+  $trModule1 :: GHC.Types.TrName
+  {- HasNoCafRefs, Strictness: m1,
+     Unfolding: (GHC.Types.TrNameS Multilinear.Library.$trModule2) -}
+33e28fed7e69f8f9a881b2253fa1db61
+  $trModule2 :: GHC.Prim.Addr#
+  {- HasNoCafRefs, Unfolding: ("Multilinear.Library"#) -}
+f256b76cc2e9d8b73614a8fbd4edf367
+  $trModule3 :: GHC.Types.TrName
+  {- HasNoCafRefs, Strictness: m1,
+     Unfolding: (GHC.Types.TrNameS Multilinear.Library.$trModule4) -}
+a5924b96e86b8f7e6acdd998e489af2c
+  $trModule4 :: GHC.Prim.Addr#
+  {- HasNoCafRefs,
+     Unfolding: ("Multilinear-0.8.0.0-4dpV53DlxV5EwwV6FZreVP"#) -}
+vectorised variables:
+vectorised tycons:
+vectorised reused tycons:
+parallel variables:
+parallel tycons:
+trusted: none
+require own pkg trusted: False
+

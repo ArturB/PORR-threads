@@ -1,0 +1,179 @@
+Configuring enumerator-0.4.20...
+Preprocessing library for enumerator-0.4.20..
+Building library for enumerator-0.4.20..
+[ 1 of 10] Compiling Data.Enumerator.Internal ( lib\Data\Enumerator\Internal.hs, .stack-work\dist\5c8418a7\build\Data\Enumerator\Internal.o )
+
+lib\Data\Enumerator\Internal.hs:17:1: warning: [-Wtabs]
+    Tab character found here, and in 115 further locations.
+    Please use spaces instead.
+   |
+17 |         ( Stream (..)
+   | ^^^^^^^^
+[ 2 of 10] Compiling Data.Enumerator.List[boot] ( lib\Data\Enumerator\List.hs-boot, .stack-work\dist\5c8418a7\build\Data\Enumerator\List.o-boot )
+[ 3 of 10] Compiling Data.Enumerator.Compatibility ( lib\Data\Enumerator\Compatibility.hs, .stack-work\dist\5c8418a7\build\Data\Enumerator\Compatibility.o )
+
+lib\Data\Enumerator\Compatibility.hs:11:1: warning: [-Wtabs]
+    Tab character found here, and in 35 further locations.
+    Please use spaces instead.
+   |
+11 |         ( liftI
+   | ^^^^^^^^
+[ 4 of 10] Compiling Data.Enumerator  ( lib\Data\Enumerator.hs, .stack-work\dist\5c8418a7\build\Data\Enumerator.o )
+
+lib\Data\Enumerator.hs:15:1: warning: [-Wtabs]
+    Tab character found here, and in 195 further locations.
+    Please use spaces instead.
+   |
+15 |         (
+   | ^^^^^^^^
+
+lib\Data\Enumerator.hs:63:11: warning: [-Wduplicate-exports]
+    `Iteratee' is exported by `module Data.Enumerator.Internal' and `Iteratee'
+   |
+63 |         , module Data.Enumerator.Internal
+   |           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+
+lib\Data\Enumerator.hs:63:11: warning: [-Wduplicate-exports]
+    `Enumerator' is exported by `module Data.Enumerator.Internal' and `Enumerator'
+   |
+63 |         , module Data.Enumerator.Internal
+   |           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+
+lib\Data\Enumerator.hs:63:11: warning: [-Wduplicate-exports]
+    `Enumeratee' is exported by `module Data.Enumerator.Internal' and `Enumeratee'
+   |
+63 |         , module Data.Enumerator.Internal
+   |           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+
+lib\Data\Enumerator.hs:63:11: warning: [-Wduplicate-exports]
+    `>>==' is exported by `module Data.Enumerator.Internal' and `(>>==)'
+   |
+63 |         , module Data.Enumerator.Internal
+   |           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+
+lib\Data\Enumerator.hs:63:11: warning: [-Wduplicate-exports]
+    `==<<' is exported by `module Data.Enumerator.Internal' and `(==<<)'
+   |
+63 |         , module Data.Enumerator.Internal
+   |           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+
+lib\Data\Enumerator.hs:63:11: warning: [-Wduplicate-exports]
+    `$$' is exported by `module Data.Enumerator.Internal' and `($$)'
+   |
+63 |         , module Data.Enumerator.Internal
+   |           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+
+lib\Data\Enumerator.hs:63:11: warning: [-Wduplicate-exports]
+    `>==>' is exported by `module Data.Enumerator.Internal' and `(>==>)'
+   |
+63 |         , module Data.Enumerator.Internal
+   |           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+
+lib\Data\Enumerator.hs:63:11: warning: [-Wduplicate-exports]
+    `<==<' is exported by `module Data.Enumerator.Internal' and `(<==<)'
+   |
+63 |         , module Data.Enumerator.Internal
+   |           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+[ 5 of 10] Compiling Data.Enumerator.List ( lib\Data\Enumerator\List.hs, .stack-work\dist\5c8418a7\build\Data\Enumerator\List.o )
+
+lib\Data\Enumerator\List.hs:17:1: warning: [-Wtabs]
+    Tab character found here, and in 310 further locations.
+    Please use spaces instead.
+   |
+17 |         (
+   | ^^^^^^^^
+[ 6 of 10] Compiling Data.Enumerator.Binary ( lib\Data\Enumerator\Binary.hs, .stack-work\dist\5c8418a7\build\Data\Enumerator\Binary.o )
+
+lib\Data\Enumerator\Binary.hs:22:1: warning: [-Wtabs]
+    Tab character found here, and in 460 further locations.
+    Please use spaces instead.
+   |
+22 |         (
+   | ^^^^^^^^
+
+lib\Data\Enumerator\Binary.hs:721:25: warning: [-Wname-shadowing]
+    This binding for `eof' shadows the existing binding
+      bound at lib\Data\Enumerator\Binary.hs:716:29
+    |
+721 |                         eof <- isEOF
+    |                         ^^^
+
+lib\Data\Enumerator\Binary.hs:788:17: warning: [-Wname-shadowing]
+    This binding for `rem' shadows the existing binding
+      imported from `Prelude' at lib\Data\Enumerator\Binary.hs:98:1-92
+      (and originally defined in `GHC.Real')
+    |
+788 |                 rem = fromInteger (min bufferSize n)
+    |                 ^^^
+[ 7 of 10] Compiling Data.Enumerator.IO ( lib\Data\Enumerator\IO.hs, .stack-work\dist\5c8418a7\build\Data\Enumerator\IO.o )
+
+lib\Data\Enumerator\IO.hs:13:1: warning: [-Wtabs]
+    Tab character found here, and in four further locations.
+    Please use spaces instead.
+   |
+13 |         {-# DEPRECATED "Use 'Data.Enumerator.Binary' instead" #-}
+   | ^^^^^^^^
+[ 8 of 10] Compiling Data.Enumerator.Trans ( lib\Data\Enumerator\Trans.hs, .stack-work\dist\5c8418a7\build\Data\Enumerator\Trans.o )
+
+lib\Data\Enumerator\Trans.hs:18:1: warning: [-Wtabs]
+    Tab character found here, and in 157 further locations.
+    Please use spaces instead.
+   |
+18 |         (
+   | ^^^^^^^^
+
+lib\Data\Enumerator\Trans.hs:62:1: warning: [-Wdeprecations]
+    Module `Control.Monad.Trans.Error' is deprecated:
+      Use Control.Monad.Trans.Except instead
+   |
+62 | import           Control.Monad.Trans.Error
+   | ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+
+lib\Data\Enumerator\Trans.hs:100:15: warning: [-Wdeprecations]
+    In the use of type constructor or class `Error'
+    (imported from Control.Monad.Trans.Error):
+    Deprecated: "Use Control.Monad.Trans.Except instead"
+    |
+100 | runErrorI :: (Error e, Monad m)
+    |               ^^^^^
+
+lib\Data\Enumerator\Trans.hs:101:26: warning: [-Wdeprecations]
+    In the use of type constructor or class `ErrorT'
+    (imported from Control.Monad.Trans.Error):
+    Deprecated: "Use Control.Monad.Trans.Except instead"
+    |
+101 |           => Iteratee a (ErrorT e m) b -> Iteratee a m (Either e b)
+    |                          ^^^^^^
+
+lib\Data\Enumerator\Trans.hs:103:18: warning: [-Wdeprecations]
+    In the use of `runErrorT'
+    (imported from Control.Monad.Trans.Error):
+    Deprecated: "Use Control.Monad.Trans.Except instead"
+    |
+103 |         mStep <- runErrorT $ runIteratee it
+    |                  ^^^^^^^^^
+[ 9 of 10] Compiling Data.Enumerator.Util ( lib\Data\Enumerator\Util.hs, .stack-work\dist\5c8418a7\build\Data\Enumerator\Util.o )
+
+lib\Data\Enumerator\Util.hs:12:1: warning: [-Wtabs]
+    Tab character found here, and in five further locations.
+    Please use spaces instead.
+   |
+12 |         len = Prelude.length str
+   | ^^^^^^^^
+[10 of 10] Compiling Data.Enumerator.Text ( lib\Data\Enumerator\Text.hs, .stack-work\dist\5c8418a7\build\Data\Enumerator\Text.o )
+
+lib\Data\Enumerator\Text.hs:24:1: warning: [-Wtabs]
+    Tab character found here, and in 843 further locations.
+    Please use spaces instead.
+   |
+24 |         (
+   | ^^^^^^^^
+
+lib\Data\Enumerator\Text.hs:744:25: warning: [-Wname-shadowing]
+    This binding for `eof' shadows the existing binding
+      bound at lib\Data\Enumerator\Text.hs:739:29
+    |
+744 |                         eof <- isEOF
+    |                         ^^^
+Installing library in D:\Projekty\Studia\PORR-threads\.stack-work\install\c1f464f3\lib\x86_64-windows-ghc-8.2.2\enumerator-0.4.20-H5FKKSP8mLI8Yr4gy2ihQi
+Registering library for enumerator-0.4.20..

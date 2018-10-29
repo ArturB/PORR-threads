@@ -1,0 +1,2299 @@
+
+==================== FINAL INTERFACE ====================
+2018-10-29 09:28:47.953865 UTC
+
+interface Multilinear-0.8.0.0-4dpV53DlxV5EwwV6FZreVP:Multilinear.Parallel.Form 8022
+  interface hash: 236499befb97bb139b9dc25a256c9fff
+  ABI hash: 74abe58b3141d77944bf0f5f6a2c136a
+  export-list hash: 59da4640cfa53feb4a27cdd6a1f97591
+  orphan hash: 693e9af84d3dfcc71e640e005bdc5e2e
+  flag hash: 59ed47a3b8192ebebdfb3aef0ae9b82a
+  sig of: Nothing
+  used TH splices: False
+  where
+exports:
+  Multilinear.Parallel.Form.const
+  Multilinear.Parallel.Form.const'
+  Multilinear.Parallel.Form.fromCSV
+  Multilinear.Parallel.Form.fromIndices
+  Multilinear.Parallel.Form.fromIndices'
+  Multilinear.Parallel.Form.randomDouble
+  Multilinear.Parallel.Form.randomDoubleSeed
+  Multilinear.Parallel.Form.randomInt
+  Multilinear.Parallel.Form.randomIntSeed
+  Multilinear.Parallel.Form.toCSV
+module dependencies: Multilinear Multilinear.Index
+                     Multilinear.Index.Finite Multilinear.Index.Infinite
+                     Multilinear.Parallel.Generic
+package dependencies: MonadRandom-0.5.1 Win32-2.5.4.1 aeson-1.2.4.0
+                      array-0.5.2.0 attoparsec-0.13.2.2 attoparsec-enumerator-0.3.4
+                      base-4.10.1.0 base-compat-0.9.3 base-orphans-0.6 bifunctors-5.5.2
+                      binary-0.8.5.1 bytestring-0.10.8.2 cereal-0.5.5.0
+                      cereal-vector-0.2.0.1 comonad-5.0.3 containers-0.5.10.2
+                      csv-enumerator-0.10.2.0 deepseq-1.4.3.0 directory-1.3.0.2
+                      distributive-0.5.3 dlist-0.8.0.4 either-4.5 enumerator-0.4.20
+                      exceptions-0.8.3 filepath-1.4.1.2 free-4.12.4 ghc-boot-th-8.2.2
+                      ghc-prim-0.5.1.1 hashable-1.2.6.1 integer-gmp-1.0.1.0
+                      integer-logarithms-1.0.2 math-functions-0.2.1.0 mmorph-1.1.0
+                      monad-control-1.0.2.2 mtl-2.2.1 mwc-random-0.13.6.0 pretty-1.1.3.3
+                      primitive-0.6.3.0 random-1.1 safe-0.3.15 scientific-0.3.5.2
+                      semigroupoids-5.2.1 statistics-0.14.0.2 stm-2.4.5.0 tagged-0.8.5
+                      template-haskell-2.12.0.0 text-1.2.2.2 time-1.8.0.2
+                      time-locale-compat-0.1.1.3 transformers-0.5.2.0
+                      transformers-base-0.4.4 unix-compat-0.5.0.1
+                      unordered-containers-0.2.8.0 uuid-types-1.0.3 vector-0.12.0.1
+                      vector-algorithms-0.7.0.1 vector-th-unbox-0.2.1.6 zlib-0.6.1.2
+orphans: cereal-vector-0.2.0.1:Data.Vector.Serialize
+         stm-2.4.5.0:Control.Monad.STM
+         attoparsec-0.13.2.2:Data.Attoparsec.Text.Internal
+         attoparsec-0.13.2.2:Data.Attoparsec.ByteString.Char8
+         time-1.8.0.2:Data.Time.Format.Parse
+         time-1.8.0.2:Data.Time.LocalTime.Internal.ZonedTime
+         time-1.8.0.2:Data.Time.LocalTime.Internal.LocalTime
+         time-1.8.0.2:Data.Time.Calendar.Gregorian
+         hashable-1.2.6.1:Data.Hashable.Generic text-1.2.2.2:Data.Text.Lazy
+         text-1.2.2.2:Data.Text binary-0.8.5.1:Data.Binary.Generic
+         text-1.2.2.2:Data.Text.Show
+         bytestring-0.10.8.2:Data.ByteString.Builder
+         vector-0.12.0.1:Data.Vector.Unboxed
+         vector-0.12.0.1:Data.Vector.Fusion.Bundle
+         transformers-0.5.2.0:Control.Monad.Trans.Error
+         base-4.10.1.0:GHC.Float base-4.10.1.0:GHC.Base
+family instance modules: MonadRandom-0.5.1:Control.Monad.Trans.Random.Lazy
+                         Multilinear-0.8.0.0-4dpV53DlxV5EwwV6FZreVP:Multilinear.Index
+                         Multilinear-0.8.0.0-4dpV53DlxV5EwwV6FZreVP:Multilinear.Index.Finite
+                         Multilinear-0.8.0.0-4dpV53DlxV5EwwV6FZreVP:Multilinear.Index.Infinite
+                         Multilinear-0.8.0.0-4dpV53DlxV5EwwV6FZreVP:Multilinear.Parallel.Generic
+                         aeson-1.2.4.0:Data.Aeson.Types.Internal
+                         attoparsec-0.13.2.2:Data.Attoparsec.Internal.Types
+                         base-4.10.1.0:Control.Applicative base-4.10.1.0:Data.Complex
+                         base-4.10.1.0:Data.Either base-4.10.1.0:Data.Functor.Compose
+                         base-4.10.1.0:Data.Functor.Const
+                         base-4.10.1.0:Data.Functor.Identity
+                         base-4.10.1.0:Data.Functor.Product base-4.10.1.0:Data.Functor.Sum
+                         base-4.10.1.0:Data.List.NonEmpty base-4.10.1.0:Data.Monoid
+                         base-4.10.1.0:Data.Semigroup base-4.10.1.0:Data.Type.Equality
+                         base-4.10.1.0:Data.Version base-4.10.1.0:Data.Void
+                         base-4.10.1.0:GHC.Exts base-4.10.1.0:GHC.Generics
+                         base-4.10.1.0:GHC.IO.Exception base-4.10.1.0:GHC.TypeLits
+                         base-4.10.1.0:GHC.TypeNats bifunctors-5.5.2:Data.Bifunctor.Biff
+                         bifunctors-5.5.2:Data.Bifunctor.Clown
+                         bifunctors-5.5.2:Data.Bifunctor.Flip
+                         bifunctors-5.5.2:Data.Bifunctor.Join
+                         bifunctors-5.5.2:Data.Bifunctor.Joker
+                         bifunctors-5.5.2:Data.Bifunctor.Product
+                         bifunctors-5.5.2:Data.Bifunctor.Tannen
+                         bifunctors-5.5.2:Data.Bifunctor.Wrapped
+                         containers-0.5.10.2:Data.IntMap.Internal
+                         containers-0.5.10.2:Data.IntSet.Internal
+                         containers-0.5.10.2:Data.Map.Internal
+                         containers-0.5.10.2:Data.Sequence.Internal
+                         containers-0.5.10.2:Data.Set.Internal containers-0.5.10.2:Data.Tree
+                         dlist-0.8.0.4:Data.DList either-4.5:Control.Monad.Trans.Either
+                         ghc-boot-th-8.2.2:GHC.ForeignSrcLang.Type
+                         ghc-boot-th-8.2.2:GHC.LanguageExtensions.Type
+                         math-functions-0.2.1.0:Numeric.Sum
+                         monad-control-1.0.2.2:Control.Monad.Trans.Control
+                         mwc-random-0.13.6.0:System.Random.MWC
+                         pretty-1.1.3.3:Text.PrettyPrint.Annotated.HughesPJ
+                         pretty-1.1.3.3:Text.PrettyPrint.HughesPJ
+                         primitive-0.6.3.0:Control.Monad.Primitive
+                         primitive-0.6.3.0:Data.Primitive.Array
+                         primitive-0.6.3.0:Data.Primitive.ByteArray tagged-0.8.5:Data.Tagged
+                         template-haskell-2.12.0.0:Language.Haskell.TH.Syntax
+                         text-1.2.2.2:Data.Text text-1.2.2.2:Data.Text.Lazy
+                         unordered-containers-0.2.8.0:Data.HashMap.Base
+                         unordered-containers-0.2.8.0:Data.HashSet
+                         uuid-types-1.0.3:Data.UUID.Types.Internal
+                         uuid-types-1.0.3:Data.UUID.Types.Internal.Builder
+                         vector-0.12.0.1:Data.Vector vector-0.12.0.1:Data.Vector.Primitive
+                         vector-0.12.0.1:Data.Vector.Storable
+                         vector-0.12.0.1:Data.Vector.Unboxed
+                         vector-0.12.0.1:Data.Vector.Unboxed.Base
+                         zlib-0.6.1.2:Codec.Compression.Zlib.Stream
+import  -/  Multilinear 4c6d471e83f8257782aa106e88cffd2a
+  exports: 67d691b487a9d31758cbc46d5c37211f
+  indices 6ddd9de0e82555911f5e168a5281d0bf
+import  -/  Multilinear.Index.Finite 14058e0dbe724865308af46da8e8471d
+  exports: dd8397fb15c17dfad021d67ccd8dbbd7
+  Covariant 4de9bf5cc02a239b0c32f9bdce91e559
+import  -/  Multilinear.Index.Infinite 8efc3537c6e04783d09e6a3cbce996e9
+  exports: 49dee7d62fa0dcbae071152de4cbc0f4
+  Covariant 138a61e67c9eed1c7e633364bac74852
+import  -/  Multilinear.Parallel.Generic f23a439373b62180b1906db0009929de
+  exports: 7e7125be253e345ccbc04ad40f246cce
+  Err ee3db5ed100d2c960be14e059df90d59
+  FiniteTensor 5c2602ac62188b22cd29dda0414c8346
+  InfiniteTensor 83b4b371c9764a22225a0d601fe310f1
+  Scalar af52fd0fad1b0f14183a2958abd042bb
+  SimpleFinite 64a7cdc5b1215f2dc982a3dd051efaf2
+  Tensor 240d50eb0b5d150a5b80ad3cd9ebc3f9
+import  -/  base-4.10.1.0:Control.Exception 10a93951a12b353c5e2f1a6633fdc96a
+import  -/  base-4.10.1.0:Control.Exception.Base 0428c9e06e604617a0f7b58a9c69e0a7
+import  -/  base-4.10.1.0:Data.Either 79b3aa7621c39f085b8b2cedd9d3b61b
+import  -/  base-4.10.1.0:Data.Foldable 4349255461f1285ad885cd2301205c36
+import  -/  base-4.10.1.0:Data.Functor b59a97e639e05373a94999f9bb899676
+import  -/  base-4.10.1.0:Data.Traversable 628fa37db91b4136b7a9e05a8791a45d
+import  -/  base-4.10.1.0:GHC.Base 8f949d675e49677c272f02ab7a85fe18
+import  -/  base-4.10.1.0:GHC.Exception 4d53fc5d47ee70e037dcc7a598df700e
+import  -/  base-4.10.1.0:GHC.List 1bb0adf79553530dc898796596e53188
+import  -/  base-4.10.1.0:GHC.Num bee60808f8127e4cda82dd422aa1c6c0
+import  -/  base-4.10.1.0:GHC.Real 183566a07f0c201dd54a6bc28c33ed14
+import  -/  base-4.10.1.0:Prelude a93a9400cc0c816c2ee5f39399baa7a0
+import  -/  cereal-0.5.5.0:Data.Serialize f70ff631324190008ca0c94a4bb1a7d9
+import  -/  csv-enumerator-0.10.2.0:Data.CSV.Enumerator 39cda2723cbaad790578a20a9972aebe
+import  -/  csv-enumerator-0.10.2.0:Data.CSV.Enumerator.Types 2ea68c44f31292b7a6d5585804737f1a
+import  -/  deepseq-1.4.3.0:Control.DeepSeq 73f0c395dfad5422d021d16f9a5d4a09
+import  -/  either-4.5:Control.Monad.Trans.Either 92ceeab29a4c772761f5a438d6f764e3
+import  -/  ghc-prim-0.5.1.1:GHC.Classes 64ad5910d03ab188ab9b4adef7487b1e
+import  -/  ghc-prim-0.5.1.1:GHC.Types b1fd0716441595db508c1a74387bf394
+import  -/  mwc-random-0.13.6.0:System.Random.MWC 24ec0f491652a7e7f547994c54c5c3e7
+import  -/  primitive-0.6.3.0:Control.Monad.Primitive d7ec88f5da3cb11dddf5094b31188f58
+import  -/  statistics-0.14.0.2:Statistics.Distribution 8fdcebe1659cddad7300a9b663ff7a10
+import  -/  vector-0.12.0.1:Data.Vector c6f234ddb312dfcee4741885ac2bd9d4
+50d02a6959de808d674d24460ca4e09e
+  $trModule :: GHC.Types.Module
+  {- HasNoCafRefs, Strictness: m,
+     Unfolding: (GHC.Types.Module
+                   Multilinear.Parallel.Form.$trModule3
+                   Multilinear.Parallel.Form.$trModule1) -}
+e6a0b403bb443fe478b5a1fb95793cd8
+  $trModule1 :: GHC.Types.TrName
+  {- HasNoCafRefs, Strictness: m1,
+     Unfolding: (GHC.Types.TrNameS
+                   Multilinear.Parallel.Form.$trModule2) -}
+addb1aba8f19128571f7f0a11f4e33bc
+  $trModule2 :: GHC.Prim.Addr#
+  {- HasNoCafRefs, Unfolding: ("Multilinear.Parallel.Form"#) -}
+699e9c2670262f48594c76d0a6bdec6d
+  $trModule3 :: GHC.Types.TrName
+  {- HasNoCafRefs, Strictness: m1,
+     Unfolding: (GHC.Types.TrNameS
+                   Multilinear.Parallel.Form.$trModule4) -}
+f4bf2db3913f27367f532e3bacf0ae96
+  $trModule4 :: GHC.Prim.Addr#
+  {- HasNoCafRefs,
+     Unfolding: ("Multilinear-0.8.0.0-4dpV53DlxV5EwwV6FZreVP"#) -}
+629d1a496b9b4c041e348cccbd94bc14
+  const ::
+    GHC.Num.Num a =>
+    GHC.Base.String
+    -> GHC.Types.Int -> a -> Multilinear.Parallel.Generic.Tensor a
+  {- Arity: 4, Strictness: <L,A><S,1*U><L,U(U)><L,U>,
+     Inline: (sat-args=1),
+     Unfolding: InlineRule (2, False, False)
+                (\ @ a ($dNum :: GHC.Num.Num a) (i :: GHC.Base.String) ->
+                 case i of wild {
+                   []
+                   -> \ (ds :: GHC.Types.Int) (ds1 :: a) ->
+                      Multilinear.Parallel.Generic.Err
+                        @ a
+                        Multilinear.Parallel.Form.invalidIndices
+                   : d ds
+                   -> case ds of wild1 {
+                        []
+                        -> \ (s :: GHC.Types.Int) (v :: a) ->
+                           Multilinear.Parallel.Generic.SimpleFinite
+                             @ a
+                             (Multilinear.Index.Finite.Covariant
+                                s
+                                (GHC.Base.build
+                                   @ GHC.Types.Char
+                                   (\ @ a1
+                                      (c :: GHC.Types.Char -> a1 -> a1)[OneShot]
+                                      (n :: a1)[OneShot] ->
+                                    c d n)))
+                             (Data.Vector.Generic.new
+                                @ Data.Vector.Vector
+                                @ a
+                                (Data.Vector.$fVectorVectora @ a)
+                                (Data.Vector.Generic.New.unstream
+                                   @ Data.Vector.Vector
+                                   @ a
+                                   (Data.Vector.$fVectorVectora @ a)
+                                   (Data.Vector.Fusion.Bundle.Monadic.replicate
+                                      @ Data.Vector.Fusion.Util.Id
+                                      @ a
+                                      @ Data.Vector.Vector
+                                      Data.Vector.Fusion.Util.$fMonadId
+                                      s
+                                      v)))
+                        : ipv ipv3
+                        -> \ (ds1 :: GHC.Types.Int) (ds2 :: a) ->
+                           Multilinear.Parallel.Generic.Err
+                             @ a
+                             Multilinear.Parallel.Form.invalidIndices } }) -}
+3f5f7183bd6c3011a6173a0455e349e1
+  const' ::
+    GHC.Num.Num a =>
+    GHC.Base.String -> a -> Multilinear.Parallel.Generic.Tensor a
+  {- Arity: 3, Strictness: <L,A><S,1*U><L,U>, Inline: (sat-args=1),
+     Unfolding: InlineRule (2, False, False)
+                (\ @ a ($dNum :: GHC.Num.Num a) (i :: GHC.Base.String) ->
+                 case i of wild {
+                   []
+                   -> \ (ds :: a) ->
+                      Multilinear.Parallel.Generic.Err
+                        @ a
+                        Multilinear.Parallel.Form.invalidIndices
+                   : d ds
+                   -> case ds of wild1 {
+                        []
+                        -> \ (v :: a) ->
+                           Multilinear.Parallel.Generic.InfiniteTensor
+                             @ a
+                             (Multilinear.Index.Infinite.Covariant
+                                (GHC.Base.build
+                                   @ GHC.Types.Char
+                                   (\ @ a1
+                                      (c :: GHC.Types.Char -> a1 -> a1)[OneShot]
+                                      (n :: a1)[OneShot] ->
+                                    c d n)))
+                             (GHC.Base.build
+                                @ (Multilinear.Parallel.Generic.Tensor a)
+                                (\ @ b1
+                                   (c :: Multilinear.Parallel.Generic.Tensor a -> b1 -> b1)[OneShot]
+                                   (n :: b1)[OneShot] ->
+                                 GHC.Enum.eftIntFB
+                                   @ b1
+                                   (GHC.Base.mapFB
+                                      @ (Multilinear.Parallel.Generic.Tensor a)
+                                      @ b1
+                                      @ GHC.Types.Int
+                                      c
+                                      (\ (ds1 :: GHC.Types.Int) ->
+                                       Multilinear.Parallel.Generic.Scalar @ a v))
+                                   n
+                                   0#
+                                   9223372036854775807#))
+                        : ipv ipv3
+                        -> \ (ds1 :: a) ->
+                           Multilinear.Parallel.Generic.Err
+                             @ a
+                             Multilinear.Parallel.Form.invalidIndices } }) -}
+9199873ec5fd7d7d83032e97e87a1b4c
+  const1 :: GHC.Prim.Addr#
+  {- HasNoCafRefs,
+     Unfolding: ("Indices and its sizes not compatible with structure of linear functional!"#) -}
+c98ecb508440659d25956e016d485dad
+  deserializationError :: GHC.Base.String
+  {- Unfolding: (GHC.CString.unpackCString#
+                   Multilinear.Parallel.Form.fromCSV1) -}
+98e71c57f087e05e8723638d4595bb04
+  fromCSV ::
+    (GHC.Num.Num a, Control.DeepSeq.NFData a,
+     Data.Serialize.Serialize a) =>
+    GHC.Base.String
+    -> GHC.Base.String
+    -> GHC.Types.Char
+    -> Control.Monad.Trans.Either.EitherT
+         GHC.Exception.SomeException
+         GHC.Types.IO
+         (Multilinear.Parallel.Generic.Tensor a)
+  {- Arity: 7,
+     Strictness: <L,A><L,A><L,U(A,C(C1(C1(C1(C1(C1(U)))))))><S,1*U><L,U><L,1*U(U)><S,U>,
+     Inline: (sat-args=1),
+     Unfolding: InlineRule (4, False, False)
+                (\ @ a
+                   ($dNum :: GHC.Num.Num a)
+                   ($dNFData :: Control.DeepSeq.NFData a)
+                   ($dSerialize :: Data.Serialize.Serialize a)
+                   (x :: GHC.Base.String) ->
+                 case x of wild {
+                   []
+                   -> (\ (ds :: GHC.Base.String)
+                         (ds1 :: GHC.Types.Char)
+                         (s :: GHC.Prim.State# GHC.Prim.RealWorld) ->
+                       (# s,
+                          Data.Either.Right
+                            @ GHC.Exception.SomeException
+                            @ (Multilinear.Parallel.Generic.Tensor a)
+                            (Multilinear.Parallel.Generic.Err
+                               @ a
+                               Multilinear.Parallel.Form.invalidIndices) #))
+                        `cast`
+                      (<GHC.Base.String>_R
+                       ->_R <GHC.Types.Char>_R
+                       ->_R Trans
+                                (Sym (GHC.Types.N:IO[0]
+                                          <Data.Either.Either
+                                             GHC.Exception.SomeException
+                                             (Multilinear.Parallel.Generic.Tensor a)>_R))
+                                (Sym (Control.Monad.Trans.Either.N:EitherT[0]
+                                          <GHC.Exception.SomeException>_N
+                                          <GHC.Types.IO>_R
+                                          <Multilinear.Parallel.Generic.Tensor a>_N)))
+                   : i ds
+                   -> case ds of wild1 {
+                        []
+                        -> (\ (fileName :: GHC.Base.String)
+                              (separator :: GHC.Types.Char)
+                              (s :: GHC.Prim.State# GHC.Prim.RealWorld) ->
+                            case (Data.CSV.Enumerator.$fCSVeable[]_$citerCSV
+                                    @ [[Data.ByteString.Internal.ByteString]]
+                                    (Data.CSV.Enumerator.Types.$WCSVS
+                                       separator
+                                       (GHC.Base.Just @ GHC.Types.Char (GHC.Types.C# '"'#))
+                                       (GHC.Base.Just @ GHC.Types.Char (GHC.Types.C# '"'#))
+                                       separator)
+                                    (\ (acc :: [[Data.ByteString.Internal.ByteString]])
+                                       (ds1 :: Data.CSV.Enumerator.ParsedRow
+                                                 [Data.ByteString.Internal.ByteString])
+                                       (eta :: GHC.Prim.State# GHC.Prim.RealWorld) ->
+                                     case ds1 of wild2 {
+                                       Data.CSV.Enumerator.ParsedRow ds2
+                                       -> case ds2 of wild3 {
+                                            GHC.Base.Nothing
+                                            -> (# eta,
+                                                  Data.Enumerator.Internal.Yield
+                                                    @ Data.ByteString.Internal.ByteString
+                                                    @ GHC.Types.IO
+                                                    @ [[Data.ByteString.Internal.ByteString]]
+                                                    acc
+                                                    Data.CSV.Enumerator.$fCSVeableMap4 #)
+                                            GHC.Base.Just r1
+                                            -> (# eta,
+                                                  Data.Enumerator.Internal.Yield
+                                                    @ Data.ByteString.Internal.ByteString
+                                                    @ GHC.Types.IO
+                                                    @ [[Data.ByteString.Internal.ByteString]]
+                                                    (GHC.Types.:
+                                                       @ [Data.ByteString.Internal.ByteString]
+                                                       r1
+                                                       acc)
+                                                    Data.CSV.Enumerator.$fCSVeableMap4 #) }
+                                       Data.CSV.Enumerator.EOF
+                                       -> (# eta,
+                                             Data.Enumerator.Internal.Yield
+                                               @ Data.ByteString.Internal.ByteString
+                                               @ GHC.Types.IO
+                                               @ [[Data.ByteString.Internal.ByteString]]
+                                               acc
+                                               Data.CSV.Enumerator.$fCSVeableMap4 #) })
+                                      `cast`
+                                    (<[[Data.ByteString.Internal.ByteString]]>_R
+                                     ->_R <Data.CSV.Enumerator.ParsedRow
+                                             [Data.ByteString.Internal.ByteString]>_R
+                                     ->_R Trans
+                                              (Sym (GHC.Types.N:IO[0]
+                                                        <Data.Enumerator.Internal.Step
+                                                           Data.ByteString.Internal.ByteString
+                                                           GHC.Types.IO
+                                                           [[Data.ByteString.Internal.ByteString]]>_R))
+                                              (Sym (Data.Enumerator.Internal.N:Iteratee[0]
+                                                        <Data.ByteString.Internal.ByteString>_N
+                                                        <GHC.Types.IO>_N
+                                                        <[[Data.ByteString.Internal.ByteString]]>_N)))
+                                    (GHC.Types.[] @ [Data.ByteString.Internal.ByteString]))
+                                   `cast`
+                                 (Trans
+                                      (Data.Enumerator.Internal.N:Iteratee[0]
+                                           <Data.ByteString.Internal.ByteString>_N
+                                           <GHC.Types.IO>_N
+                                           <[[Data.ByteString.Internal.ByteString]]>_N)
+                                      (GHC.Types.N:IO[0]
+                                           <Data.Enumerator.Internal.Step
+                                              Data.ByteString.Internal.ByteString
+                                              GHC.Types.IO
+                                              [[Data.ByteString.Internal.ByteString]]>_R))
+                                   s of ds1 { (#,#) ipv ipv3 ->
+                            case (Data.Enumerator.Binary.enumFileRange
+                                    @ [[Data.ByteString.Internal.ByteString]]
+                                    fileName
+                                    (GHC.Base.Nothing @ GHC.Integer.Type.Integer)
+                                    (GHC.Base.Nothing @ GHC.Integer.Type.Integer)
+                                    ipv3)
+                                   `cast`
+                                 (Trans
+                                      (Data.Enumerator.Internal.N:Iteratee[0]
+                                           <Data.ByteString.Internal.ByteString>_N
+                                           <GHC.Types.IO>_N
+                                           <[[Data.ByteString.Internal.ByteString]]>_N)
+                                      (GHC.Types.N:IO[0]
+                                           <Data.Enumerator.Internal.Step
+                                              Data.ByteString.Internal.ByteString
+                                              GHC.Types.IO
+                                              [[Data.ByteString.Internal.ByteString]]>_R))
+                                   ipv of ds2 { (#,#) ipv4 ipv5 ->
+                            case (Data.Enumerator.Internal.enumEOF
+                                    @ GHC.Types.IO
+                                    @ Data.ByteString.Internal.ByteString
+                                    @ [[Data.ByteString.Internal.ByteString]]
+                                    GHC.Base.$fMonadIO
+                                    ipv5)
+                                   `cast`
+                                 (Trans
+                                      (Data.Enumerator.Internal.N:Iteratee[0]
+                                           <Data.ByteString.Internal.ByteString>_N
+                                           <GHC.Types.IO>_N
+                                           <[[Data.ByteString.Internal.ByteString]]>_N)
+                                      (GHC.Types.N:IO[0]
+                                           <Data.Enumerator.Internal.Step
+                                              Data.ByteString.Internal.ByteString
+                                              GHC.Types.IO
+                                              [[Data.ByteString.Internal.ByteString]]>_R))
+                                   ipv4 of ds3 { (#,#) ipv6 ipv7 ->
+                            let {
+                              $j :: GHC.Prim.State# GHC.Prim.RealWorld
+                                    -> Data.Either.Either
+                                         GHC.Exception.SomeException
+                                         [[Data.ByteString.Internal.ByteString]]
+                                    -> (# GHC.Prim.State# GHC.Prim.RealWorld,
+                                          Data.Either.Either
+                                            GHC.Exception.SomeException
+                                            (Multilinear.Parallel.Generic.Tensor a) #)
+                                <join 2> {- Arity: 2 -}
+                              = \ (ipv8 :: GHC.Prim.State# GHC.Prim.RealWorld)[OneShot]
+                                  (ipv9 :: Data.Either.Either
+                                             GHC.Exception.SomeException
+                                             [[Data.ByteString.Internal.ByteString]])[OneShot] ->
+                                case ipv9 of wild2 {
+                                  Data.Either.Left l
+                                  -> (# ipv8,
+                                        Data.Either.Left
+                                          @ GHC.Exception.SomeException
+                                          @ (Multilinear.Parallel.Generic.Tensor a)
+                                          l #)
+                                  Data.Either.Right r
+                                  -> let {
+                                       components :: [Data.Either.Either GHC.Base.String a]
+                                       = GHC.Base.build
+                                           @ (Data.Either.Either GHC.Base.String a)
+                                           (\ @ b1
+                                              (c :: Data.Either.Either GHC.Base.String a
+                                                    -> b1 -> b1)[OneShot]
+                                              (n :: b1)[OneShot] ->
+                                            GHC.Base.foldr
+                                              @ Data.ByteString.Internal.ByteString
+                                              @ b1
+                                              (GHC.Base.mapFB
+                                                 @ (Data.Either.Either GHC.Base.String a)
+                                                 @ b1
+                                                 @ Data.ByteString.Internal.ByteString
+                                                 c
+                                                 (Data.Serialize.decode @ a $dSerialize))
+                                              n
+                                              (GHC.List.head
+                                                 @ [Data.ByteString.Internal.ByteString]
+                                                 r))
+                                     } in
+                                     let {
+                                       readSize :: GHC.Types.Int
+                                       = GHC.Base.foldr
+                                           @ (Data.Either.Either GHC.Base.String a)
+                                           @ (GHC.Types.Int -> GHC.Types.Int)
+                                           (\ (ds4 :: Data.Either.Either GHC.Base.String a)
+                                              (ds5 :: GHC.Types.Int -> GHC.Types.Int)[OneShot] ->
+                                            case ds4 of wild3 {
+                                              Data.Either.Left ipv10 -> ds5
+                                              Data.Either.Right a2
+                                              -> GHC.List.lengthFB @ a a2 ds5 })
+                                           GHC.List.idLength
+                                           components
+                                           (GHC.Types.I# 0#)
+                                     } in
+                                     case GHC.Classes.gtInt readSize (GHC.Types.I# 0#) of wild3 {
+                                       GHC.Types.False
+                                       -> (# ipv8,
+                                             Data.Either.Left
+                                               @ GHC.Exception.SomeException
+                                               @ (Multilinear.Parallel.Generic.Tensor a)
+                                               (GHC.Exception.SomeException
+                                                  @ Control.Exception.Base.TypeError
+                                                  Control.Exception.Base.$fExceptionTypeError
+                                                  Multilinear.Parallel.Form.deserializationError
+                                                    `cast`
+                                                  (Sym (Control.Exception.Base.N:TypeError[0]))) #)
+                                       GHC.Types.True
+                                       -> (# ipv8,
+                                             Data.Either.Right
+                                               @ GHC.Exception.SomeException
+                                               @ (Multilinear.Parallel.Generic.Tensor a)
+                                               (Multilinear.Parallel.Generic.SimpleFinite
+                                                  @ a
+                                                  (Multilinear.Index.Finite.Covariant
+                                                     readSize
+                                                     (GHC.Base.build
+                                                        @ GHC.Types.Char
+                                                        (\ @ a1
+                                                           (c :: GHC.Types.Char
+                                                                 -> a1 -> a1)[OneShot]
+                                                           (n :: a1)[OneShot] ->
+                                                         c i n)))
+                                                  (Data.Vector.Generic.new
+                                                     @ Data.Vector.Vector
+                                                     @ a
+                                                     (Data.Vector.$fVectorVectora @ a)
+                                                     (Data.Vector.Generic.New.unstream
+                                                        @ Data.Vector.Vector
+                                                        @ a
+                                                        (Data.Vector.$fVectorVectora @ a)
+                                                        (Data.Vector.Fusion.Bundle.Monadic.unsafeFromList
+                                                           @ Data.Vector.Fusion.Util.Id
+                                                           @ a
+                                                           @ Data.Vector.Vector
+                                                           Data.Vector.Fusion.Util.$fMonadId
+                                                           Data.Vector.Fusion.Bundle.Size.Unknown
+                                                           (GHC.Base.build
+                                                              @ a
+                                                              (\ @ a1
+                                                                 (c :: a -> a1 -> a1)[OneShot]
+                                                                 (n :: a1)[OneShot] ->
+                                                               GHC.Base.foldr
+                                                                 @ (Data.Either.Either
+                                                                      GHC.Base.String a)
+                                                                 @ a1
+                                                                 (\ (ds4 :: Data.Either.Either
+                                                                              GHC.Base.String a)
+                                                                    (ds5 :: a1)[OneShot] ->
+                                                                  case ds4 of wild4 {
+                                                                    Data.Either.Left ipv10 -> ds5
+                                                                    Data.Either.Right a2
+                                                                    -> c a2 ds5 })
+                                                                 n
+                                                                 components)))))) #) } }
+                            } in
+                            case ipv7 of wild2 {
+                              Data.Enumerator.Internal.Continue ds4
+                              -> case Data.Enumerator.run2
+                                 ret_ty (# GHC.Prim.State# GHC.Prim.RealWorld,
+                                           Data.Either.Either
+                                             GHC.Exception.SomeException
+                                             (Multilinear.Parallel.Generic.Tensor a) #)
+                                 of {}
+                              Data.Enumerator.Internal.Yield x1 ds4
+                              -> $j
+                                   ipv6
+                                   (Data.Either.Right
+                                      @ GHC.Exception.SomeException
+                                      @ [[Data.ByteString.Internal.ByteString]]
+                                      (GHC.List.reverse @ [Data.ByteString.Internal.ByteString] x1))
+                              Data.Enumerator.Internal.Error err
+                              -> $j
+                                   ipv6
+                                   (Data.Either.Left
+                                      @ GHC.Exception.SomeException
+                                      @ [[Data.ByteString.Internal.ByteString]]
+                                      err) } } } })
+                             `cast`
+                           (<GHC.Base.String>_R
+                            ->_R <GHC.Types.Char>_R
+                            ->_R Trans
+                                     (Sym (GHC.Types.N:IO[0]
+                                               <Data.Either.Either
+                                                  GHC.Exception.SomeException
+                                                  (Multilinear.Parallel.Generic.Tensor a)>_R))
+                                     (Sym (Control.Monad.Trans.Either.N:EitherT[0]
+                                               <GHC.Exception.SomeException>_N
+                                               <GHC.Types.IO>_R
+                                               <Multilinear.Parallel.Generic.Tensor a>_N)))
+                        : ipv ipv3
+                        -> (\ (ds1 :: GHC.Base.String)
+                              (ds2 :: GHC.Types.Char)
+                              (s :: GHC.Prim.State# GHC.Prim.RealWorld) ->
+                            (# s,
+                               Data.Either.Right
+                                 @ GHC.Exception.SomeException
+                                 @ (Multilinear.Parallel.Generic.Tensor a)
+                                 (Multilinear.Parallel.Generic.Err
+                                    @ a
+                                    Multilinear.Parallel.Form.invalidIndices) #))
+                             `cast`
+                           (<GHC.Base.String>_R
+                            ->_R <GHC.Types.Char>_R
+                            ->_R Trans
+                                     (Sym (GHC.Types.N:IO[0]
+                                               <Data.Either.Either
+                                                  GHC.Exception.SomeException
+                                                  (Multilinear.Parallel.Generic.Tensor a)>_R))
+                                     (Sym (Control.Monad.Trans.Either.N:EitherT[0]
+                                               <GHC.Exception.SomeException>_N
+                                               <GHC.Types.IO>_R
+                                               <Multilinear.Parallel.Generic.Tensor a>_N))) } }) -}
+73567fa203a709b9346524712152dbae
+  fromCSV1 :: GHC.Prim.Addr#
+  {- HasNoCafRefs,
+     Unfolding: ("Components deserialization error!"#) -}
+e74f1dc59007a34bcba6f505fd0f5ea4
+  fromIndices ::
+    GHC.Num.Num a =>
+    GHC.Base.String
+    -> GHC.Types.Int
+    -> (GHC.Types.Int -> a)
+    -> Multilinear.Parallel.Generic.Tensor a
+  {- Arity: 4, Strictness: <L,A><S,1*U><L,U(U)><L,C(U)>,
+     Inline: (sat-args=1),
+     Unfolding: InlineRule (2, False, False)
+                (\ @ a ($dNum :: GHC.Num.Num a) (i :: GHC.Base.String) ->
+                 case i of wild {
+                   []
+                   -> \ (ds :: GHC.Types.Int) (ds1 :: GHC.Types.Int -> a) ->
+                      Multilinear.Parallel.Generic.Err
+                        @ a
+                        Multilinear.Parallel.Form.invalidIndices
+                   : d ds
+                   -> case ds of wild1 {
+                        []
+                        -> \ (s :: GHC.Types.Int) (f :: GHC.Types.Int -> a) ->
+                           Multilinear.Parallel.Generic.SimpleFinite
+                             @ a
+                             (Multilinear.Index.Finite.Covariant
+                                s
+                                (GHC.Base.build
+                                   @ GHC.Types.Char
+                                   (\ @ a1
+                                      (c :: GHC.Types.Char -> a1 -> a1)[OneShot]
+                                      (n :: a1)[OneShot] ->
+                                    c d n)))
+                             (Data.Vector.Generic.new
+                                @ Data.Vector.Vector
+                                @ a
+                                (Data.Vector.$fVectorVectora @ a)
+                                (Data.Vector.Generic.New.unstream
+                                   @ Data.Vector.Vector
+                                   @ a
+                                   (Data.Vector.$fVectorVectora @ a)
+                                   (Data.Vector.Fusion.Bundle.Monadic.generateM
+                                      @ Data.Vector.Fusion.Util.Id
+                                      @ a
+                                      @ Data.Vector.Vector
+                                      Data.Vector.Fusion.Util.$fMonadId
+                                      s
+                                      (\ (x :: GHC.Types.Int) -> f x)
+                                        `cast`
+                                      (<GHC.Types.Int>_R
+                                       ->_R Sym (Data.Vector.Fusion.Util.N:Id[0] <a>_R)))))
+                        : ipv ipv3
+                        -> \ (ds1 :: GHC.Types.Int) (ds2 :: GHC.Types.Int -> a) ->
+                           Multilinear.Parallel.Generic.Err
+                             @ a
+                             Multilinear.Parallel.Form.invalidIndices } }) -}
+fcd450e42fd5ab5bb520a0d84b4b7378
+  fromIndices' ::
+    GHC.Num.Num a =>
+    GHC.Base.String
+    -> (GHC.Types.Int -> a) -> Multilinear.Parallel.Generic.Tensor a
+  {- Arity: 3, Strictness: <L,A><S,1*U><L,C(U)>,
+     Inline: (sat-args=1),
+     Unfolding: InlineRule (2, False, False)
+                (\ @ a ($dNum :: GHC.Num.Num a) (i :: GHC.Base.String) ->
+                 case i of wild {
+                   []
+                   -> \ (ds :: GHC.Types.Int -> a) ->
+                      Multilinear.Parallel.Generic.Err
+                        @ a
+                        Multilinear.Parallel.Form.invalidIndices
+                   : d ds
+                   -> case ds of wild1 {
+                        []
+                        -> \ (f :: GHC.Types.Int -> a) ->
+                           Multilinear.Parallel.Generic.InfiniteTensor
+                             @ a
+                             (Multilinear.Index.Infinite.Covariant
+                                (GHC.Base.build
+                                   @ GHC.Types.Char
+                                   (\ @ a1
+                                      (c :: GHC.Types.Char -> a1 -> a1)[OneShot]
+                                      (n :: a1)[OneShot] ->
+                                    c d n)))
+                             (GHC.Base.build
+                                @ (Multilinear.Parallel.Generic.Tensor a)
+                                (\ @ b1
+                                   (c :: Multilinear.Parallel.Generic.Tensor a -> b1 -> b1)[OneShot]
+                                   (n :: b1)[OneShot] ->
+                                 GHC.Enum.eftIntFB
+                                   @ b1
+                                   (GHC.Base.mapFB
+                                      @ (Multilinear.Parallel.Generic.Tensor a)
+                                      @ b1
+                                      @ GHC.Types.Int
+                                      c
+                                      (\ (x :: GHC.Types.Int) ->
+                                       Multilinear.Parallel.Generic.Scalar @ a (f x)))
+                                   n
+                                   0#
+                                   9223372036854775807#))
+                        : ipv ipv3
+                        -> \ (ds1 :: GHC.Types.Int -> a) ->
+                           Multilinear.Parallel.Generic.Err
+                             @ a
+                             Multilinear.Parallel.Form.invalidIndices } }) -}
+3a841ee6e91774052df2df5554a3b16c
+  invalidIndices :: GHC.Base.String
+  {- Unfolding: (GHC.CString.unpackCString#
+                   Multilinear.Parallel.Form.const1) -}
+0be8a037b026faa3adfba7f2e0a0185f
+  randomDouble ::
+    Statistics.Distribution.ContGen d =>
+    GHC.Base.String
+    -> GHC.Types.Int
+    -> d
+    -> GHC.Types.IO
+         (Multilinear.Parallel.Generic.Tensor GHC.Types.Double)
+  {- Arity: 5,
+     Strictness: <L,1*U(A,1*C1(C1(C1(U))))><S,1*U><L,1*U(U)><L,U><S,U>,
+     Inline: (sat-args=1),
+     Unfolding: InlineRule (2, False, False)
+                (\ @ d
+                   ($dContGen :: Statistics.Distribution.ContGen d)
+                   (x :: GHC.Base.String) ->
+                 case x of wild {
+                   []
+                   -> (\ (ds :: GHC.Types.Int)
+                         (ds1 :: d)
+                         (s :: GHC.Prim.State# GHC.Prim.RealWorld) ->
+                       (# s,
+                          Multilinear.Parallel.Generic.Err
+                            @ GHC.Types.Double
+                            Multilinear.Parallel.Form.invalidIndices #))
+                        `cast`
+                      (<GHC.Types.Int>_R
+                       ->_R <d>_R
+                       ->_R Sym (GHC.Types.N:IO[0]
+                                     <Multilinear.Parallel.Generic.Tensor GHC.Types.Double>_R))
+                   : i ds
+                   -> case ds of wild1 {
+                        []
+                        -> (\ (s :: GHC.Types.Int)
+                              (d1 :: d)
+                              (s1 :: GHC.Prim.State# GHC.Prim.RealWorld) ->
+                            case System.Random.MWC.createSystemRandom_$swithSystemRandom
+                                   @ (System.Random.MWC.Gen GHC.Prim.RealWorld)
+                                   (GHC.Base.$fApplicativeIO4
+                                      @ (System.Random.MWC.Gen GHC.Prim.RealWorld))
+                                     `cast`
+                                   (Trans
+                                        (<System.Random.MWC.Gen GHC.Prim.RealWorld>_R
+                                         ->_R Sym (GHC.Types.N:IO[0]
+                                                       <System.Random.MWC.Gen
+                                                          GHC.Prim.RealWorld>_R))
+                                        (Trans
+                                             ((System.Random.MWC.Gen
+                                                 (Sym (Control.Monad.Primitive.D:R:PrimStateIO[0])))_R
+                                              ->_R (GHC.Types.IO
+                                                      (System.Random.MWC.Gen
+                                                         (Sym (Control.Monad.Primitive.D:R:PrimStateIO[0])))_R)_R)
+                                             (<System.Random.MWC.Gen
+                                                 (Control.Monad.Primitive.PrimState GHC.Types.IO)>_R
+                                              ->_R (GHC.Types.IO
+                                                      (System.Random.MWC.Gen
+                                                         (Control.Monad.Primitive.D:R:PrimStateIO[0]))_R)_R)))
+                                   s1 of ds1 { (#,#) ipv ipv3 ->
+                            case (Data.Vector.Generic.unstreamPrimM
+                                    @ GHC.Types.IO
+                                    @ Data.Vector.Vector
+                                    @ GHC.Types.Double
+                                    @ Data.Vector.Vector
+                                    Control.Monad.Primitive.$fPrimMonadIO
+                                    (Data.Vector.$fVectorVectora @ GHC.Types.Double)
+                                    (Data.Vector.Fusion.Bundle.Monadic.mapM
+                                       @ GHC.Types.IO
+                                       @ (GHC.Types.IO GHC.Types.Double)
+                                       @ GHC.Types.Double
+                                       @ Data.Vector.Vector
+                                       GHC.Base.$fMonadIO
+                                       (GHC.Base.id @ (GHC.Types.IO GHC.Types.Double))
+                                       (Data.Vector.Fusion.Bundle.lift
+                                          @ GHC.Types.IO
+                                          @ Data.Vector.Vector
+                                          @ (GHC.Types.IO GHC.Types.Double)
+                                          GHC.Base.$fMonadIO
+                                          (Data.Vector.Fusion.Bundle.Monadic.generateM
+                                             @ Data.Vector.Fusion.Util.Id
+                                             @ (GHC.Types.IO GHC.Types.Double)
+                                             @ Data.Vector.Vector
+                                             Data.Vector.Fusion.Util.$fMonadId
+                                             s
+                                             (\ (x1 :: GHC.Types.Int) ->
+                                              Statistics.Distribution.genContVar
+                                                @ d
+                                                $dContGen
+                                                @ GHC.Types.IO
+                                                Control.Monad.Primitive.$fPrimMonadIO
+                                                d1
+                                                ipv3
+                                                  `cast`
+                                                (System.Random.MWC.Gen
+                                                   (Sym (Control.Monad.Primitive.D:R:PrimStateIO[0])))_R)
+                                               `cast`
+                                             (<GHC.Types.Int>_R
+                                              ->_R Sym (Data.Vector.Fusion.Util.N:Id[0]
+                                                            <GHC.Types.IO GHC.Types.Double>_R))))))
+                                   `cast`
+                                 (GHC.Types.N:IO[0] <Data.Vector.Vector GHC.Types.Double>_R)
+                                   ipv of ds2 { (#,#) ipv4 ipv5 ->
+                            (# ipv4,
+                               Multilinear.Parallel.Generic.SimpleFinite
+                                 @ GHC.Types.Double
+                                 (Multilinear.Index.Finite.Covariant
+                                    s
+                                    (GHC.Base.build
+                                       @ GHC.Types.Char
+                                       (\ @ a
+                                          (c :: GHC.Types.Char -> a -> a)[OneShot]
+                                          (n :: a)[OneShot] ->
+                                        c i n)))
+                                 ipv5 #) } })
+                             `cast`
+                           (<GHC.Types.Int>_R
+                            ->_R <d>_R
+                            ->_R Sym (GHC.Types.N:IO[0]
+                                          <Multilinear.Parallel.Generic.Tensor GHC.Types.Double>_R))
+                        : ipv ipv3
+                        -> (\ (ds1 :: GHC.Types.Int)
+                              (ds2 :: d)
+                              (s :: GHC.Prim.State# GHC.Prim.RealWorld) ->
+                            (# s,
+                               Multilinear.Parallel.Generic.Err
+                                 @ GHC.Types.Double
+                                 Multilinear.Parallel.Form.invalidIndices #))
+                             `cast`
+                           (<GHC.Types.Int>_R
+                            ->_R <d>_R
+                            ->_R Sym (GHC.Types.N:IO[0]
+                                          <Multilinear.Parallel.Generic.Tensor
+                                             GHC.Types.Double>_R)) } }) -}
+9d0a70bfb6ee59cd60b1942b13659bda
+  randomDoubleSeed ::
+    (Statistics.Distribution.ContGen d,
+     Control.Monad.Primitive.PrimMonad m) =>
+    GHC.Base.String
+    -> GHC.Types.Int
+    -> d
+    -> GHC.Types.Int
+    -> m (Multilinear.Parallel.Generic.Tensor GHC.Types.Double)
+  {- Arity: 6,
+     Strictness: <L,U(A,C(C1(C1(U))))><S(SL),U(U(U,U,U,U,U),U)><S,1*U><L,U(U)><L,U><L,1*U(U)>,
+     Inline: (sat-args=1),
+     Unfolding: InlineRule (3, False, False)
+                (\ @ d
+                   @ m :: * -> *
+                   ($dContGen :: Statistics.Distribution.ContGen d)
+                   ($dPrimMonad :: Control.Monad.Primitive.PrimMonad m) ->
+                 let {
+                   $dMonad :: GHC.Base.Monad m
+                   = Control.Monad.Primitive.$p1PrimMonad @ m $dPrimMonad
+                 } in
+                 \ (x :: GHC.Base.String) ->
+                 case x of wild {
+                   []
+                   -> \ (ds :: GHC.Types.Int) (ds1 :: d) (ds2 :: GHC.Types.Int) ->
+                      GHC.Base.return
+                        @ m
+                        $dMonad
+                        @ (Multilinear.Parallel.Generic.Tensor GHC.Types.Double)
+                        (Multilinear.Parallel.Generic.Err
+                           @ GHC.Types.Double
+                           Multilinear.Parallel.Form.invalidIndices)
+                   : i ds
+                   -> case ds of wild1 {
+                        []
+                        -> \ (s :: GHC.Types.Int) (d1 :: d) (seed :: GHC.Types.Int) ->
+                           GHC.Base.>>=
+                             @ m
+                             $dMonad
+                             @ (System.Random.MWC.Gen (Control.Monad.Primitive.PrimState m))
+                             @ (Multilinear.Parallel.Generic.Tensor GHC.Types.Double)
+                             (let {
+                                $dMonad1 :: GHC.Base.Monad m
+                                = Control.Monad.Primitive.$p1PrimMonad @ m $dPrimMonad
+                              } in
+                              let {
+                                seed1 :: Data.Vector.Vector GHC.Word.Word32
+                                = Data.Vector.Generic.new
+                                    @ Data.Vector.Vector
+                                    @ GHC.Word.Word32
+                                    (Data.Vector.$fVectorVectora @ GHC.Word.Word32)
+                                    (Data.Vector.Generic.New.unstream
+                                       @ Data.Vector.Vector
+                                       @ GHC.Word.Word32
+                                       (Data.Vector.$fVectorVectora @ GHC.Word.Word32)
+                                       (Data.Vector.Fusion.Bundle.Monadic.singleton
+                                          @ Data.Vector.Fusion.Util.Id
+                                          @ GHC.Word.Word32
+                                          @ Data.Vector.Vector
+                                          Data.Vector.Fusion.Util.$fMonadId
+                                          (case seed of wild2 { GHC.Types.I# x# ->
+                                           GHC.Word.W32#
+                                             (GHC.Prim.narrow32Word# (GHC.Prim.int2Word# x#)) })))
+                              } in
+                              let {
+                                fini :: Data.Vector.Fusion.Util.Id GHC.Types.Int
+                                = Data.Vector.Fusion.Bundle.Monadic.length
+                                    @ Data.Vector.Fusion.Util.Id
+                                    @ Data.Vector.Vector
+                                    @ GHC.Word.Word32
+                                    Data.Vector.Fusion.Util.$fMonadId
+                                    (Data.Vector.Fusion.Bundle.Monadic.fromVector
+                                       @ Data.Vector.Fusion.Util.Id
+                                       @ Data.Vector.Vector
+                                       @ GHC.Word.Word32
+                                       Data.Vector.Fusion.Util.$fMonadId
+                                       (Data.Vector.$fVectorVectora @ GHC.Word.Word32)
+                                       seed1)
+                              } in
+                              GHC.Base.>>=
+                                @ m
+                                $dMonad1
+                                @ (Data.Vector.Unboxed.Base.MVector
+                                     (Control.Monad.Primitive.PrimState m) GHC.Word.Word32)
+                                @ (System.Random.MWC.Gen (Control.Monad.Primitive.PrimState m))
+                                (let {
+                                   $dMonad2 :: GHC.Base.Monad m
+                                   = Control.Monad.Primitive.$p1PrimMonad @ m $dPrimMonad
+                                 } in
+                                 let {
+                                   n1 :: GHC.Types.Int = GHC.Types.I# 258#
+                                 } in
+                                 GHC.Base.>>=
+                                   @ m
+                                   $dMonad2
+                                   @ (Data.Vector.Primitive.Mutable.MVector
+                                        (Control.Monad.Primitive.PrimState m) GHC.Word.Word32)
+                                   @ (Data.Vector.Unboxed.Base.MVector
+                                        (Control.Monad.Primitive.PrimState m) GHC.Word.Word32)
+                                   (let {
+                                      $dMonad3 :: GHC.Base.Monad m
+                                      = Control.Monad.Primitive.$p1PrimMonad @ m $dPrimMonad
+                                    } in
+                                    case GHC.Classes.ltInt n1 (GHC.Types.I# 0#) of wild2 {
+                                      GHC.Types.False
+                                      -> case GHC.Classes.gtInt
+                                                n1
+                                                (GHC.Real.$fIntegralInt_$cdiv
+                                                   GHC.Base.maxInt
+                                                   (GHC.Types.I# 4#)) of wild3 {
+                                           GHC.Types.False
+                                           -> let {
+                                                f :: GHC.Types.Int = GHC.Types.I# 0#
+                                              } in
+                                              GHC.Base.>>=
+                                                @ m
+                                                $dMonad3
+                                                @ (Data.Primitive.ByteArray.MutableByteArray
+                                                     (Control.Monad.Primitive.PrimState m))
+                                                @ (Data.Vector.Primitive.Mutable.MVector
+                                                     (Control.Monad.Primitive.PrimState m)
+                                                     GHC.Word.Word32)
+                                                (Control.Monad.Primitive.primitive
+                                                   @ m
+                                                   $dPrimMonad
+                                                   @ (Data.Primitive.ByteArray.MutableByteArray
+                                                        (Control.Monad.Primitive.PrimState m))
+                                                   (\ (s# :: GHC.Prim.State#
+                                                               (Control.Monad.Primitive.PrimState
+                                                                  m)) ->
+                                                    case GHC.Prim.newByteArray#
+                                                           @ (Control.Monad.Primitive.PrimState m)
+                                                           1032#
+                                                           s# of ds1 { (#,#) ipv ipv3 ->
+                                                    (# ipv,
+                                                       Data.Primitive.ByteArray.MutableByteArray
+                                                         @ (Control.Monad.Primitive.PrimState m)
+                                                         ipv3 #) }))
+                                                (\ (x1 :: Data.Primitive.ByteArray.MutableByteArray
+                                                            (Control.Monad.Primitive.PrimState
+                                                               m)) ->
+                                                 GHC.Base.return
+                                                   @ m
+                                                   $dMonad3
+                                                   @ (Data.Vector.Primitive.Mutable.MVector
+                                                        (Control.Monad.Primitive.PrimState m)
+                                                        GHC.Word.Word32)
+                                                   (Data.Vector.Primitive.Mutable.$WMVector
+                                                      @ (Control.Monad.Primitive.PrimState m)
+                                                      @ GHC.Word.Word32
+                                                      f
+                                                      n1
+                                                      x1))
+                                           GHC.Types.True
+                                           -> GHC.Err.error
+                                                @ 'GHC.Types.LiftedRep
+                                                @ (m (Data.Vector.Primitive.Mutable.MVector
+                                                        (Control.Monad.Primitive.PrimState m)
+                                                        GHC.Word.Word32))
+                                                (GHC.Stack.Types.PushCallStack
+                                                   (GHC.Base.build
+                                                      @ GHC.Types.Char
+                                                      (\ @ b ->
+                                                       GHC.CString.unpackFoldrCString#
+                                                         @ b
+                                                         "error"#))
+                                                   (GHC.Stack.Types.SrcLoc
+                                                      (GHC.Base.build
+                                                         @ GHC.Types.Char
+                                                         (\ @ b ->
+                                                          GHC.CString.unpackFoldrCString#
+                                                            @ b
+                                                            "vector-0.12.0.1-JlawpRjIcMJIYPJVsWriIA"#))
+                                                      (GHC.Base.build
+                                                         @ GHC.Types.Char
+                                                         (\ @ b ->
+                                                          GHC.CString.unpackFoldrCString#
+                                                            @ b
+                                                            "Data.Vector.Primitive.Mutable"#))
+                                                      (GHC.Base.build
+                                                         @ GHC.Types.Char
+                                                         (\ @ b ->
+                                                          GHC.CString.unpackFoldrCString#
+                                                            @ b
+                                                            ".\\Data\\Vector\\Primitive\\Mutable.hs"#))
+                                                      (GHC.Types.I# 98#)
+                                                      (GHC.Types.I# 16#)
+                                                      (GHC.Types.I# 98#)
+                                                      (GHC.Types.I# 79#))
+                                                   GHC.Stack.Types.EmptyCallStack)
+                                                  `cast`
+                                                (Sym (GHC.Classes.N:IP[0]
+                                                          <"callStack">_N
+                                                          <GHC.Stack.Types.CallStack>_N))
+                                                (GHC.Base.augment
+                                                   @ GHC.Types.Char
+                                                   (\ @ b
+                                                      (c :: GHC.Types.Char -> b -> b)[OneShot]
+                                                      (n2 :: b)[OneShot] ->
+                                                    GHC.CString.unpackFoldrCString#
+                                                      @ b
+                                                      "Primitive.basicUnsafeNew: length to large: "#
+                                                      c
+                                                      n2)
+                                                   (GHC.Show.showSignedInt
+                                                      GHC.Show.$fShow(,)1
+                                                      n1
+                                                      (GHC.Types.[] @ GHC.Types.Char))) }
+                                      GHC.Types.True
+                                      -> GHC.Err.error
+                                           @ 'GHC.Types.LiftedRep
+                                           @ (m (Data.Vector.Primitive.Mutable.MVector
+                                                   (Control.Monad.Primitive.PrimState m)
+                                                   GHC.Word.Word32))
+                                           (GHC.Stack.Types.PushCallStack
+                                              (GHC.Base.build
+                                                 @ GHC.Types.Char
+                                                 (\ @ b ->
+                                                  GHC.CString.unpackFoldrCString# @ b "error"#))
+                                              (GHC.Stack.Types.SrcLoc
+                                                 (GHC.Base.build
+                                                    @ GHC.Types.Char
+                                                    (\ @ b ->
+                                                     GHC.CString.unpackFoldrCString#
+                                                       @ b
+                                                       "vector-0.12.0.1-JlawpRjIcMJIYPJVsWriIA"#))
+                                                 (GHC.Base.build
+                                                    @ GHC.Types.Char
+                                                    (\ @ b ->
+                                                     GHC.CString.unpackFoldrCString#
+                                                       @ b
+                                                       "Data.Vector.Primitive.Mutable"#))
+                                                 (GHC.Base.build
+                                                    @ GHC.Types.Char
+                                                    (\ @ b ->
+                                                     GHC.CString.unpackFoldrCString#
+                                                       @ b
+                                                       ".\\Data\\Vector\\Primitive\\Mutable.hs"#))
+                                                 (GHC.Types.I# 97#)
+                                                 (GHC.Types.I# 15#)
+                                                 (GHC.Types.I# 97#)
+                                                 (GHC.Types.I# 78#))
+                                              GHC.Stack.Types.EmptyCallStack)
+                                             `cast`
+                                           (Sym (GHC.Classes.N:IP[0]
+                                                     <"callStack">_N <GHC.Stack.Types.CallStack>_N))
+                                           (GHC.Base.augment
+                                              @ GHC.Types.Char
+                                              (\ @ b
+                                                 (c :: GHC.Types.Char -> b -> b)[OneShot]
+                                                 (n2 :: b)[OneShot] ->
+                                               GHC.CString.unpackFoldrCString#
+                                                 @ b
+                                                 "Primitive.basicUnsafeNew: negative length: "#
+                                                 c
+                                                 n2)
+                                              (GHC.Show.showSignedInt
+                                                 GHC.Show.$fShow(,)1
+                                                 n1
+                                                 (GHC.Types.[] @ GHC.Types.Char))) })
+                                   (\ (x1 :: Data.Vector.Primitive.Mutable.MVector
+                                               (Control.Monad.Primitive.PrimState m)
+                                               GHC.Word.Word32) ->
+                                    GHC.Base.return
+                                      @ m
+                                      $dMonad2
+                                      @ (Data.Vector.Unboxed.Base.MVector
+                                           (Control.Monad.Primitive.PrimState m) GHC.Word.Word32)
+                                      x1
+                                        `cast`
+                                      (Trans
+                                           (Sym (Data.Vector.Unboxed.Base.N:R:MVectorsWord32[0]
+                                                     <Control.Monad.Primitive.PrimState m>_N))
+                                           (Sym (Data.Vector.Unboxed.Base.D:R:MVectorsWord320[0]
+                                                     <Control.Monad.Primitive.PrimState m>_N)))))
+                                (\ (q :: Data.Vector.Unboxed.Base.MVector
+                                           (Control.Monad.Primitive.PrimState m) GHC.Word.Word32) ->
+                                 GHC.Base.>>
+                                   @ m
+                                   $dMonad1
+                                   @ ()
+                                   @ (System.Random.MWC.Gen (Control.Monad.Primitive.PrimState m))
+                                   (letrec {
+                                      go :: GHC.Types.Int -> m () {- Arity: 1 -}
+                                      = \ (i1 :: GHC.Types.Int) ->
+                                        case GHC.Classes.eqInt i1 (GHC.Types.I# 256#) of wild2 {
+                                          GHC.Types.False
+                                          -> GHC.Base.>>
+                                               @ m
+                                               $dMonad1
+                                               @ ()
+                                               @ ()
+                                               (case q `cast`
+                                                     (Trans
+                                                          (Data.Vector.Unboxed.Base.D:R:MVectorsWord320[0]
+                                                               <Control.Monad.Primitive.PrimState
+                                                                  m>_N)
+                                                          (Data.Vector.Unboxed.Base.N:R:MVectorsWord32[0]
+                                                               <Control.Monad.Primitive.PrimState
+                                                                  m>_N)) of wild3 { Data.Vector.Primitive.Mutable.MVector dt dt1 dt2 ->
+                                                case i1 of wild4 { GHC.Types.I# y ->
+                                                Control.Monad.Primitive.primitive
+                                                  @ m
+                                                  $dPrimMonad
+                                                  @ ()
+                                                  (\ (s# :: GHC.Prim.State#
+                                                              (Control.Monad.Primitive.PrimState
+                                                                 m)) ->
+                                                   case GHC.Classes.geInt
+                                                          wild4
+                                                          fini
+                                                            `cast`
+                                                          (Data.Vector.Fusion.Util.N:Id[0]
+                                                               <GHC.Types.Int>_R) of wild5 {
+                                                     GHC.Types.False
+                                                     -> case Data.Vector.Generic.unsafeIndex
+                                                               @ Data.Vector.Vector
+                                                               @ GHC.Word.Word32
+                                                               (Data.Vector.$fVectorVectora
+                                                                  @ GHC.Word.Word32)
+                                                               seed1
+                                                               wild4 of wild6 { GHC.Word.W32# x# ->
+                                                        case GHC.Prim.writeWord32Array#
+                                                               @ (Control.Monad.Primitive.PrimState
+                                                                    m)
+                                                               dt2
+                                                               (GHC.Prim.+# dt y)
+                                                               x#
+                                                               s# of s'# { DEFAULT ->
+                                                        (# s'#, GHC.Tuple.() #) } }
+                                                     GHC.Types.True
+                                                     -> case GHC.Classes.eqInt
+                                                               fini
+                                                                 `cast`
+                                                               (Data.Vector.Fusion.Util.N:Id[0]
+                                                                    <GHC.Types.Int>_R)
+                                                               (GHC.Types.I# 0#) of wild6 {
+                                                          GHC.Types.False
+                                                          -> case Data.Vector.Generic.unsafeIndex
+                                                                    @ Data.Vector.Unboxed.Base.Vector
+                                                                    @ GHC.Word.Word32
+                                                                    Data.Vector.Unboxed.Base.$fVectorVectorWord32
+                                                                    System.Random.MWC.defaultSeed
+                                                                    wild4 of wild7 { GHC.Word.W32# x# ->
+                                                             case Data.Vector.Generic.unsafeIndex
+                                                                    @ Data.Vector.Vector
+                                                                    @ GHC.Word.Word32
+                                                                    (Data.Vector.$fVectorVectora
+                                                                       @ GHC.Word.Word32)
+                                                                    seed1
+                                                                    (GHC.Real.$fIntegralInt_$cmod
+                                                                       wild4
+                                                                       fini
+                                                                         `cast`
+                                                                       (Data.Vector.Fusion.Util.N:Id[0]
+                                                                            <GHC.Types.Int>_R)) of wild8 { GHC.Word.W32# y# ->
+                                                             case GHC.Prim.writeWord32Array#
+                                                                    @ (Control.Monad.Primitive.PrimState
+                                                                         m)
+                                                                    dt2
+                                                                    (GHC.Prim.+# dt y)
+                                                                    (GHC.Prim.xor# x# y#)
+                                                                    s# of s'# { DEFAULT ->
+                                                             (# s'#, GHC.Tuple.() #) } } }
+                                                          GHC.Types.True
+                                                          -> case Data.Vector.Generic.unsafeIndex
+                                                                    @ Data.Vector.Unboxed.Base.Vector
+                                                                    @ GHC.Word.Word32
+                                                                    Data.Vector.Unboxed.Base.$fVectorVectorWord32
+                                                                    System.Random.MWC.defaultSeed
+                                                                    wild4 of wild7 { GHC.Word.W32# x# ->
+                                                             case GHC.Prim.writeWord32Array#
+                                                                    @ (Control.Monad.Primitive.PrimState
+                                                                         m)
+                                                                    dt2
+                                                                    (GHC.Prim.+# dt y)
+                                                                    x#
+                                                                    s# of s'# { DEFAULT ->
+                                                             (# s'#, GHC.Tuple.() #) } } } }) } })
+                                               (go
+                                                  (case i1 of wild3 { GHC.Types.I# x1 ->
+                                                   GHC.Types.I# (GHC.Prim.+# x1 1#) }))
+                                          GHC.Types.True
+                                          -> GHC.Base.return @ m $dMonad1 @ () GHC.Tuple.() }
+                                    } in
+                                    go (GHC.Types.I# 0#))
+                                   (GHC.Base.>>
+                                      @ m
+                                      $dMonad1
+                                      @ ()
+                                      @ (System.Random.MWC.Gen
+                                           (Control.Monad.Primitive.PrimState m))
+                                      (case GHC.Classes.eqInt
+                                              fini
+                                                `cast`
+                                              (Data.Vector.Fusion.Util.N:Id[0] <GHC.Types.Int>_R)
+                                              (GHC.Types.I# 258#) of wild2 {
+                                         GHC.Types.False
+                                         -> GHC.Base.>>
+                                              @ m
+                                              $dMonad1
+                                              @ ()
+                                              @ ()
+                                              (case q `cast`
+                                                    (Trans
+                                                         (Data.Vector.Unboxed.Base.D:R:MVectorsWord320[0]
+                                                              <Control.Monad.Primitive.PrimState
+                                                                 m>_N)
+                                                         (Data.Vector.Unboxed.Base.N:R:MVectorsWord32[0]
+                                                              <Control.Monad.Primitive.PrimState
+                                                                 m>_N)) of wild3 { Data.Vector.Primitive.Mutable.MVector dt dt1 dt2 ->
+                                               Control.Monad.Primitive.primitive
+                                                 @ m
+                                                 $dPrimMonad
+                                                 @ ()
+                                                 (\ (s# :: GHC.Prim.State#
+                                                             (Control.Monad.Primitive.PrimState
+                                                                m)) ->
+                                                  case GHC.Prim.writeWord32Array#
+                                                         @ (Control.Monad.Primitive.PrimState m)
+                                                         dt2
+                                                         (GHC.Prim.+# dt 256#)
+                                                         255##
+                                                         s# of s'# { DEFAULT ->
+                                                  (# s'#, GHC.Tuple.() #) }) })
+                                              (case q `cast`
+                                                    (Trans
+                                                         (Data.Vector.Unboxed.Base.D:R:MVectorsWord320[0]
+                                                              <Control.Monad.Primitive.PrimState
+                                                                 m>_N)
+                                                         (Data.Vector.Unboxed.Base.N:R:MVectorsWord32[0]
+                                                              <Control.Monad.Primitive.PrimState
+                                                                 m>_N)) of wild3 { Data.Vector.Primitive.Mutable.MVector dt dt1 dt2 ->
+                                               Control.Monad.Primitive.primitive
+                                                 @ m
+                                                 $dPrimMonad
+                                                 @ ()
+                                                 (\ (s# :: GHC.Prim.State#
+                                                             (Control.Monad.Primitive.PrimState
+                                                                m)) ->
+                                                  case GHC.Prim.writeWord32Array#
+                                                         @ (Control.Monad.Primitive.PrimState m)
+                                                         dt2
+                                                         (GHC.Prim.+# dt 257#)
+                                                         362436##
+                                                         s# of s'# { DEFAULT ->
+                                                  (# s'#, GHC.Tuple.() #) }) })
+                                         GHC.Types.True
+                                         -> GHC.Base.>>
+                                              @ m
+                                              $dMonad1
+                                              @ ()
+                                              @ ()
+                                              (case q `cast`
+                                                    (Trans
+                                                         (Data.Vector.Unboxed.Base.D:R:MVectorsWord320[0]
+                                                              <Control.Monad.Primitive.PrimState
+                                                                 m>_N)
+                                                         (Data.Vector.Unboxed.Base.N:R:MVectorsWord32[0]
+                                                              <Control.Monad.Primitive.PrimState
+                                                                 m>_N)) of wild3 { Data.Vector.Primitive.Mutable.MVector dt dt1 dt2 ->
+                                               Control.Monad.Primitive.primitive
+                                                 @ m
+                                                 $dPrimMonad
+                                                 @ ()
+                                                 (\ (s# :: GHC.Prim.State#
+                                                             (Control.Monad.Primitive.PrimState
+                                                                m)) ->
+                                                  case Data.Vector.Generic.unsafeIndex
+                                                         @ Data.Vector.Vector
+                                                         @ GHC.Word.Word32
+                                                         (Data.Vector.$fVectorVectora
+                                                            @ GHC.Word.Word32)
+                                                         seed1
+                                                         System.Random.MWC.ioff of wild4 { GHC.Word.W32# x# ->
+                                                  case GHC.Prim.writeWord32Array#
+                                                         @ (Control.Monad.Primitive.PrimState m)
+                                                         dt2
+                                                         (GHC.Prim.+# dt 256#)
+                                                         (GHC.Prim.and# x# 255##)
+                                                         s# of s'# { DEFAULT ->
+                                                  (# s'#, GHC.Tuple.() #) } }) })
+                                              (case q `cast`
+                                                    (Trans
+                                                         (Data.Vector.Unboxed.Base.D:R:MVectorsWord320[0]
+                                                              <Control.Monad.Primitive.PrimState
+                                                                 m>_N)
+                                                         (Data.Vector.Unboxed.Base.N:R:MVectorsWord32[0]
+                                                              <Control.Monad.Primitive.PrimState
+                                                                 m>_N)) of wild3 { Data.Vector.Primitive.Mutable.MVector dt dt1 dt2 ->
+                                               Control.Monad.Primitive.primitive
+                                                 @ m
+                                                 $dPrimMonad
+                                                 @ ()
+                                                 (\ (s# :: GHC.Prim.State#
+                                                             (Control.Monad.Primitive.PrimState
+                                                                m)) ->
+                                                  case Data.Vector.Generic.unsafeIndex
+                                                         @ Data.Vector.Vector
+                                                         @ GHC.Word.Word32
+                                                         (Data.Vector.$fVectorVectora
+                                                            @ GHC.Word.Word32)
+                                                         seed1
+                                                         System.Random.MWC.coff of wild4 { GHC.Word.W32# x# ->
+                                                  case GHC.Prim.writeWord32Array#
+                                                         @ (Control.Monad.Primitive.PrimState m)
+                                                         dt2
+                                                         (GHC.Prim.+# dt 257#)
+                                                         x#
+                                                         s# of s'# { DEFAULT ->
+                                                  (# s'#, GHC.Tuple.() #) } }) }) })
+                                      (GHC.Base.return
+                                         @ m
+                                         $dMonad1
+                                         @ (System.Random.MWC.Gen
+                                              (Control.Monad.Primitive.PrimState m))
+                                         q `cast`
+                                         (Sym (System.Random.MWC.N:Gen[0]
+                                                   <Control.Monad.Primitive.PrimState m>_N))))))
+                             (\ (gen :: System.Random.MWC.Gen
+                                          (Control.Monad.Primitive.PrimState m)) ->
+                              GHC.Base.>>=
+                                @ m
+                                $dMonad
+                                @ (Data.Vector.Vector GHC.Types.Double)
+                                @ (Multilinear.Parallel.Generic.Tensor GHC.Types.Double)
+                                (Data.Vector.Generic.unstreamM
+                                   @ m
+                                   @ Data.Vector.Vector
+                                   @ GHC.Types.Double
+                                   @ Data.Vector.Vector
+                                   $dMonad
+                                   (Data.Vector.$fVectorVectora @ GHC.Types.Double)
+                                   (Data.Vector.Fusion.Bundle.Monadic.mapM
+                                      @ m
+                                      @ (m GHC.Types.Double)
+                                      @ GHC.Types.Double
+                                      @ Data.Vector.Vector
+                                      $dMonad
+                                      (GHC.Base.id @ (m GHC.Types.Double))
+                                      (Data.Vector.Fusion.Bundle.lift
+                                         @ m
+                                         @ Data.Vector.Vector
+                                         @ (m GHC.Types.Double)
+                                         $dMonad
+                                         (Data.Vector.Fusion.Bundle.Monadic.generateM
+                                            @ Data.Vector.Fusion.Util.Id
+                                            @ (m GHC.Types.Double)
+                                            @ Data.Vector.Vector
+                                            Data.Vector.Fusion.Util.$fMonadId
+                                            s
+                                            (\ (x1 :: GHC.Types.Int) ->
+                                             Statistics.Distribution.genContVar
+                                               @ d
+                                               $dContGen
+                                               @ m
+                                               $dPrimMonad
+                                               d1
+                                               gen)
+                                              `cast`
+                                            (<GHC.Types.Int>_R
+                                             ->_R Sym (Data.Vector.Fusion.Util.N:Id[0]
+                                                           <m GHC.Types.Double>_R))))))
+                                (\ (components :: Data.Vector.Vector GHC.Types.Double) ->
+                                 GHC.Base.return
+                                   @ m
+                                   $dMonad
+                                   @ (Multilinear.Parallel.Generic.Tensor GHC.Types.Double)
+                                   (Multilinear.Parallel.Generic.SimpleFinite
+                                      @ GHC.Types.Double
+                                      (Multilinear.Index.Finite.Covariant
+                                         s
+                                         (GHC.Base.build
+                                            @ GHC.Types.Char
+                                            (\ @ a
+                                               (c :: GHC.Types.Char -> a -> a)[OneShot]
+                                               (n :: a)[OneShot] ->
+                                             c i n)))
+                                      components)))
+                        : ipv ipv3
+                        -> \ (ds1 :: GHC.Types.Int) (ds2 :: d) (ds3 :: GHC.Types.Int) ->
+                           GHC.Base.return
+                             @ m
+                             $dMonad
+                             @ (Multilinear.Parallel.Generic.Tensor GHC.Types.Double)
+                             (Multilinear.Parallel.Generic.Err
+                                @ GHC.Types.Double
+                                Multilinear.Parallel.Form.invalidIndices) } }) -}
+940ab658b5af2121a6f104c9b8a27248
+  randomInt ::
+    Statistics.Distribution.DiscreteGen d =>
+    GHC.Base.String
+    -> GHC.Types.Int
+    -> d
+    -> GHC.Types.IO (Multilinear.Parallel.Generic.Tensor GHC.Types.Int)
+  {- Arity: 5,
+     Strictness: <L,1*U(A,A,1*C1(C1(C1(U))))><S,1*U><L,1*U(U)><L,U><S,U>,
+     Inline: (sat-args=1),
+     Unfolding: InlineRule (2, False, False)
+                (\ @ d
+                   ($dDiscreteGen :: Statistics.Distribution.DiscreteGen d)
+                   (x :: GHC.Base.String) ->
+                 case x of wild {
+                   []
+                   -> (\ (ds :: GHC.Types.Int)
+                         (ds1 :: d)
+                         (s :: GHC.Prim.State# GHC.Prim.RealWorld) ->
+                       (# s,
+                          Multilinear.Parallel.Generic.Err
+                            @ GHC.Types.Int
+                            Multilinear.Parallel.Form.invalidIndices #))
+                        `cast`
+                      (<GHC.Types.Int>_R
+                       ->_R <d>_R
+                       ->_R Sym (GHC.Types.N:IO[0]
+                                     <Multilinear.Parallel.Generic.Tensor GHC.Types.Int>_R))
+                   : i ds
+                   -> case ds of wild1 {
+                        []
+                        -> (\ (s :: GHC.Types.Int)
+                              (d1 :: d)
+                              (s1 :: GHC.Prim.State# GHC.Prim.RealWorld) ->
+                            case System.Random.MWC.createSystemRandom_$swithSystemRandom
+                                   @ (System.Random.MWC.Gen GHC.Prim.RealWorld)
+                                   (GHC.Base.$fApplicativeIO4
+                                      @ (System.Random.MWC.Gen GHC.Prim.RealWorld))
+                                     `cast`
+                                   (Trans
+                                        (<System.Random.MWC.Gen GHC.Prim.RealWorld>_R
+                                         ->_R Sym (GHC.Types.N:IO[0]
+                                                       <System.Random.MWC.Gen
+                                                          GHC.Prim.RealWorld>_R))
+                                        (Trans
+                                             ((System.Random.MWC.Gen
+                                                 (Sym (Control.Monad.Primitive.D:R:PrimStateIO[0])))_R
+                                              ->_R (GHC.Types.IO
+                                                      (System.Random.MWC.Gen
+                                                         (Sym (Control.Monad.Primitive.D:R:PrimStateIO[0])))_R)_R)
+                                             (<System.Random.MWC.Gen
+                                                 (Control.Monad.Primitive.PrimState GHC.Types.IO)>_R
+                                              ->_R (GHC.Types.IO
+                                                      (System.Random.MWC.Gen
+                                                         (Control.Monad.Primitive.D:R:PrimStateIO[0]))_R)_R)))
+                                   s1 of ds1 { (#,#) ipv ipv3 ->
+                            case (Data.Vector.Generic.unstreamPrimM
+                                    @ GHC.Types.IO
+                                    @ Data.Vector.Vector
+                                    @ GHC.Types.Int
+                                    @ Data.Vector.Vector
+                                    Control.Monad.Primitive.$fPrimMonadIO
+                                    (Data.Vector.$fVectorVectora @ GHC.Types.Int)
+                                    (Data.Vector.Fusion.Bundle.Monadic.mapM
+                                       @ GHC.Types.IO
+                                       @ (GHC.Types.IO GHC.Types.Int)
+                                       @ GHC.Types.Int
+                                       @ Data.Vector.Vector
+                                       GHC.Base.$fMonadIO
+                                       (GHC.Base.id @ (GHC.Types.IO GHC.Types.Int))
+                                       (Data.Vector.Fusion.Bundle.lift
+                                          @ GHC.Types.IO
+                                          @ Data.Vector.Vector
+                                          @ (GHC.Types.IO GHC.Types.Int)
+                                          GHC.Base.$fMonadIO
+                                          (Data.Vector.Fusion.Bundle.Monadic.generateM
+                                             @ Data.Vector.Fusion.Util.Id
+                                             @ (GHC.Types.IO GHC.Types.Int)
+                                             @ Data.Vector.Vector
+                                             Data.Vector.Fusion.Util.$fMonadId
+                                             s
+                                             (\ (x1 :: GHC.Types.Int) ->
+                                              Statistics.Distribution.genDiscreteVar
+                                                @ d
+                                                $dDiscreteGen
+                                                @ GHC.Types.IO
+                                                Control.Monad.Primitive.$fPrimMonadIO
+                                                d1
+                                                ipv3
+                                                  `cast`
+                                                (System.Random.MWC.Gen
+                                                   (Sym (Control.Monad.Primitive.D:R:PrimStateIO[0])))_R)
+                                               `cast`
+                                             (<GHC.Types.Int>_R
+                                              ->_R Sym (Data.Vector.Fusion.Util.N:Id[0]
+                                                            <GHC.Types.IO GHC.Types.Int>_R))))))
+                                   `cast`
+                                 (GHC.Types.N:IO[0] <Data.Vector.Vector GHC.Types.Int>_R)
+                                   ipv of ds2 { (#,#) ipv4 ipv5 ->
+                            (# ipv4,
+                               Multilinear.Parallel.Generic.SimpleFinite
+                                 @ GHC.Types.Int
+                                 (Multilinear.Index.Finite.Covariant
+                                    s
+                                    (GHC.Base.build
+                                       @ GHC.Types.Char
+                                       (\ @ a
+                                          (c :: GHC.Types.Char -> a -> a)[OneShot]
+                                          (n :: a)[OneShot] ->
+                                        c i n)))
+                                 ipv5 #) } })
+                             `cast`
+                           (<GHC.Types.Int>_R
+                            ->_R <d>_R
+                            ->_R Sym (GHC.Types.N:IO[0]
+                                          <Multilinear.Parallel.Generic.Tensor GHC.Types.Int>_R))
+                        : ipv ipv3
+                        -> (\ (ds1 :: GHC.Types.Int)
+                              (ds2 :: d)
+                              (s :: GHC.Prim.State# GHC.Prim.RealWorld) ->
+                            (# s,
+                               Multilinear.Parallel.Generic.Err
+                                 @ GHC.Types.Int
+                                 Multilinear.Parallel.Form.invalidIndices #))
+                             `cast`
+                           (<GHC.Types.Int>_R
+                            ->_R <d>_R
+                            ->_R Sym (GHC.Types.N:IO[0]
+                                          <Multilinear.Parallel.Generic.Tensor
+                                             GHC.Types.Int>_R)) } }) -}
+21675b447d5acb45e075961a552cb0d3
+  randomIntSeed ::
+    (Statistics.Distribution.DiscreteGen d,
+     Control.Monad.Primitive.PrimMonad m) =>
+    GHC.Base.String
+    -> GHC.Types.Int
+    -> d
+    -> GHC.Types.Int
+    -> m (Multilinear.Parallel.Generic.Tensor GHC.Types.Int)
+  {- Arity: 6,
+     Strictness: <L,U(A,A,C(C1(C1(U))))><S(SL),U(U(U,U,U,U,U),U)><S,1*U><L,U(U)><L,U><L,1*U(U)>,
+     Inline: (sat-args=1),
+     Unfolding: InlineRule (3, False, False)
+                (\ @ d
+                   @ m :: * -> *
+                   ($dDiscreteGen :: Statistics.Distribution.DiscreteGen d)
+                   ($dPrimMonad :: Control.Monad.Primitive.PrimMonad m) ->
+                 let {
+                   $dMonad :: GHC.Base.Monad m
+                   = Control.Monad.Primitive.$p1PrimMonad @ m $dPrimMonad
+                 } in
+                 \ (x :: GHC.Base.String) ->
+                 case x of wild {
+                   []
+                   -> \ (ds :: GHC.Types.Int) (ds1 :: d) (ds2 :: GHC.Types.Int) ->
+                      GHC.Base.return
+                        @ m
+                        $dMonad
+                        @ (Multilinear.Parallel.Generic.Tensor GHC.Types.Int)
+                        (Multilinear.Parallel.Generic.Err
+                           @ GHC.Types.Int
+                           Multilinear.Parallel.Form.invalidIndices)
+                   : i ds
+                   -> case ds of wild1 {
+                        []
+                        -> \ (s :: GHC.Types.Int) (d1 :: d) (seed :: GHC.Types.Int) ->
+                           GHC.Base.>>=
+                             @ m
+                             $dMonad
+                             @ (System.Random.MWC.Gen (Control.Monad.Primitive.PrimState m))
+                             @ (Multilinear.Parallel.Generic.Tensor GHC.Types.Int)
+                             (let {
+                                $dMonad1 :: GHC.Base.Monad m
+                                = Control.Monad.Primitive.$p1PrimMonad @ m $dPrimMonad
+                              } in
+                              let {
+                                seed1 :: Data.Vector.Vector GHC.Word.Word32
+                                = Data.Vector.Generic.new
+                                    @ Data.Vector.Vector
+                                    @ GHC.Word.Word32
+                                    (Data.Vector.$fVectorVectora @ GHC.Word.Word32)
+                                    (Data.Vector.Generic.New.unstream
+                                       @ Data.Vector.Vector
+                                       @ GHC.Word.Word32
+                                       (Data.Vector.$fVectorVectora @ GHC.Word.Word32)
+                                       (Data.Vector.Fusion.Bundle.Monadic.singleton
+                                          @ Data.Vector.Fusion.Util.Id
+                                          @ GHC.Word.Word32
+                                          @ Data.Vector.Vector
+                                          Data.Vector.Fusion.Util.$fMonadId
+                                          (case seed of wild2 { GHC.Types.I# x# ->
+                                           GHC.Word.W32#
+                                             (GHC.Prim.narrow32Word# (GHC.Prim.int2Word# x#)) })))
+                              } in
+                              let {
+                                fini :: Data.Vector.Fusion.Util.Id GHC.Types.Int
+                                = Data.Vector.Fusion.Bundle.Monadic.length
+                                    @ Data.Vector.Fusion.Util.Id
+                                    @ Data.Vector.Vector
+                                    @ GHC.Word.Word32
+                                    Data.Vector.Fusion.Util.$fMonadId
+                                    (Data.Vector.Fusion.Bundle.Monadic.fromVector
+                                       @ Data.Vector.Fusion.Util.Id
+                                       @ Data.Vector.Vector
+                                       @ GHC.Word.Word32
+                                       Data.Vector.Fusion.Util.$fMonadId
+                                       (Data.Vector.$fVectorVectora @ GHC.Word.Word32)
+                                       seed1)
+                              } in
+                              GHC.Base.>>=
+                                @ m
+                                $dMonad1
+                                @ (Data.Vector.Unboxed.Base.MVector
+                                     (Control.Monad.Primitive.PrimState m) GHC.Word.Word32)
+                                @ (System.Random.MWC.Gen (Control.Monad.Primitive.PrimState m))
+                                (let {
+                                   $dMonad2 :: GHC.Base.Monad m
+                                   = Control.Monad.Primitive.$p1PrimMonad @ m $dPrimMonad
+                                 } in
+                                 let {
+                                   n1 :: GHC.Types.Int = GHC.Types.I# 258#
+                                 } in
+                                 GHC.Base.>>=
+                                   @ m
+                                   $dMonad2
+                                   @ (Data.Vector.Primitive.Mutable.MVector
+                                        (Control.Monad.Primitive.PrimState m) GHC.Word.Word32)
+                                   @ (Data.Vector.Unboxed.Base.MVector
+                                        (Control.Monad.Primitive.PrimState m) GHC.Word.Word32)
+                                   (let {
+                                      $dMonad3 :: GHC.Base.Monad m
+                                      = Control.Monad.Primitive.$p1PrimMonad @ m $dPrimMonad
+                                    } in
+                                    case GHC.Classes.ltInt n1 (GHC.Types.I# 0#) of wild2 {
+                                      GHC.Types.False
+                                      -> case GHC.Classes.gtInt
+                                                n1
+                                                (GHC.Real.$fIntegralInt_$cdiv
+                                                   GHC.Base.maxInt
+                                                   (GHC.Types.I# 4#)) of wild3 {
+                                           GHC.Types.False
+                                           -> let {
+                                                f :: GHC.Types.Int = GHC.Types.I# 0#
+                                              } in
+                                              GHC.Base.>>=
+                                                @ m
+                                                $dMonad3
+                                                @ (Data.Primitive.ByteArray.MutableByteArray
+                                                     (Control.Monad.Primitive.PrimState m))
+                                                @ (Data.Vector.Primitive.Mutable.MVector
+                                                     (Control.Monad.Primitive.PrimState m)
+                                                     GHC.Word.Word32)
+                                                (Control.Monad.Primitive.primitive
+                                                   @ m
+                                                   $dPrimMonad
+                                                   @ (Data.Primitive.ByteArray.MutableByteArray
+                                                        (Control.Monad.Primitive.PrimState m))
+                                                   (\ (s# :: GHC.Prim.State#
+                                                               (Control.Monad.Primitive.PrimState
+                                                                  m)) ->
+                                                    case GHC.Prim.newByteArray#
+                                                           @ (Control.Monad.Primitive.PrimState m)
+                                                           1032#
+                                                           s# of ds1 { (#,#) ipv ipv3 ->
+                                                    (# ipv,
+                                                       Data.Primitive.ByteArray.MutableByteArray
+                                                         @ (Control.Monad.Primitive.PrimState m)
+                                                         ipv3 #) }))
+                                                (\ (x1 :: Data.Primitive.ByteArray.MutableByteArray
+                                                            (Control.Monad.Primitive.PrimState
+                                                               m)) ->
+                                                 GHC.Base.return
+                                                   @ m
+                                                   $dMonad3
+                                                   @ (Data.Vector.Primitive.Mutable.MVector
+                                                        (Control.Monad.Primitive.PrimState m)
+                                                        GHC.Word.Word32)
+                                                   (Data.Vector.Primitive.Mutable.$WMVector
+                                                      @ (Control.Monad.Primitive.PrimState m)
+                                                      @ GHC.Word.Word32
+                                                      f
+                                                      n1
+                                                      x1))
+                                           GHC.Types.True
+                                           -> GHC.Err.error
+                                                @ 'GHC.Types.LiftedRep
+                                                @ (m (Data.Vector.Primitive.Mutable.MVector
+                                                        (Control.Monad.Primitive.PrimState m)
+                                                        GHC.Word.Word32))
+                                                (GHC.Stack.Types.PushCallStack
+                                                   (GHC.Base.build
+                                                      @ GHC.Types.Char
+                                                      (\ @ b ->
+                                                       GHC.CString.unpackFoldrCString#
+                                                         @ b
+                                                         "error"#))
+                                                   (GHC.Stack.Types.SrcLoc
+                                                      (GHC.Base.build
+                                                         @ GHC.Types.Char
+                                                         (\ @ b ->
+                                                          GHC.CString.unpackFoldrCString#
+                                                            @ b
+                                                            "vector-0.12.0.1-JlawpRjIcMJIYPJVsWriIA"#))
+                                                      (GHC.Base.build
+                                                         @ GHC.Types.Char
+                                                         (\ @ b ->
+                                                          GHC.CString.unpackFoldrCString#
+                                                            @ b
+                                                            "Data.Vector.Primitive.Mutable"#))
+                                                      (GHC.Base.build
+                                                         @ GHC.Types.Char
+                                                         (\ @ b ->
+                                                          GHC.CString.unpackFoldrCString#
+                                                            @ b
+                                                            ".\\Data\\Vector\\Primitive\\Mutable.hs"#))
+                                                      (GHC.Types.I# 98#)
+                                                      (GHC.Types.I# 16#)
+                                                      (GHC.Types.I# 98#)
+                                                      (GHC.Types.I# 79#))
+                                                   GHC.Stack.Types.EmptyCallStack)
+                                                  `cast`
+                                                (Sym (GHC.Classes.N:IP[0]
+                                                          <"callStack">_N
+                                                          <GHC.Stack.Types.CallStack>_N))
+                                                (GHC.Base.augment
+                                                   @ GHC.Types.Char
+                                                   (\ @ b
+                                                      (c :: GHC.Types.Char -> b -> b)[OneShot]
+                                                      (n2 :: b)[OneShot] ->
+                                                    GHC.CString.unpackFoldrCString#
+                                                      @ b
+                                                      "Primitive.basicUnsafeNew: length to large: "#
+                                                      c
+                                                      n2)
+                                                   (GHC.Show.showSignedInt
+                                                      GHC.Show.$fShow(,)1
+                                                      n1
+                                                      (GHC.Types.[] @ GHC.Types.Char))) }
+                                      GHC.Types.True
+                                      -> GHC.Err.error
+                                           @ 'GHC.Types.LiftedRep
+                                           @ (m (Data.Vector.Primitive.Mutable.MVector
+                                                   (Control.Monad.Primitive.PrimState m)
+                                                   GHC.Word.Word32))
+                                           (GHC.Stack.Types.PushCallStack
+                                              (GHC.Base.build
+                                                 @ GHC.Types.Char
+                                                 (\ @ b ->
+                                                  GHC.CString.unpackFoldrCString# @ b "error"#))
+                                              (GHC.Stack.Types.SrcLoc
+                                                 (GHC.Base.build
+                                                    @ GHC.Types.Char
+                                                    (\ @ b ->
+                                                     GHC.CString.unpackFoldrCString#
+                                                       @ b
+                                                       "vector-0.12.0.1-JlawpRjIcMJIYPJVsWriIA"#))
+                                                 (GHC.Base.build
+                                                    @ GHC.Types.Char
+                                                    (\ @ b ->
+                                                     GHC.CString.unpackFoldrCString#
+                                                       @ b
+                                                       "Data.Vector.Primitive.Mutable"#))
+                                                 (GHC.Base.build
+                                                    @ GHC.Types.Char
+                                                    (\ @ b ->
+                                                     GHC.CString.unpackFoldrCString#
+                                                       @ b
+                                                       ".\\Data\\Vector\\Primitive\\Mutable.hs"#))
+                                                 (GHC.Types.I# 97#)
+                                                 (GHC.Types.I# 15#)
+                                                 (GHC.Types.I# 97#)
+                                                 (GHC.Types.I# 78#))
+                                              GHC.Stack.Types.EmptyCallStack)
+                                             `cast`
+                                           (Sym (GHC.Classes.N:IP[0]
+                                                     <"callStack">_N <GHC.Stack.Types.CallStack>_N))
+                                           (GHC.Base.augment
+                                              @ GHC.Types.Char
+                                              (\ @ b
+                                                 (c :: GHC.Types.Char -> b -> b)[OneShot]
+                                                 (n2 :: b)[OneShot] ->
+                                               GHC.CString.unpackFoldrCString#
+                                                 @ b
+                                                 "Primitive.basicUnsafeNew: negative length: "#
+                                                 c
+                                                 n2)
+                                              (GHC.Show.showSignedInt
+                                                 GHC.Show.$fShow(,)1
+                                                 n1
+                                                 (GHC.Types.[] @ GHC.Types.Char))) })
+                                   (\ (x1 :: Data.Vector.Primitive.Mutable.MVector
+                                               (Control.Monad.Primitive.PrimState m)
+                                               GHC.Word.Word32) ->
+                                    GHC.Base.return
+                                      @ m
+                                      $dMonad2
+                                      @ (Data.Vector.Unboxed.Base.MVector
+                                           (Control.Monad.Primitive.PrimState m) GHC.Word.Word32)
+                                      x1
+                                        `cast`
+                                      (Trans
+                                           (Sym (Data.Vector.Unboxed.Base.N:R:MVectorsWord32[0]
+                                                     <Control.Monad.Primitive.PrimState m>_N))
+                                           (Sym (Data.Vector.Unboxed.Base.D:R:MVectorsWord320[0]
+                                                     <Control.Monad.Primitive.PrimState m>_N)))))
+                                (\ (q :: Data.Vector.Unboxed.Base.MVector
+                                           (Control.Monad.Primitive.PrimState m) GHC.Word.Word32) ->
+                                 GHC.Base.>>
+                                   @ m
+                                   $dMonad1
+                                   @ ()
+                                   @ (System.Random.MWC.Gen (Control.Monad.Primitive.PrimState m))
+                                   (letrec {
+                                      go :: GHC.Types.Int -> m () {- Arity: 1 -}
+                                      = \ (i1 :: GHC.Types.Int) ->
+                                        case GHC.Classes.eqInt i1 (GHC.Types.I# 256#) of wild2 {
+                                          GHC.Types.False
+                                          -> GHC.Base.>>
+                                               @ m
+                                               $dMonad1
+                                               @ ()
+                                               @ ()
+                                               (case q `cast`
+                                                     (Trans
+                                                          (Data.Vector.Unboxed.Base.D:R:MVectorsWord320[0]
+                                                               <Control.Monad.Primitive.PrimState
+                                                                  m>_N)
+                                                          (Data.Vector.Unboxed.Base.N:R:MVectorsWord32[0]
+                                                               <Control.Monad.Primitive.PrimState
+                                                                  m>_N)) of wild3 { Data.Vector.Primitive.Mutable.MVector dt dt1 dt2 ->
+                                                case i1 of wild4 { GHC.Types.I# y ->
+                                                Control.Monad.Primitive.primitive
+                                                  @ m
+                                                  $dPrimMonad
+                                                  @ ()
+                                                  (\ (s# :: GHC.Prim.State#
+                                                              (Control.Monad.Primitive.PrimState
+                                                                 m)) ->
+                                                   case GHC.Classes.geInt
+                                                          wild4
+                                                          fini
+                                                            `cast`
+                                                          (Data.Vector.Fusion.Util.N:Id[0]
+                                                               <GHC.Types.Int>_R) of wild5 {
+                                                     GHC.Types.False
+                                                     -> case Data.Vector.Generic.unsafeIndex
+                                                               @ Data.Vector.Vector
+                                                               @ GHC.Word.Word32
+                                                               (Data.Vector.$fVectorVectora
+                                                                  @ GHC.Word.Word32)
+                                                               seed1
+                                                               wild4 of wild6 { GHC.Word.W32# x# ->
+                                                        case GHC.Prim.writeWord32Array#
+                                                               @ (Control.Monad.Primitive.PrimState
+                                                                    m)
+                                                               dt2
+                                                               (GHC.Prim.+# dt y)
+                                                               x#
+                                                               s# of s'# { DEFAULT ->
+                                                        (# s'#, GHC.Tuple.() #) } }
+                                                     GHC.Types.True
+                                                     -> case GHC.Classes.eqInt
+                                                               fini
+                                                                 `cast`
+                                                               (Data.Vector.Fusion.Util.N:Id[0]
+                                                                    <GHC.Types.Int>_R)
+                                                               (GHC.Types.I# 0#) of wild6 {
+                                                          GHC.Types.False
+                                                          -> case Data.Vector.Generic.unsafeIndex
+                                                                    @ Data.Vector.Unboxed.Base.Vector
+                                                                    @ GHC.Word.Word32
+                                                                    Data.Vector.Unboxed.Base.$fVectorVectorWord32
+                                                                    System.Random.MWC.defaultSeed
+                                                                    wild4 of wild7 { GHC.Word.W32# x# ->
+                                                             case Data.Vector.Generic.unsafeIndex
+                                                                    @ Data.Vector.Vector
+                                                                    @ GHC.Word.Word32
+                                                                    (Data.Vector.$fVectorVectora
+                                                                       @ GHC.Word.Word32)
+                                                                    seed1
+                                                                    (GHC.Real.$fIntegralInt_$cmod
+                                                                       wild4
+                                                                       fini
+                                                                         `cast`
+                                                                       (Data.Vector.Fusion.Util.N:Id[0]
+                                                                            <GHC.Types.Int>_R)) of wild8 { GHC.Word.W32# y# ->
+                                                             case GHC.Prim.writeWord32Array#
+                                                                    @ (Control.Monad.Primitive.PrimState
+                                                                         m)
+                                                                    dt2
+                                                                    (GHC.Prim.+# dt y)
+                                                                    (GHC.Prim.xor# x# y#)
+                                                                    s# of s'# { DEFAULT ->
+                                                             (# s'#, GHC.Tuple.() #) } } }
+                                                          GHC.Types.True
+                                                          -> case Data.Vector.Generic.unsafeIndex
+                                                                    @ Data.Vector.Unboxed.Base.Vector
+                                                                    @ GHC.Word.Word32
+                                                                    Data.Vector.Unboxed.Base.$fVectorVectorWord32
+                                                                    System.Random.MWC.defaultSeed
+                                                                    wild4 of wild7 { GHC.Word.W32# x# ->
+                                                             case GHC.Prim.writeWord32Array#
+                                                                    @ (Control.Monad.Primitive.PrimState
+                                                                         m)
+                                                                    dt2
+                                                                    (GHC.Prim.+# dt y)
+                                                                    x#
+                                                                    s# of s'# { DEFAULT ->
+                                                             (# s'#, GHC.Tuple.() #) } } } }) } })
+                                               (go
+                                                  (case i1 of wild3 { GHC.Types.I# x1 ->
+                                                   GHC.Types.I# (GHC.Prim.+# x1 1#) }))
+                                          GHC.Types.True
+                                          -> GHC.Base.return @ m $dMonad1 @ () GHC.Tuple.() }
+                                    } in
+                                    go (GHC.Types.I# 0#))
+                                   (GHC.Base.>>
+                                      @ m
+                                      $dMonad1
+                                      @ ()
+                                      @ (System.Random.MWC.Gen
+                                           (Control.Monad.Primitive.PrimState m))
+                                      (case GHC.Classes.eqInt
+                                              fini
+                                                `cast`
+                                              (Data.Vector.Fusion.Util.N:Id[0] <GHC.Types.Int>_R)
+                                              (GHC.Types.I# 258#) of wild2 {
+                                         GHC.Types.False
+                                         -> GHC.Base.>>
+                                              @ m
+                                              $dMonad1
+                                              @ ()
+                                              @ ()
+                                              (case q `cast`
+                                                    (Trans
+                                                         (Data.Vector.Unboxed.Base.D:R:MVectorsWord320[0]
+                                                              <Control.Monad.Primitive.PrimState
+                                                                 m>_N)
+                                                         (Data.Vector.Unboxed.Base.N:R:MVectorsWord32[0]
+                                                              <Control.Monad.Primitive.PrimState
+                                                                 m>_N)) of wild3 { Data.Vector.Primitive.Mutable.MVector dt dt1 dt2 ->
+                                               Control.Monad.Primitive.primitive
+                                                 @ m
+                                                 $dPrimMonad
+                                                 @ ()
+                                                 (\ (s# :: GHC.Prim.State#
+                                                             (Control.Monad.Primitive.PrimState
+                                                                m)) ->
+                                                  case GHC.Prim.writeWord32Array#
+                                                         @ (Control.Monad.Primitive.PrimState m)
+                                                         dt2
+                                                         (GHC.Prim.+# dt 256#)
+                                                         255##
+                                                         s# of s'# { DEFAULT ->
+                                                  (# s'#, GHC.Tuple.() #) }) })
+                                              (case q `cast`
+                                                    (Trans
+                                                         (Data.Vector.Unboxed.Base.D:R:MVectorsWord320[0]
+                                                              <Control.Monad.Primitive.PrimState
+                                                                 m>_N)
+                                                         (Data.Vector.Unboxed.Base.N:R:MVectorsWord32[0]
+                                                              <Control.Monad.Primitive.PrimState
+                                                                 m>_N)) of wild3 { Data.Vector.Primitive.Mutable.MVector dt dt1 dt2 ->
+                                               Control.Monad.Primitive.primitive
+                                                 @ m
+                                                 $dPrimMonad
+                                                 @ ()
+                                                 (\ (s# :: GHC.Prim.State#
+                                                             (Control.Monad.Primitive.PrimState
+                                                                m)) ->
+                                                  case GHC.Prim.writeWord32Array#
+                                                         @ (Control.Monad.Primitive.PrimState m)
+                                                         dt2
+                                                         (GHC.Prim.+# dt 257#)
+                                                         362436##
+                                                         s# of s'# { DEFAULT ->
+                                                  (# s'#, GHC.Tuple.() #) }) })
+                                         GHC.Types.True
+                                         -> GHC.Base.>>
+                                              @ m
+                                              $dMonad1
+                                              @ ()
+                                              @ ()
+                                              (case q `cast`
+                                                    (Trans
+                                                         (Data.Vector.Unboxed.Base.D:R:MVectorsWord320[0]
+                                                              <Control.Monad.Primitive.PrimState
+                                                                 m>_N)
+                                                         (Data.Vector.Unboxed.Base.N:R:MVectorsWord32[0]
+                                                              <Control.Monad.Primitive.PrimState
+                                                                 m>_N)) of wild3 { Data.Vector.Primitive.Mutable.MVector dt dt1 dt2 ->
+                                               Control.Monad.Primitive.primitive
+                                                 @ m
+                                                 $dPrimMonad
+                                                 @ ()
+                                                 (\ (s# :: GHC.Prim.State#
+                                                             (Control.Monad.Primitive.PrimState
+                                                                m)) ->
+                                                  case Data.Vector.Generic.unsafeIndex
+                                                         @ Data.Vector.Vector
+                                                         @ GHC.Word.Word32
+                                                         (Data.Vector.$fVectorVectora
+                                                            @ GHC.Word.Word32)
+                                                         seed1
+                                                         System.Random.MWC.ioff of wild4 { GHC.Word.W32# x# ->
+                                                  case GHC.Prim.writeWord32Array#
+                                                         @ (Control.Monad.Primitive.PrimState m)
+                                                         dt2
+                                                         (GHC.Prim.+# dt 256#)
+                                                         (GHC.Prim.and# x# 255##)
+                                                         s# of s'# { DEFAULT ->
+                                                  (# s'#, GHC.Tuple.() #) } }) })
+                                              (case q `cast`
+                                                    (Trans
+                                                         (Data.Vector.Unboxed.Base.D:R:MVectorsWord320[0]
+                                                              <Control.Monad.Primitive.PrimState
+                                                                 m>_N)
+                                                         (Data.Vector.Unboxed.Base.N:R:MVectorsWord32[0]
+                                                              <Control.Monad.Primitive.PrimState
+                                                                 m>_N)) of wild3 { Data.Vector.Primitive.Mutable.MVector dt dt1 dt2 ->
+                                               Control.Monad.Primitive.primitive
+                                                 @ m
+                                                 $dPrimMonad
+                                                 @ ()
+                                                 (\ (s# :: GHC.Prim.State#
+                                                             (Control.Monad.Primitive.PrimState
+                                                                m)) ->
+                                                  case Data.Vector.Generic.unsafeIndex
+                                                         @ Data.Vector.Vector
+                                                         @ GHC.Word.Word32
+                                                         (Data.Vector.$fVectorVectora
+                                                            @ GHC.Word.Word32)
+                                                         seed1
+                                                         System.Random.MWC.coff of wild4 { GHC.Word.W32# x# ->
+                                                  case GHC.Prim.writeWord32Array#
+                                                         @ (Control.Monad.Primitive.PrimState m)
+                                                         dt2
+                                                         (GHC.Prim.+# dt 257#)
+                                                         x#
+                                                         s# of s'# { DEFAULT ->
+                                                  (# s'#, GHC.Tuple.() #) } }) }) })
+                                      (GHC.Base.return
+                                         @ m
+                                         $dMonad1
+                                         @ (System.Random.MWC.Gen
+                                              (Control.Monad.Primitive.PrimState m))
+                                         q `cast`
+                                         (Sym (System.Random.MWC.N:Gen[0]
+                                                   <Control.Monad.Primitive.PrimState m>_N))))))
+                             (\ (gen :: System.Random.MWC.Gen
+                                          (Control.Monad.Primitive.PrimState m)) ->
+                              GHC.Base.>>=
+                                @ m
+                                $dMonad
+                                @ (Data.Vector.Vector GHC.Types.Int)
+                                @ (Multilinear.Parallel.Generic.Tensor GHC.Types.Int)
+                                (Data.Vector.Generic.unstreamM
+                                   @ m
+                                   @ Data.Vector.Vector
+                                   @ GHC.Types.Int
+                                   @ Data.Vector.Vector
+                                   $dMonad
+                                   (Data.Vector.$fVectorVectora @ GHC.Types.Int)
+                                   (Data.Vector.Fusion.Bundle.Monadic.mapM
+                                      @ m
+                                      @ (m GHC.Types.Int)
+                                      @ GHC.Types.Int
+                                      @ Data.Vector.Vector
+                                      $dMonad
+                                      (GHC.Base.id @ (m GHC.Types.Int))
+                                      (Data.Vector.Fusion.Bundle.lift
+                                         @ m
+                                         @ Data.Vector.Vector
+                                         @ (m GHC.Types.Int)
+                                         $dMonad
+                                         (Data.Vector.Fusion.Bundle.Monadic.generateM
+                                            @ Data.Vector.Fusion.Util.Id
+                                            @ (m GHC.Types.Int)
+                                            @ Data.Vector.Vector
+                                            Data.Vector.Fusion.Util.$fMonadId
+                                            s
+                                            (\ (x1 :: GHC.Types.Int) ->
+                                             Statistics.Distribution.genDiscreteVar
+                                               @ d
+                                               $dDiscreteGen
+                                               @ m
+                                               $dPrimMonad
+                                               d1
+                                               gen)
+                                              `cast`
+                                            (<GHC.Types.Int>_R
+                                             ->_R Sym (Data.Vector.Fusion.Util.N:Id[0]
+                                                           <m GHC.Types.Int>_R))))))
+                                (\ (components :: Data.Vector.Vector GHC.Types.Int) ->
+                                 GHC.Base.return
+                                   @ m
+                                   $dMonad
+                                   @ (Multilinear.Parallel.Generic.Tensor GHC.Types.Int)
+                                   (Multilinear.Parallel.Generic.SimpleFinite
+                                      @ GHC.Types.Int
+                                      (Multilinear.Index.Finite.Covariant
+                                         s
+                                         (GHC.Base.build
+                                            @ GHC.Types.Char
+                                            (\ @ a
+                                               (c :: GHC.Types.Char -> a -> a)[OneShot]
+                                               (n :: a)[OneShot] ->
+                                             c i n)))
+                                      components)))
+                        : ipv ipv3
+                        -> \ (ds1 :: GHC.Types.Int) (ds2 :: d) (ds3 :: GHC.Types.Int) ->
+                           GHC.Base.return
+                             @ m
+                             $dMonad
+                             @ (Multilinear.Parallel.Generic.Tensor GHC.Types.Int)
+                             (Multilinear.Parallel.Generic.Err
+                                @ GHC.Types.Int
+                                Multilinear.Parallel.Form.invalidIndices) } }) -}
+9f35e5b6a295f7b346b38dbc390a081e
+  toCSV ::
+    (GHC.Num.Num a, Control.DeepSeq.NFData a,
+     Data.Serialize.Serialize a) =>
+    Multilinear.Parallel.Generic.Tensor a
+    -> GHC.Base.String -> GHC.Types.Char -> GHC.Types.IO GHC.Types.Int
+  {- Arity: 7,
+     Strictness: <L,A><L,A><L,U(C(U(1*U,C(C(U)))),C(C1(C1(C1(C1(C1(U)))))))><S,1*U><L,U><L,1*U(U)><S,U>,
+     Inline: (sat-args=1),
+     Unfolding: InlineRule (4, False, False)
+                (\ @ a
+                   ($dNum :: GHC.Num.Num a)
+                   ($dNFData :: Control.DeepSeq.NFData a)
+                   ($dSerialize :: Data.Serialize.Serialize a)
+                   (t :: Multilinear.Parallel.Generic.Tensor a) ->
+                 case t of wild {
+                   DEFAULT
+                   -> (\ (ds :: GHC.Base.String)
+                         (ds1 :: GHC.Types.Char)
+                         (s :: GHC.Prim.State# GHC.Prim.RealWorld) ->
+                       (# s, GHC.Types.I# 0# #))
+                        `cast`
+                      (<GHC.Base.String>_R
+                       ->_R <GHC.Types.Char>_R
+                       ->_R Sym (GHC.Types.N:IO[0] <GHC.Types.Int>_R))
+                   Multilinear.Parallel.Generic.FiniteTensor ds elems
+                   -> case ds of wild1 {
+                        DEFAULT
+                        -> (\ (ds1 :: GHC.Base.String)
+                              (ds2 :: GHC.Types.Char)
+                              (s :: GHC.Prim.State# GHC.Prim.RealWorld) ->
+                            (# s, GHC.Types.I# 0# #))
+                             `cast`
+                           (<GHC.Base.String>_R
+                            ->_R <GHC.Types.Char>_R
+                            ->_R Sym (GHC.Types.N:IO[0] <GHC.Types.Int>_R))
+                        Multilinear.Index.Finite.Covariant ds1 ds2
+                        -> \ (fileName :: GHC.Base.String) (separator :: GHC.Types.Char) ->
+                           case GHC.Classes.eqInt
+                                  (GHC.Base.foldr
+                                     @ Multilinear.Index.TIndex
+                                     @ (GHC.Types.Int -> GHC.Types.Int)
+                                     (GHC.List.lengthFB @ Multilinear.Index.TIndex)
+                                     GHC.List.idLength
+                                     (Multilinear.Parallel.Generic.$fMultilinearTensora_$cindices
+                                        @ a
+                                        $dNum
+                                        wild)
+                                     (GHC.Types.I# 0#))
+                                  (GHC.Types.I# 1#) of wild2 {
+                             GHC.Types.False
+                             -> (\ (s :: GHC.Prim.State# GHC.Prim.RealWorld) ->
+                                 (# s, GHC.Types.I# 0# #))
+                                  `cast`
+                                (Sym (GHC.Types.N:IO[0] <GHC.Types.Int>_R))
+                             GHC.Types.True
+                             -> (Data.CSV.Enumerator.writeCSVFile1
+                                   @ [Data.ByteString.Internal.ByteString]
+                                   Data.CSV.Enumerator.$fCSVeable[]
+                                   (Data.CSV.Enumerator.Types.$WCSVS
+                                      separator
+                                      (GHC.Base.Just @ GHC.Types.Char (GHC.Types.C# '"'#))
+                                      (GHC.Base.Just @ GHC.Types.Char (GHC.Types.C# '"'#))
+                                      separator)
+                                   fileName
+                                   (GHC.Base.build
+                                      @ [Data.ByteString.Internal.ByteString]
+                                      (\ @ a1
+                                         (c :: [Data.ByteString.Internal.ByteString]
+                                               -> a1 -> a1)[OneShot]
+                                         (n :: a1)[OneShot] ->
+                                       c (GHC.Base.build
+                                            @ Data.ByteString.Internal.ByteString
+                                            (\ @ b
+                                               (c1 :: Data.ByteString.Internal.ByteString
+                                                      -> b -> b)[OneShot]
+                                               (n1 :: b)[OneShot] ->
+                                             Data.Vector.Fusion.Bundle.toListFB
+                                               @ Data.ByteString.Internal.ByteString
+                                               @ b
+                                               @ Data.Vector.Vector
+                                               c1
+                                               n1
+                                               (Data.Vector.Fusion.Bundle.inplace
+                                                  @ (Multilinear.Parallel.Generic.Tensor a)
+                                                  @ Data.ByteString.Internal.ByteString
+                                                  @ Data.Vector.Vector
+                                                  (\ @ m :: * -> *
+                                                     ($dMonad :: GHC.Base.Monad m)[OneShot] ->
+                                                   Data.Vector.Fusion.Stream.Monadic.mapM
+                                                     @ m
+                                                     @ (Multilinear.Parallel.Generic.Tensor a)
+                                                     @ Data.ByteString.Internal.ByteString
+                                                     $dMonad
+                                                     (let {
+                                                        f1 :: Data.ByteString.Internal.ByteString
+                                                              -> m Data.ByteString.Internal.ByteString
+                                                        = GHC.Base.return
+                                                            @ m
+                                                            $dMonad
+                                                            @ Data.ByteString.Internal.ByteString
+                                                      } in
+                                                      \ (x :: Multilinear.Parallel.Generic.Tensor
+                                                                a) ->
+                                                      f1
+                                                        (let {
+                                                           cs :: Data.ByteString.Lazy.Internal.ByteString
+                                                           = Data.ByteString.Builder.toLazyByteString
+                                                               (case (Multilinear.Parallel.Generic.$fSerializeTensor_$cput
+                                                                        @ a
+                                                                        $dSerialize
+                                                                        x)
+                                                                       `cast`
+                                                                     (Data.Serialize.Put.N:PutM[0] <()>_N) of wild3 { Data.Serialize.Put.PairS ds3 b1 ->
+                                                                b1 })
+                                                         } in
+                                                         Data.ByteString.Lazy.toStrict_goLen0
+                                                           cs
+                                                           cs)))
+                                                  (GHC.Base.id
+                                                     @ Data.Vector.Fusion.Bundle.Size.Size)
+                                                  (Data.Vector.Generic.stream
+                                                     @ Data.Vector.Vector
+                                                     @ (Multilinear.Parallel.Generic.Tensor a)
+                                                     (Data.Vector.$fVectorVectora
+                                                        @ (Multilinear.Parallel.Generic.Tensor a))
+                                                     elems))))
+                                         n)))
+                                  `cast`
+                                (Sym (GHC.Types.N:IO[0] <GHC.Types.Int>_R)) } } }) -}
+vectorised variables:
+vectorised tycons:
+vectorised reused tycons:
+parallel variables:
+parallel tycons:
+trusted: none
+require own pkg trusted: False
+

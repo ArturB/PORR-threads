@@ -1,0 +1,470 @@
+
+==================== FINAL INTERFACE ====================
+2018-10-29 09:29:07.73768 UTC
+
+interface Multilinear-0.8.0.0-4dpV53DlxV5EwwV6FZreVP:Multilinear.NForm 8022
+  interface hash: 323175e820ab8ac5ba2137c21ca58b46
+  ABI hash: f9aa6d4b0a6a0ceeb139f8117852801f
+  export-list hash: 4ec3e8b9d5fb10d0646f0319518bef06
+  orphan hash: 693e9af84d3dfcc71e640e005bdc5e2e
+  flag hash: 4e8964e2102b5f84d5f0729e134505fa
+  sig of: Nothing
+  used TH splices: False
+  where
+exports:
+  Multilinear.NForm.const
+  Multilinear.NForm.cross
+  Multilinear.NForm.dot
+  Multilinear.NForm.fromIndices
+  Multilinear.NForm.randomDouble
+  Multilinear.NForm.randomDoubleSeed
+  Multilinear.NForm.randomInt
+  Multilinear.NForm.randomIntSeed
+module dependencies: Multilinear Multilinear.Generic
+                     Multilinear.Index Multilinear.Index.Finite
+                     Multilinear.Index.Infinite Multilinear.Tensor
+package dependencies: MonadRandom-0.5.1 Win32-2.5.4.1 aeson-1.2.4.0
+                      array-0.5.2.0 attoparsec-0.13.2.2 base-4.10.1.0 base-compat-0.9.3
+                      base-orphans-0.6 bifunctors-5.5.2 binary-0.8.5.1
+                      bytestring-0.10.8.2 cereal-0.5.5.0 cereal-vector-0.2.0.1
+                      comonad-5.0.3 containers-0.5.10.2 deepseq-1.4.3.0
+                      distributive-0.5.3 dlist-0.8.0.4 either-4.5 exceptions-0.8.3
+                      free-4.12.4 ghc-boot-th-8.2.2 ghc-prim-0.5.1.1 hashable-1.2.6.1
+                      integer-gmp-1.0.1.0 integer-logarithms-1.0.2 math-functions-0.2.1.0
+                      mmorph-1.1.0 monad-control-1.0.2.2 mtl-2.2.1 mwc-random-0.13.6.0
+                      pretty-1.1.3.3 primitive-0.6.3.0 random-1.1 scientific-0.3.5.2
+                      semigroupoids-5.2.1 statistics-0.14.0.2 stm-2.4.5.0 tagged-0.8.5
+                      template-haskell-2.12.0.0 text-1.2.2.2 time-1.8.0.2
+                      time-locale-compat-0.1.1.3 transformers-0.5.2.0
+                      transformers-base-0.4.4 unordered-containers-0.2.8.0
+                      uuid-types-1.0.3 vector-0.12.0.1 vector-algorithms-0.7.0.1
+                      vector-th-unbox-0.2.1.6 zlib-0.6.1.2
+orphans: cereal-vector-0.2.0.1:Data.Vector.Serialize
+         stm-2.4.5.0:Control.Monad.STM
+         attoparsec-0.13.2.2:Data.Attoparsec.Text.Internal
+         attoparsec-0.13.2.2:Data.Attoparsec.ByteString.Char8
+         time-1.8.0.2:Data.Time.Format.Parse
+         time-1.8.0.2:Data.Time.LocalTime.Internal.ZonedTime
+         time-1.8.0.2:Data.Time.LocalTime.Internal.LocalTime
+         time-1.8.0.2:Data.Time.Calendar.Gregorian
+         hashable-1.2.6.1:Data.Hashable.Generic text-1.2.2.2:Data.Text.Lazy
+         text-1.2.2.2:Data.Text binary-0.8.5.1:Data.Binary.Generic
+         text-1.2.2.2:Data.Text.Show
+         bytestring-0.10.8.2:Data.ByteString.Builder
+         vector-0.12.0.1:Data.Vector.Unboxed
+         vector-0.12.0.1:Data.Vector.Fusion.Bundle
+         transformers-0.5.2.0:Control.Monad.Trans.Error
+         base-4.10.1.0:GHC.Float base-4.10.1.0:GHC.Base
+family instance modules: MonadRandom-0.5.1:Control.Monad.Trans.Random.Lazy
+                         Multilinear-0.8.0.0-4dpV53DlxV5EwwV6FZreVP:Multilinear.Generic
+                         Multilinear-0.8.0.0-4dpV53DlxV5EwwV6FZreVP:Multilinear.Index
+                         Multilinear-0.8.0.0-4dpV53DlxV5EwwV6FZreVP:Multilinear.Index.Finite
+                         Multilinear-0.8.0.0-4dpV53DlxV5EwwV6FZreVP:Multilinear.Index.Infinite
+                         aeson-1.2.4.0:Data.Aeson.Types.Internal
+                         attoparsec-0.13.2.2:Data.Attoparsec.Internal.Types
+                         base-4.10.1.0:Control.Applicative base-4.10.1.0:Data.Complex
+                         base-4.10.1.0:Data.Either base-4.10.1.0:Data.Functor.Compose
+                         base-4.10.1.0:Data.Functor.Const
+                         base-4.10.1.0:Data.Functor.Identity
+                         base-4.10.1.0:Data.Functor.Product base-4.10.1.0:Data.Functor.Sum
+                         base-4.10.1.0:Data.List.NonEmpty base-4.10.1.0:Data.Monoid
+                         base-4.10.1.0:Data.Semigroup base-4.10.1.0:Data.Type.Equality
+                         base-4.10.1.0:Data.Version base-4.10.1.0:Data.Void
+                         base-4.10.1.0:GHC.Exts base-4.10.1.0:GHC.Generics
+                         base-4.10.1.0:GHC.IO.Exception base-4.10.1.0:GHC.TypeLits
+                         base-4.10.1.0:GHC.TypeNats bifunctors-5.5.2:Data.Bifunctor.Biff
+                         bifunctors-5.5.2:Data.Bifunctor.Clown
+                         bifunctors-5.5.2:Data.Bifunctor.Flip
+                         bifunctors-5.5.2:Data.Bifunctor.Join
+                         bifunctors-5.5.2:Data.Bifunctor.Joker
+                         bifunctors-5.5.2:Data.Bifunctor.Product
+                         bifunctors-5.5.2:Data.Bifunctor.Tannen
+                         bifunctors-5.5.2:Data.Bifunctor.Wrapped
+                         containers-0.5.10.2:Data.IntMap.Internal
+                         containers-0.5.10.2:Data.IntSet.Internal
+                         containers-0.5.10.2:Data.Map.Internal
+                         containers-0.5.10.2:Data.Sequence.Internal
+                         containers-0.5.10.2:Data.Set.Internal containers-0.5.10.2:Data.Tree
+                         dlist-0.8.0.4:Data.DList either-4.5:Control.Monad.Trans.Either
+                         ghc-boot-th-8.2.2:GHC.ForeignSrcLang.Type
+                         ghc-boot-th-8.2.2:GHC.LanguageExtensions.Type
+                         math-functions-0.2.1.0:Numeric.Sum
+                         monad-control-1.0.2.2:Control.Monad.Trans.Control
+                         mwc-random-0.13.6.0:System.Random.MWC
+                         pretty-1.1.3.3:Text.PrettyPrint.Annotated.HughesPJ
+                         pretty-1.1.3.3:Text.PrettyPrint.HughesPJ
+                         primitive-0.6.3.0:Control.Monad.Primitive
+                         primitive-0.6.3.0:Data.Primitive.Array
+                         primitive-0.6.3.0:Data.Primitive.ByteArray tagged-0.8.5:Data.Tagged
+                         template-haskell-2.12.0.0:Language.Haskell.TH.Syntax
+                         text-1.2.2.2:Data.Text text-1.2.2.2:Data.Text.Lazy
+                         unordered-containers-0.2.8.0:Data.HashMap.Base
+                         unordered-containers-0.2.8.0:Data.HashSet
+                         uuid-types-1.0.3:Data.UUID.Types.Internal
+                         uuid-types-1.0.3:Data.UUID.Types.Internal.Builder
+                         vector-0.12.0.1:Data.Vector vector-0.12.0.1:Data.Vector.Primitive
+                         vector-0.12.0.1:Data.Vector.Storable
+                         vector-0.12.0.1:Data.Vector.Unboxed
+                         vector-0.12.0.1:Data.Vector.Unboxed.Base
+                         zlib-0.6.1.2:Codec.Compression.Zlib.Stream
+import  -/  Multilinear.Generic 35d6137e116dc30a68e3019328f60c00
+  exports: 6803917b9ea3c5897cebb5b68db2f4c4
+  Err d5ed70a4458652705d7936ab019ae051
+  Tensor 3435455de223a292a66afccee7caf4fd
+import  -/  Multilinear.Tensor dbc76d7c390453a030e3ba2f2e982ba6
+  exports: 60023a59918e2264950b46b2648956fb
+  const ba4c2865386ec367d1f78fbc1d6f2a8c
+  fromIndices f9bcb57f98be706faf4a91f595b5e74d
+  randomDouble c4d38165e87e69d1092bbf8f62d2b06c
+  randomDoubleSeed 3bb674fce61d9809b86d13a17ad6e083
+  randomInt 8213f7cf070960693ea8d9231c856177
+  randomIntSeed acdc0f2ba598b6cc029b1eb22150dcc4
+import  -/  base-4.10.1.0:GHC.Base 8f949d675e49677c272f02ab7a85fe18
+import  -/  base-4.10.1.0:GHC.Num bee60808f8127e4cda82dd422aa1c6c0
+import  -/  base-4.10.1.0:Prelude a93a9400cc0c816c2ee5f39399baa7a0
+import  -/  ghc-prim-0.5.1.1:GHC.Classes 64ad5910d03ab188ab9b4adef7487b1e
+import  -/  ghc-prim-0.5.1.1:GHC.Types b1fd0716441595db508c1a74387bf394
+import  -/  primitive-0.6.3.0:Control.Monad.Primitive d7ec88f5da3cb11dddf5094b31188f58
+import  -/  statistics-0.14.0.2:Statistics.Distribution 8fdcebe1659cddad7300a9b663ff7a10
+d1694620e80b06729317a7d5c893d04a
+  $trModule :: GHC.Types.Module
+  {- HasNoCafRefs, Strictness: m,
+     Unfolding: (GHC.Types.Module
+                   Multilinear.NForm.$trModule3
+                   Multilinear.NForm.$trModule1) -}
+31e9a66660d30d5d72ebe754c08c0248
+  $trModule1 :: GHC.Types.TrName
+  {- HasNoCafRefs, Strictness: m1,
+     Unfolding: (GHC.Types.TrNameS Multilinear.NForm.$trModule2) -}
+b541b47588dfe6b645039476023a00b3
+  $trModule2 :: GHC.Prim.Addr#
+  {- HasNoCafRefs, Unfolding: ("Multilinear.NForm"#) -}
+248f91876efb8c69fe3e4210acb07acb
+  $trModule3 :: GHC.Types.TrName
+  {- HasNoCafRefs, Strictness: m1,
+     Unfolding: (GHC.Types.TrNameS Multilinear.NForm.$trModule4) -}
+bf0dfb66ae67f4f0824d1369cfe1478d
+  $trModule4 :: GHC.Prim.Addr#
+  {- HasNoCafRefs,
+     Unfolding: ("Multilinear-0.8.0.0-4dpV53DlxV5EwwV6FZreVP"#) -}
+c88479d5b0f10d166c578cd4c531a365
+  const ::
+    GHC.Num.Num a =>
+    GHC.Base.String
+    -> [GHC.Types.Int] -> a -> Multilinear.Generic.Tensor a
+  {- Arity: 4, Strictness: <L,A><L,U><L,U><L,U>,
+     Inline: (sat-args=2),
+     Unfolding: InlineRule (3, False, False)
+                (\ @ a
+                   ($dNum :: GHC.Num.Num a)
+                   (d :: GHC.Base.String)
+                   (ds :: [GHC.Types.Int]) ->
+                 Multilinear.Tensor.const
+                   @ a
+                   $dNum
+                   (GHC.Types.[] @ GHC.Types.Char, GHC.Types.[] @ GHC.Types.Int)
+                   (d, ds)) -}
+d45d0b2f653cafaeb5ca7d02dc4b665f
+  cross ::
+    GHC.Num.Num a =>
+    GHC.Base.String -> GHC.Types.Int -> Multilinear.Generic.Tensor a
+  {- Arity: 3, Strictness: <L,1*U(A,A,A,A,A,A,1*C1(U))><S,1*U><L,U>,
+     Inline: (sat-args=2),
+     Unfolding: InlineRule (3, False, False)
+                (\ @ a
+                   ($dNum :: GHC.Num.Num a)
+                   (ds :: [GHC.Types.Char])
+                   (size :: GHC.Types.Int) ->
+                 case ds of wild {
+                   []
+                   -> Multilinear.Generic.Err
+                        @ a
+                        Multilinear.NForm.invalidCrossProductIndices
+                   : i ds1
+                   -> case ds1 of wild1 {
+                        []
+                        -> Multilinear.Generic.Err
+                             @ a
+                             Multilinear.NForm.invalidCrossProductIndices
+                        : j ds2
+                        -> case ds2 of wild2 {
+                             []
+                             -> Multilinear.Generic.Err
+                                  @ a
+                                  Multilinear.NForm.invalidCrossProductIndices
+                             : k ds3
+                             -> case ds3 of wild3 {
+                                  []
+                                  -> Multilinear.Tensor.fromIndices
+                                       @ a
+                                       $dNum
+                                       (GHC.Base.build
+                                          @ GHC.Types.Char
+                                          (\ @ a1
+                                             (c :: GHC.Types.Char -> a1 -> a1)[OneShot]
+                                             (n :: a1)[OneShot] ->
+                                           c i n),
+                                        GHC.Base.build
+                                          @ GHC.Types.Int
+                                          (\ @ a1
+                                             (c :: GHC.Types.Int -> a1 -> a1)[OneShot]
+                                             (n :: a1)[OneShot] ->
+                                           c size n))
+                                       (GHC.Base.build
+                                          @ GHC.Types.Char
+                                          (\ @ a1
+                                             (c :: GHC.Types.Char -> a1 -> a1)[OneShot]
+                                             (n :: a1)[OneShot] ->
+                                           c j (c k n)),
+                                        GHC.Base.build
+                                          @ GHC.Types.Int
+                                          (\ @ a1
+                                             (c :: GHC.Types.Int -> a1 -> a1)[OneShot]
+                                             (n :: a1)[OneShot] ->
+                                           c size (c size n)))
+                                       (\ (ds4 :: [GHC.Types.Int])
+                                          (ds5 :: [GHC.Types.Int])[OneShot] ->
+                                        let {
+                                          fail :: GHC.Prim.Void# -> a <join 1> {- Arity: 1 -}
+                                          = \ (ds6 :: GHC.Prim.Void#)[OneShot] ->
+                                            Control.Exception.Base.patError
+                                              @ 'GHC.Types.LiftedRep
+                                              @ a
+                                              "src\\Multilinear\\NForm.hs:167:6-20|lambda"#
+                                        } in
+                                        case ds4 of wild4 {
+                                          [] -> fail GHC.Prim.void#
+                                          : ds6 ds7
+                                          -> case ds7 of wild5 {
+                                               []
+                                               -> case ds5 of wild6 {
+                                                    [] -> fail GHC.Prim.void#
+                                                    : ds8 ds9
+                                                    -> case ds9 of wild7 {
+                                                         [] -> fail GHC.Prim.void#
+                                                         : ds10 ds11
+                                                         -> case ds11 of wild8 {
+                                                              [] -> GHC.Num.fromInteger @ a $dNum 0
+                                                              : ipv ipv1
+                                                              -> fail GHC.Prim.void# } } }
+                                               : ipv ipv1 -> fail GHC.Prim.void# } })
+                                  : ipv ipv1
+                                  -> Multilinear.Generic.Err
+                                       @ a
+                                       Multilinear.NForm.invalidCrossProductIndices } } } }) -}
+1f66ebba6579b86e4635af5c04143846
+  cross1 :: GHC.Prim.Addr#
+  {- HasNoCafRefs,
+     Unfolding: ("Indices and its sizes incompatible with cross product structure!"#) -}
+43cdb381ca808d458219a7348b13c824
+  dot ::
+    GHC.Num.Num a =>
+    GHC.Base.String -> GHC.Types.Int -> Multilinear.Generic.Tensor a
+  {- Arity: 3, Strictness: <L,U(A,A,A,A,A,A,C(U))><S,1*U><L,U>,
+     Inline: (sat-args=2),
+     Unfolding: InlineRule (3, False, False)
+                (\ @ a
+                   ($dNum :: GHC.Num.Num a)
+                   (ds :: [GHC.Types.Char])
+                   (size :: GHC.Types.Int) ->
+                 case ds of wild {
+                   [] -> Multilinear.Generic.Err @ a Multilinear.NForm.invalidIndices
+                   : i1 ds1
+                   -> case ds1 of wild1 {
+                        [] -> Multilinear.Generic.Err @ a Multilinear.NForm.invalidIndices
+                        : i2 ds2
+                        -> case ds2 of wild2 {
+                             []
+                             -> let {
+                                  f :: [GHC.Types.Int] -> a {- Arity: 1 -}
+                                  = \ (ds3 :: [GHC.Types.Int]) ->
+                                    let {
+                                      fail :: GHC.Prim.Void# -> a <join 1> {- Arity: 1 -}
+                                      = \ (ds4 :: GHC.Prim.Void#)[OneShot] ->
+                                        Control.Exception.Base.patError
+                                          @ 'GHC.Types.LiftedRep
+                                          @ a
+                                          "src\\Multilinear\\NForm.hs:153:53-85|lambda"#
+                                    } in
+                                    case ds3 of wild3 {
+                                      [] -> fail GHC.Prim.void#
+                                      : i ds4
+                                      -> case ds4 of wild4 {
+                                           [] -> fail GHC.Prim.void#
+                                           : j ds5
+                                           -> case ds5 of wild5 {
+                                                []
+                                                -> case GHC.Classes.eqInt i j of wild6 {
+                                                     GHC.Types.False
+                                                     -> GHC.Num.fromInteger @ a $dNum 0
+                                                     GHC.Types.True
+                                                     -> GHC.Num.fromInteger @ a $dNum 1 }
+                                                : ipv ipv1 -> fail GHC.Prim.void# } } }
+                                } in
+                                Multilinear.Tensor.fromIndices
+                                  @ a
+                                  $dNum
+                                  (GHC.Types.[] @ GHC.Types.Char, GHC.Types.[] @ GHC.Types.Int)
+                                  (GHC.Base.build
+                                     @ GHC.Types.Char
+                                     (\ @ a1
+                                        (c :: GHC.Types.Char -> a1 -> a1)[OneShot]
+                                        (n :: a1)[OneShot] ->
+                                      c i1 (c i2 n)),
+                                   GHC.Base.build
+                                     @ GHC.Types.Int
+                                     (\ @ a1
+                                        (c :: GHC.Types.Int -> a1 -> a1)[OneShot]
+                                        (n :: a1)[OneShot] ->
+                                      c size (c size n)))
+                                  (\ (ds3 :: [GHC.Types.Int]) ->
+                                   case ds3 of wild3 {
+                                     [] -> f
+                                     : ipv ipv1
+                                     -> Control.Exception.Base.patError
+                                          @ 'GHC.Types.LiftedRep
+                                          @ ([GHC.Types.Int] -> a)
+                                          "src\\Multilinear\\NForm.hs:48:58-65|lambda"# })
+                             : ipv ipv1
+                             -> Multilinear.Generic.Err
+                                  @ a
+                                  Multilinear.NForm.invalidIndices } } }) -}
+1f00f8c22ea425593021a0db99301e34
+  dot1 :: GHC.Prim.Addr#
+  {- HasNoCafRefs,
+     Unfolding: ("Indices and its sizes incompatible with n-form structure!"#) -}
+c05e30c5aacd273154ba92c26a0db74b
+  fromIndices ::
+    GHC.Num.Num a =>
+    GHC.Base.String
+    -> [GHC.Types.Int]
+    -> ([GHC.Types.Int] -> a)
+    -> Multilinear.Generic.Tensor a
+  {- Arity: 4, Strictness: <L,A><L,U><L,U><L,C(U)>,
+     Inline: (sat-args=3),
+     Unfolding: InlineRule (4, False, False)
+                (\ @ a
+                   ($dNum :: GHC.Num.Num a)
+                   (d :: GHC.Base.String)
+                   (ds :: [GHC.Types.Int])
+                   (f :: [GHC.Types.Int] -> a) ->
+                 Multilinear.Tensor.fromIndices
+                   @ a
+                   $dNum
+                   (GHC.Types.[] @ GHC.Types.Char, GHC.Types.[] @ GHC.Types.Int)
+                   (d, ds)
+                   (\ (ds1 :: [GHC.Types.Int]) ->
+                    case ds1 of wild {
+                      [] -> f
+                      : ipv ipv1
+                      -> Control.Exception.Base.patError
+                           @ 'GHC.Types.LiftedRep
+                           @ ([GHC.Types.Int] -> a)
+                           "src\\Multilinear\\NForm.hs:48:58-65|lambda"# })) -}
+7e122513c34f078685f0dfba814b64d7
+  invalidCrossProductIndices :: GHC.Base.String
+  {- Unfolding: (GHC.CString.unpackCString#
+                   Multilinear.NForm.cross1) -}
+1013d58f385567efadb8f4a925d3406c
+  invalidIndices :: GHC.Base.String
+  {- Unfolding: (GHC.CString.unpackCString#
+                   Multilinear.NForm.dot1) -}
+8da6bc15c27111d6f092c99daf7e6176
+  randomDouble ::
+    Statistics.Distribution.ContGen d =>
+    GHC.Base.String
+    -> [GHC.Types.Int]
+    -> d
+    -> GHC.Types.IO (Multilinear.Generic.Tensor GHC.Types.Double)
+  {- Arity: 5, Strictness: <L,U(A,C(C1(C1(U))))><L,U><L,U><L,U><S,U>,
+     Inline: (sat-args=2),
+     Unfolding: InlineRule (3, False, False)
+                (\ @ d
+                   ($dContGen :: Statistics.Distribution.ContGen d)
+                   (d1 :: GHC.Base.String)
+                   (ds :: [GHC.Types.Int]) ->
+                 Multilinear.Tensor.randomDouble
+                   @ d
+                   $dContGen
+                   (GHC.Types.[] @ GHC.Types.Char, GHC.Types.[] @ GHC.Types.Int)
+                   (d1, ds)) -}
+4c2ea9271bdb4462587defe1f755bf93
+  randomDoubleSeed ::
+    (Statistics.Distribution.ContGen d,
+     Control.Monad.Primitive.PrimMonad m) =>
+    GHC.Base.String
+    -> [GHC.Types.Int]
+    -> d
+    -> GHC.Types.Int
+    -> m (Multilinear.Generic.Tensor GHC.Types.Double)
+  {- Arity: 6,
+     Strictness: <L,U(A,C(C1(C1(U))))><S(SL),U(U(U,U,U,U,U),U)><L,U><L,U><L,U><L,1*U(U)>,
+     Inline: (sat-args=2),
+     Unfolding: InlineRule (4, False, False)
+                (\ @ d
+                   @ m :: * -> *
+                   ($dContGen :: Statistics.Distribution.ContGen d)
+                   ($dPrimMonad :: Control.Monad.Primitive.PrimMonad m)
+                   (d1 :: GHC.Base.String)
+                   (ds :: [GHC.Types.Int]) ->
+                 Multilinear.Tensor.randomDoubleSeed
+                   @ d
+                   @ m
+                   $dContGen
+                   $dPrimMonad
+                   (GHC.Types.[] @ GHC.Types.Char, GHC.Types.[] @ GHC.Types.Int)
+                   (d1, ds)) -}
+3ec5a24005ec642ac0885728b28da35a
+  randomInt ::
+    Statistics.Distribution.DiscreteGen d =>
+    GHC.Base.String
+    -> [GHC.Types.Int]
+    -> d
+    -> GHC.Types.IO (Multilinear.Generic.Tensor GHC.Types.Int)
+  {- Arity: 5,
+     Strictness: <L,U(A,A,C(C1(C1(U))))><L,U><L,U><L,U><S,U>,
+     Inline: (sat-args=2),
+     Unfolding: InlineRule (3, False, False)
+                (\ @ d
+                   ($dDiscreteGen :: Statistics.Distribution.DiscreteGen d)
+                   (d1 :: GHC.Base.String)
+                   (ds :: [GHC.Types.Int]) ->
+                 Multilinear.Tensor.randomInt
+                   @ d
+                   $dDiscreteGen
+                   (GHC.Types.[] @ GHC.Types.Char, GHC.Types.[] @ GHC.Types.Int)
+                   (d1, ds)) -}
+993bba1480fd5c64ad67283b4a5d46ca
+  randomIntSeed ::
+    (Statistics.Distribution.DiscreteGen d,
+     Control.Monad.Primitive.PrimMonad m) =>
+    GHC.Base.String
+    -> [GHC.Types.Int]
+    -> d
+    -> GHC.Types.Int
+    -> m (Multilinear.Generic.Tensor GHC.Types.Int)
+  {- Arity: 6,
+     Strictness: <L,U(A,A,C(C1(C1(U))))><S(SL),U(U(U,U,U,U,U),U)><L,U><L,U><L,U><L,1*U(U)>,
+     Inline: (sat-args=2),
+     Unfolding: InlineRule (4, False, False)
+                (\ @ d
+                   @ m :: * -> *
+                   ($dDiscreteGen :: Statistics.Distribution.DiscreteGen d)
+                   ($dPrimMonad :: Control.Monad.Primitive.PrimMonad m)
+                   (d1 :: GHC.Base.String)
+                   (ds :: [GHC.Types.Int]) ->
+                 Multilinear.Tensor.randomIntSeed
+                   @ d
+                   @ m
+                   $dDiscreteGen
+                   $dPrimMonad
+                   (GHC.Types.[] @ GHC.Types.Char, GHC.Types.[] @ GHC.Types.Int)
+                   (d1, ds)) -}
+vectorised variables:
+vectorised tycons:
+vectorised reused tycons:
+parallel variables:
+parallel tycons:
+trusted: none
+require own pkg trusted: False
+
