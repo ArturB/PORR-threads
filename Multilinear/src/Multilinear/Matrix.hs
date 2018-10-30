@@ -28,6 +28,7 @@ module Multilinear.Matrix (
 import           Control.DeepSeq
 import           Control.Exception
 import           Control.Monad.Primitive
+import           Control.Monad.Trans.Class
 import           Control.Monad.Trans.Either
 import           Data.CSV.Enumerator
 import           Data.Either
@@ -164,7 +165,7 @@ randomIntSeed _ _ _ = \_ _ -> return $ Err invalidIndices
 {-| Read matrix components from CSV file. -}
 {-# INLINE fromCSV #-}
 fromCSV :: (
-    Num a, NFData a, Serialize a
+    Show a, Num a, NFData a, Serialize a
   ) => String                                  -- ^ Indices names (one character per index, first character: rows index, second character: columns index)
     -> String                                  -- ^ CSV file name
     -> Char                                    -- ^ Separator expected to be used in this CSV file
@@ -173,14 +174,19 @@ fromCSV :: (
 fromCSV x = case x of
   [u,d] -> \fileName separator -> do
     csv <- EitherT $ readCSVFile (CSVS separator (Just '"') (Just '"') separator) fileName
-    let components = (decode <$> ) <$> csv
+    lift $ print "read csv"
+    let components = {-(decode <$> ) <$>-} csv
+    lift $ print $ (csv !! 0) !! 0
     let rows = length components
-    let columns = if rows > 0 then length $ rights (head components) else 0
+    let columns = if rows > 0 then length $ (head components) else 0
+    lift $ print $ "rows:" ++ show rows ++ ", cols = " ++ show columns
     if rows > 0 && columns > 0
-    then return $ 
-      FiniteTensor (Finite.Contravariant rows [u]) $ (
-        SimpleFinite (Finite.Covariant columns [d]) . Boxed.fromList . rights
-      ) <$> Boxed.fromList components
+    then do
+      lift (print "generating ensor")
+      return $ 
+        FiniteTensor (Finite.Contravariant rows [u]) $ (
+          SimpleFinite (Finite.Covariant columns [d]) . Boxed.fromList
+        ) <$> Boxed.fromList components
     else EitherT $ return $ Left $ SomeException $ TypeError deserializationError
 
   _ -> \_ _ -> return $ Err invalidIndices

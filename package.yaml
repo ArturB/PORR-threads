@@ -21,6 +21,8 @@ description:         Please see the README on GitHub at <https://github.com/gith
 
 dependencies:
 - base >= 4.7 && < 5
+- either
+- transformers
 
 library:
   source-dirs: src
@@ -36,6 +38,8 @@ executables:
     dependencies:
     - PORR-thread
     - Multilinear
+    default-extensions:
+    - ScopedTypeVariables
 
 tests:
   PORR-thread-test:

@@ -184,7 +184,7 @@ const' i = case i of
 {-| Read linear functional components from CSV file. Reads only the first row of the file. -}
 {-# INLINE fromCSV #-}
 fromCSV :: (
-    Num a, NFData a, Serialize a
+    Show a, Num a, NFData a, Serialize a
   ) => String                                    -- ^ Index name (one character)
     -> String                                    -- ^ CSV file name
     -> Char                                      -- ^ Separator expected to be used in this CSV file
