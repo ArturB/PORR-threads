@@ -49,3 +49,4 @@ tests:
     - multilinear-io
     - either
     - transformers
+    - vector
