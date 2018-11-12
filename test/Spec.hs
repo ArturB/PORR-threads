@@ -39,7 +39,6 @@ getCSV :: ExceptT String IO ()
 getCSV = do
     trainImages :: Tensor Double <- fromCSVFile "mnist/train-images.csv" ',' "ij"
     labelImages  :: Tensor Double <- fromCSVFile "mnist/train-labels.csv" ',' "ij"
-
     t10kImages  :: Tensor Double <- fromCSVFile "mnist/t10k-images.csv" ',' "ij"
     l10kImages  :: Tensor Double <- fromCSVFile "mnist/t10k-labels.csv" ',' "ij"
 
@@ -49,8 +48,10 @@ getCSV = do
     let trainLabel t = scalarVal $ (labelImages $| ("i","t")) $$| ("it",[0,t])
     let t10kLabel t = scalarVal $ (l10kImages $| ("i","t")) $$| ("it",[0,t])
 
-    let trainResponses = Tensor.generate ("",[]) ("t",[60000]) (\_ [t] -> Vector.fromIndices "i" 10 $ \x -> if fromIntegral x == trainLabel t then 1.0 else 0.0)
-    let t10kResponses = Tensor.generate ("",[]) ("t",[10000]) (\_ [t] -> Vector.fromIndices "i" 10 $ \x -> if fromIntegral x == t10kLabel t then 1.0 else 0.0)
+    let trainResponses' = Tensor.generate ("",[]) ("t",[60000]) (\_ [t] -> Vector.fromIndices "i" 10 $ \x -> if fromIntegral x == trainLabel t then 1.0 else 0.0)
+    let t10kResponses' = Tensor.generate ("",[]) ("t",[10000]) (\_ [t] -> Vector.fromIndices "i" 10 $ \x -> if fromIntegral x == t10kLabel t then 1.0 else 0.0)
+    let trainResponses = trainResponses' |>>> "t"
+    let t10kResponses = t10kResponses' |>>> "t"
 
     let p = perceptron (Matrix.const "ij" 10 40 0) trainImages trainResponses
     let y0 = signum $ p $| ("i","j") * t10kImages $| ("j","t")
