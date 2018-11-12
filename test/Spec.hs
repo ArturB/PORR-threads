@@ -11,24 +11,26 @@ import           Multilinear.Generic.Serialize
 import qualified Multilinear.Vector as Vector
 import qualified Multilinear.Matrix as Matrix
 import qualified Data.Vector as Boxed
+import qualified Multilinear.Tensor as Tensor
 import           Data.Foldable
+import           System.IO
 
 nextWeights :: Tensor Double   -- ^ current weights
             -> (Tensor Double, -- ^ current input
                 Tensor Double) -- ^ expected output
             -> Tensor Double   -- ^ next weights
 nextWeights w (x,e) = 
-    let y = signum $ w $| ("i","j") * x $| ("j","")
-        d = e $| ("i","") - y $| ("i","")
-    in  w $| ("i","j") + x $| ("i","") * d $| ("","j")
+    let y = signum $ w $| ("a","b") * x $| ("b","")
+        d = (e $| ("c","")) - (y $| ("c",""))
+    in  (w $| ("i","j")) + ( ( x $| ("j","") \/ "j") * (d $| ("i","")) )
 
-perceptron :: Tensor Double -- ^ Training images
+perceptron :: Tensor Double
+           -> Tensor Double -- ^ Training images
            -> Tensor Double -- ^ Training labels
            -> Tensor Double -- ^ Trained weights
-perceptron ts es =
-    let w0 = Matrix.const "ij" 10 40 0
-        trainingVector = Boxed.generate 60000 $ \i -> (ts $| ("i","t") )$$| ("t",[i])
-        labelVector = Boxed.generate 60000 $ \i -> (es $| ("i","t")) $$| ("t",[i])
+perceptron w0 ts es =
+    let trainingVector = Boxed.generate 6000 $ \i -> (ts $| ("i","t")) $$| ("t",[i])
+        labelVector = Boxed.generate 6000 $ \i -> (es $| ("i","t")) $$| ("t",[i])
         imagesWithLabels = Boxed.zip trainingVector labelVector
     in  foldl' nextWeights w0 imagesWithLabels
 
@@ -41,13 +43,18 @@ getCSV = do
     t10kImages  :: Tensor Double <- fromCSVFile "mnist/t10k-images.csv" ',' "ij"
     l10kImages  :: Tensor Double <- fromCSVFile "mnist/t10k-labels.csv" ',' "ij"
 
-    let trainResponses = (\e -> Vector.fromIndices "i" 10 $ \x -> if fromIntegral x == e then 1.0 else 0.0) <$> labelImages
-    let t10kResponses = (\e -> Vector.fromIndices "i" 10 $ \x ->if fromIntegral x == e then 1.0 else 0.0) <$> l10kImages
+    lift $ print ""
+    lift $ print "Loaded CSV files..." >> hFlush stdout
 
-    let p = perceptron trainImages trainResponses
-    let y0 = p $| ("i","j") * t10kImages $| ("j","t")
+    let trainLabel t = scalarVal $ (labelImages $| ("i","t")) $$| ("it",[0,t])
+    let t10kLabel t = scalarVal $ (l10kImages $| ("i","t")) $$| ("it",[0,t])
 
-    lift $ print "\n"
+    let trainResponses = Tensor.generate ("",[]) ("t",[60000]) (\_ [t] -> Vector.fromIndices "i" 10 $ \x -> if fromIntegral x == trainLabel t then 1.0 else 0.0)
+    let t10kResponses = Tensor.generate ("",[]) ("t",[10000]) (\_ [t] -> Vector.fromIndices "i" 10 $ \x -> if fromIntegral x == t10kLabel t then 1.0 else 0.0)
+
+    let p = perceptron (Matrix.const "ij" 10 40 0) trainImages trainResponses
+    let y0 = signum $ p $| ("i","j") * t10kImages $| ("j","t")
+
     lift $ print $ (y0 $| ("i","t")) $$| ("t",[0])
 
 -- ENTRY POINT
