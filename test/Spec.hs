@@ -54,7 +54,7 @@ getCSV = do
     let t10kResponses = t10kResponses' |>>> "t"
 
     let p = perceptron (Matrix.const "ij" 10 40 0) trainImages trainResponses
-    let y0 = signum $ p $| ("i","j") * t10kImages $| ("j","t")
+    let y0 = p `seq` signum $ p $| ("i","j") * t10kImages $| ("j","t")
 
     lift $ print $ (y0 $| ("i","t")) $$| ("t",[0])
 
