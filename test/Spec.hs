@@ -29,8 +29,8 @@ perceptron :: Tensor Double
            -> Tensor Double -- ^ Training labels
            -> Tensor Double -- ^ Trained weights
 perceptron w0 ts es =
-    let trainingVector = Boxed.generate 6000 $ \i -> (ts $| ("i","t")) $$| ("t",[i])
-        labelVector = Boxed.generate 6000 $ \i -> (es $| ("i","t")) $$| ("t",[i])
+    let trainingVector = Boxed.generate 1000 $ \i -> (ts $| ("i","t")) $$| ("t",[i])
+        labelVector = Boxed.generate 1000 $ \i -> (es $| ("i","t")) $$| ("t",[i])
         imagesWithLabels = Boxed.zip trainingVector labelVector
     in  foldl' nextWeights w0 imagesWithLabels
 

@@ -38,6 +38,9 @@ executables:
     dependencies:
     - multilinear
     - multilinear-io
+    - either
+    - transformers
+    - vector
 
 tests:
   PORR-threads-test:
