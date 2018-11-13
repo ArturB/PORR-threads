@@ -25,12 +25,21 @@ dependencies:
 - base >= 4.7 && < 5
 ghc-options:
 - -O2
-- -Wall
+- -W
 
 executables:
-  PORR-threads:
+  porr-seq:
     main:                Main.hs
-    source-dirs:         app
+    source-dirs:         app/PORR-seq
+    dependencies:
+    - multilinear
+    - multilinear-io
+    - either
+    - transformers
+    - vector
+  porr-threads:
+    main:                Main.hs
+    source-dirs:         app/PORR-threads
     ghc-options:
     - -threaded
     - -rtsopts
@@ -43,7 +52,7 @@ executables:
     - vector
 
 tests:
-  PORR-threads-test:
+  PORR-test:
     main:                Spec.hs
     source-dirs:         test
     ghc-options:
