@@ -6,7 +6,6 @@ import           Control.Monad.Trans.Except
 import           Control.Monad.Trans.Class
 import           Data.Foldable
 import           Data.Maybe
-import qualified Data.Vector                   as Boxed
 import           Multilinear.Class
 import           Multilinear.Generic
 import           Multilinear.Generic.Serialize
@@ -14,7 +13,15 @@ import           Multilinear.Index
 import qualified Multilinear.Matrix            as Matrix
 import qualified Multilinear.Tensor            as Tensor
 import qualified Multilinear.Vector            as Vector
+import           Statistics.Distribution.Normal
 import           System.IO
+
+-- Number of iterations the perceptron is learned
+ln :: Int
+ln = 10
+
+sgn :: (Num a, Ord a) => a -> a
+sgn x = if x > 0 then 1 else 0
 
 mnistResponses :: Tensor Double -- ^ MNIST labels as read from CSV
                -> Tensor Double -- ^ MNIST network responses, coded in 1-N
@@ -35,25 +42,26 @@ imagesNum t =
     let t' = (t $| ("i","t")) <<<| "t"
     in  fromJust $ indexSize $ head $ indices t'
 
-nextWeights :: (Tensor Double, -- ^ actual input
-                Tensor Double) -- ^ expected output
-             -> Tensor Double  -- ^ current weights
-             -> Tensor Double  -- ^ next weights
-nextWeights (x,e) w  = 
-    let y = signum $ w $| ("a","b") * x $| ("b","c")
-        d = (e $| ("d","e")) - (y $| ("d","e"))
-    in  (w $| ("i","j")) + ( ( x $| ("j","") \/ "j") * (d $| ("i","")) )
+nextWeights :: Tensor Double -- ^ actual inputs
+            -> Tensor Double -- ^ expected outputs
+            -> Tensor Double -- ^ current weights
+            -> Tensor Double -- ^ next weights
+nextWeights _x _e _w  = 
+    let exNum = fromJust $ indexSize $ indices x !! 1
+        x = _x $| ("i","t")
+        e = _e $| ("a","t")
+        w = _w $| ("a","i")
+        y = sgn <$> w * x -- y $| ("a","t")
+        d = e - y -- d $| ("a","t")
+        incW = x * d * Vector.const "t" exNum 1.0 -- incW $| ("ai","")
+    in  w + incW \/ "i"
 
 perceptron :: Tensor Double -- ^ Training images
            -> Tensor Double -- ^ Training labels
            -> Tensor Double -- ^ Initial weights
+           -> Int           -- ^ Number of learning iterations
            -> Tensor Double -- ^ Trained weights
-perceptron ts es w0 =
-    let s = imagesNum ts `div` 60
-        trainingVector = Boxed.generate s $ \i -> (ts $| ("i","t")) $$| ("t",[i])
-        labelVector = Boxed.generate s $ \i -> (es $| ("i","t")) $$| ("t",[i])
-        imagesWithLabels = Boxed.zip trainingVector labelVector
-    in  foldr' nextWeights w0 imagesWithLabels
+perceptron ts es w0 n = foldr' (\_ w -> nextWeights ts es w) w0 [1..n]
 
 getCSV :: ExceptT String IO ()
 getCSV = do
@@ -81,8 +89,9 @@ learnPerceptron trainImages trainLabels t10kImages t10kLabels = do
     let trainResponses = mnistResponses trainLabels
     let t10kResponses  = mnistResponses t10kLabels
 
-    let p = iterate (perceptron trainImages trainResponses) (Matrix.const "ij" 10 40 0) !! 1
-    let y = p `seq` signum $ p $| ("i","j") * t10kImages $| ("j","t")
+    w0 <- (Matrix.randomDouble "ij" 10 40 $ normalDistr 0.0 1.0)
+    let p = perceptron trainImages trainResponses w0 ln
+    let y = sgn <$> p $| ("i","j") * t10kImages $| ("j","t")
 
     putStrLn "y[0] = "
     hFlush stdout

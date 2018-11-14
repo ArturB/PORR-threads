@@ -4,7 +4,7 @@ module Main (
 
 import           Control.Monad.Trans.Except
 import           Control.Monad.Trans.Class
-import           Data.Foldable
+--import           Data.Foldable
 import           Data.Maybe
 import           Multilinear.Class
 import           Multilinear.Generic
@@ -13,11 +13,15 @@ import           Multilinear.Index
 import qualified Multilinear.Matrix            as Matrix
 import qualified Multilinear.Tensor            as Tensor
 import qualified Multilinear.Vector            as Vector
+import           Statistics.Distribution.Normal
 import           System.IO
 
 -- Number of iterations the perceptron is learned
 ln :: Int
 ln = 10
+
+sgn :: (Num a, Ord a) => a -> a
+sgn x = if x > 0 then 1 else 0
 
 mnistResponses :: Tensor Double -- ^ MNIST labels as read from CSV
                -> Tensor Double -- ^ MNIST network responses, coded in 1-N
@@ -47,17 +51,17 @@ nextWeights _x _e _w  =
         x = _x $| ("i","t")
         e = _e $| ("a","t")
         w = _w $| ("a","i")
-        y = signum $ w * x -- y $| ("a","t")
+        y = sgn <$> w * x -- y $| ("a","t")
         d = e - y -- d $| ("a","t")
-        incW = x \/ "i" * d * Vector.const "t" exNum 1.0 -- incW $| ("a","i")
-    in  w + incW
+        incW = x * d * Vector.const "t" exNum 1.0 -- incW $| ("ai","")
+    in  w + incW \/ "i"
 
 perceptron :: Tensor Double -- ^ Training images
            -> Tensor Double -- ^ Training labels
            -> Tensor Double -- ^ Initial weights
            -> Int           -- ^ Number of learning iterations
            -> Tensor Double -- ^ Trained weights
-perceptron ts es w0 n = foldr' (\_ w -> nextWeights ts es w) w0 [1..n]
+perceptron ts es w0 n = iterate (nextWeights ts es) w0 !! n
 
 getCSV :: ExceptT String IO ()
 getCSV = do
@@ -85,8 +89,10 @@ learnPerceptron trainImages trainLabels t10kImages t10kLabels = do
     let trainResponses = mnistResponses trainLabels
     let t10kResponses  = mnistResponses t10kLabels
 
-    let p = perceptron trainImages trainResponses (Matrix.const "ij" 10 40 0) ln
-    let y = p `seq` signum $ p $| ("i","j") * t10kImages $| ("j","t")
+    w0 <- (Matrix.randomDouble "ij" 10 40 $ normalDistr 0.0 2.0)
+    let p = perceptron trainImages trainResponses w0 ln
+    let y = sgn <$> p $| ("i","j") * t10kImages $| ("j","t")
+    
 
     putStrLn "y[0] = "
     hFlush stdout
