@@ -2,6 +2,7 @@ module Main (
     main
 ) where
 
+import           Control.DeepSeq
 import           Control.Monad.Trans.Except
 import           Control.Monad.Trans.Class
 --import           Data.Foldable
@@ -18,7 +19,7 @@ import           System.IO
 
 -- Number of iterations the perceptron is learned
 ln :: Int
-ln = 10
+ln = 100
 
 sgn :: (Num a, Ord a) => a -> a
 sgn x = if x > 0 then 1 else 0
@@ -51,10 +52,10 @@ nextWeights _x _e _w  =
         x = _x $| ("i","t")
         e = _e $| ("a","t")
         w = _w $| ("a","i")
-        y = sgn <$> w * x -- y $| ("a","t")
+        y = sgn `Multilinear.Class.map` w * x -- y $| ("a","t")
         d = e - y -- d $| ("a","t")
         incW = x * d * Vector.const "t" exNum 1.0 -- incW $| ("ai","")
-    in  w + incW \/ "i"
+    in  incW `deepseq` w + incW \/ "i"
 
 perceptron :: Tensor Double -- ^ Training images
            -> Tensor Double -- ^ Training labels
@@ -91,11 +92,12 @@ learnPerceptron trainImages trainLabels t10kImages t10kLabels = do
 
     w0 <- (Matrix.randomDouble "ij" 10 40 $ normalDistr 0.0 2.0)
     let p = perceptron trainImages trainResponses w0 ln
-    let y = sgn <$> p $| ("i","j") * t10kImages $| ("j","t")
+    let y = p `deepseq` sgn `Multilinear.Class.map` (p $| ("i","j") * t10kImages $| ("j","t"))
     
 
     putStrLn "y[0] = "
     hFlush stdout
+    --mapM_ (\i -> print $ (y $| ("i","t")) $$| ("t",[i])) [0..9]
     print $ (y $| ("i","t")) $$| ("t",[0])
     putStrLn "expected = "
     print $ (t10kResponses $| ("i","t")) $$| ("t",[0])

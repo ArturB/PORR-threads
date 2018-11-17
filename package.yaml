@@ -32,6 +32,7 @@ executables:
     main:                Main.hs
     source-dirs:         app/PORR-seq
     dependencies:
+    - deepseq
     - multilinear
     - multilinear-io
     - either

@@ -51,7 +51,7 @@ nextWeights _x _e _w  =
         x = _x $| ("i","t")
         e = _e $| ("a","t")
         w = _w $| ("a","i")
-        y = sgn <$> w * x -- y $| ("a","t")
+        y = sgn `Multilinear.Class.map` w * x -- y $| ("a","t")
         d = e - y -- d $| ("a","t")
         incW = x * d * Vector.const "t" exNum 1.0 -- incW $| ("ai","")
     in  w + incW \/ "i"
@@ -91,7 +91,7 @@ learnPerceptron trainImages trainLabels t10kImages t10kLabels = do
 
     w0 <- (Matrix.randomDouble "ij" 10 40 $ normalDistr 0.0 1.0)
     let p = perceptron trainImages trainResponses w0 ln
-    let y = sgn <$> p $| ("i","j") * t10kImages $| ("j","t")
+    let y = sgn `Multilinear.Class.map` (p $| ("i","j") * t10kImages $| ("j","t"))
 
     putStrLn "y[0] = "
     hFlush stdout
