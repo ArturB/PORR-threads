@@ -23,6 +23,11 @@ default-extensions:
 - ScopedTypeVariables
 dependencies:
 - base >= 4.7 && < 5
+- deepseq
+- either
+- multilinear
+- multilinear-io
+- transformers
 ghc-options:
 - -O2
 - -W
@@ -31,14 +36,6 @@ executables:
   mnist-sequential:
     main:                Main.hs
     source-dirs:         app/mnist-sequential
-    dependencies:
-    - deepseq
-    - multilinear
-    - multilinear-io
-    - either
-    - statistics
-    - transformers
-    - vector
   mnist-multicore:
     main:                Main.hs
     source-dirs:         app/mnist-multicore
@@ -47,12 +44,7 @@ executables:
     - -rtsopts
     - -with-rtsopts=-N
     dependencies:
-    - multilinear
-    - multilinear-io
-    - either
-    - statistics
-    - transformers
-    - vector
+    - parallel
 
 tests:
   PORR-test:
@@ -62,9 +54,3 @@ tests:
     - -threaded
     - -rtsopts
     - -with-rtsopts=-N
-    dependencies:
-    - multilinear
-    - multilinear-io
-    - either
-    - transformers
-    - vector

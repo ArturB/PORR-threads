@@ -4,6 +4,7 @@ module Perceptron (
     commiteeAnswer, commiteeAnswers, commiteeAccuracy
 ) where
 
+import qualified Control.Parallel.Strategies   as Parallel
 import           Data.Foldable
 import           Data.Maybe
 import           Multilinear.Class
@@ -128,7 +129,8 @@ commiteeAnswers ::
 commiteeAnswers comm testImages = 
     let iNum = imagesNum testImages
         testAnswers = (\i -> commiteeAnswer comm (_mergeScalars (testImages $$| ("t",[i]))) ) <$> [0 .. iNum - 1]
-    in  Form.fromIndices "t" iNum (testAnswers !!)
+        testAnswers' = testAnswers `Parallel.using` Parallel.parListChunk (iNum `div` 8) Parallel.rdeepseq
+    in  Form.fromIndices "t" iNum (testAnswers' !!)
 
 -- | Calculate commitee accuracy
 commiteeAccuracy ::

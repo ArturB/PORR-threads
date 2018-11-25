@@ -4,8 +4,9 @@ module Main (
 
 import           Control.Monad.Trans.Except
 import           Control.Monad.Trans.Class
-import           Multilinear
-import           Multilinear.Generic.Serialize
+import           Multilinear.Class
+import           Multilinear.Generic.Sequential
+import           Multilinear.Generic.Sequential.Serialize
 import           Perceptron
 import           System.IO
 
