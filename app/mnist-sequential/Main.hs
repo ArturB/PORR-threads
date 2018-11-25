@@ -38,7 +38,7 @@ main = do
     putStrLn $ 
          "\nLoaded CSV files. Learning perceptron...\n \
         \ Iterations: " ++ show learnIters ++ "\n \
-        \ PCA components:" ++ show (pcaNum trainImages) ++ "\n \
+        \ PCA components: " ++ show (pcaNum trainImages) ++ "\n \
         \ Training images: " ++ show (imagesNum trainImages)
     hFlush stdout
     -- generate 45 number pairs, according to 45 binary perceptrons commitee
