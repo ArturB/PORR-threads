@@ -1,7 +1,7 @@
 module Perceptron (
     imagesNum, pcaNum, perceptron, sgn, 
     learnBinaryPerceptron, testBinaryPerceptron,
-    commiteeAnswer, commiteeAnswers
+    commiteeAnswer, commiteeAnswers, commiteeAccuracy
 ) where
 
 import           Data.Foldable
@@ -123,9 +123,26 @@ commiteeAnswer comm inp =
 -- | Answers of perceptron commitee on set of input examples
 commiteeAnswers :: 
     [(Int,Int,Tensor Double)] -- ^ Binary perceptrons commitee
- -> Tensor Double         -- ^ Inputs to classify - one digit per column
- -> Tensor Double            -- ^ commitee answers
+ -> Tensor Double             -- ^ Inputs to classify - one digit per column
+ -> Tensor Double             -- ^ commitee answers
 commiteeAnswers comm testImages = 
     let iNum = imagesNum testImages
         testAnswers = (\i -> commiteeAnswer comm (_mergeScalars (testImages $$| ("t",[i]))) ) <$> [0 .. iNum - 1]
     in  Form.fromIndices "t" iNum (testAnswers !!)
+
+-- | Calculate commitee accuracy
+commiteeAccuracy ::
+    [(Int,Int,Tensor Double)] -- ^ Binary perceptrons commitee
+ -> Tensor Double             -- ^ Inputs to classify - one digit per column
+ -> Tensor Double             -- ^ Labels
+ -> Double                    -- ^ Accuracy
+commiteeAccuracy comm testImages testLabels = 
+    let imgNo = imagesNum testImages
+        commAnswers = commiteeAnswers comm testImages
+        -- check with referential labels
+        validAnswers = sum $ fmap
+            (\i -> if testLabels $$| ("t",[i]) == commAnswers $$| ("t",[i]) then 1 else 0)
+            [0.. imgNo - 1]
+        -- calculate and print perceptron accuracy
+        accuracy = validAnswers / fromIntegral imgNo
+    in  fromIntegral (floor (1000 * accuracy)) / 10
