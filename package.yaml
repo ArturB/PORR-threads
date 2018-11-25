@@ -28,9 +28,9 @@ ghc-options:
 - -W
 
 executables:
-  porr-seq:
+  mnist-sequential:
     main:                Main.hs
-    source-dirs:         app/PORR-seq
+    source-dirs:         app/mnist-sequential
     dependencies:
     - deepseq
     - multilinear
@@ -39,9 +39,9 @@ executables:
     - statistics
     - transformers
     - vector
-  porr-threads:
+  mnist-multicore:
     main:                Main.hs
-    source-dirs:         app/PORR-threads
+    source-dirs:         app/mnist-multicore
     ghc-options:
     - -threaded
     - -rtsopts
