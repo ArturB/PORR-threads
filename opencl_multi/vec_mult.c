@@ -25,7 +25,8 @@ void randomMemInit(double* data, int size)
 
    for (i = 0; i < size; ++i)
    {
-    data[i] = rand() / (double)RAND_MAX;
+    // data[i] = rand() / (double)RAND_MAX;
+    data[i] = i;
    }
 }
 
@@ -218,8 +219,8 @@ int main(int argc, char** argv)
    }
  
    localWorkSize[0] = 1;
-   localWorkSize[1] = 1;
-   globalWorkSize[0] = 1;
+   localWorkSize[1] = size_A;
+   globalWorkSize[0] = size_A;
    globalWorkSize[1] = size_A;
  
    err = clEnqueueNDRangeKernel(commands, kernel, 2, NULL, globalWorkSize, localWorkSize, 0, NULL, NULL);
@@ -250,7 +251,6 @@ int main(int argc, char** argv)
    }
    printf("\n");
 
-  
    printf("Matrix multiplication completed...\n"); 
 
    //Shutdown and cleanup
