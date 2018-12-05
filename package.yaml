@@ -32,10 +32,53 @@ ghc-options:
 - -O2
 - -W
 
+benchmarks:
+  mnist-sequential:
+    main:                Bench.hs
+    source-dirs:         benchmark/mnist-sequential
+    dependencies:
+    - criterion
+    - PORR-thread
+  mnist-multicore:
+    main:                Bench.hs
+    source-dirs:         benchmark/mnist-multicore
+    ghc-options:
+    - -threaded
+    - -rtsopts
+    - -with-rtsopts=-N
+    dependencies:
+    - criterion
+    - parallel
+    - PORR-thread
+  mnist-2-cores:
+    main:                Bench.hs
+    source-dirs:         benchmark/mnist-2-cores
+    ghc-options:
+    - -threaded
+    - -rtsopts
+    - -with-rtsopts=-N2
+    dependencies:
+    - criterion
+    - parallel
+    - PORR-thread
+  mnist-3-cores:
+    main:                Bench.hs
+    source-dirs:         benchmark/mnist-3-cores
+    ghc-options:
+    - -threaded
+    - -rtsopts
+    - -with-rtsopts=-N3
+    dependencies:
+    - criterion
+    - parallel
+    - PORR-thread
+
 executables:
   mnist-sequential:
     main:                Main.hs
     source-dirs:         app/mnist-sequential
+    dependencies:
+    - PORR-thread
   mnist-multicore:
     main:                Main.hs
     source-dirs:         app/mnist-multicore
@@ -45,6 +88,27 @@ executables:
     - -with-rtsopts=-N
     dependencies:
     - parallel
+    - PORR-thread
+  mnist-2-cores:
+    main:                Main.hs
+    source-dirs:         app/mnist-2-cores
+    ghc-options:
+    - -threaded
+    - -rtsopts
+    - -with-rtsopts=-N2
+    dependencies:
+    - parallel
+    - PORR-thread
+  mnist-3-cores:
+    main:                Main.hs
+    source-dirs:         app/mnist-3-cores
+    ghc-options:
+    - -threaded
+    - -rtsopts
+    - -with-rtsopts=-N3
+    dependencies:
+    - parallel
+    - PORR-thread
 
 tests:
   PORR-test:
@@ -54,3 +118,5 @@ tests:
     - -threaded
     - -rtsopts
     - -with-rtsopts=-N
+    dependencies:
+    - PORR-thread
