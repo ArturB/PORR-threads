@@ -5,7 +5,7 @@ let "TODAY_SEC = $( date +%s ) % 86400"
 BUILD_ID="$( date +%y%j ).$TODAY_SEC"
 
 # Build whole project: library, tests, benchmarks, documentation 
-if stack build --fast --test --no-run-tests --bench --no-run-benchmarks --haddock; then
+if stack build --test --no-run-tests --bench --no-run-benchmarks --haddock; then
     echo -e "Build successful!"
     if [ "$1" != "--nogit" ] ; then
         echo -e "Pushing changes to git..."
