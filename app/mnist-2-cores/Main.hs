@@ -2,7 +2,7 @@ module Main (
     main
 ) where
 
-import           PORR.Mnist.MultiCore
+import           PORR2.Mnist.MultiCore
 
 -- Number of iterations the perceptron is learned
 learnIters :: Int
