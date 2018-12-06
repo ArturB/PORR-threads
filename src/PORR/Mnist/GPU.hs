@@ -2,6 +2,7 @@ module PORR.Mnist.GPU (
     getMnistCSV, testAccuracy
 ) where
 
+import           Control.DeepSeq
 import           Control.Monad.Trans.Except
 import           Control.Monad.Trans.Class
 import qualified Control.Parallel.Strategies              as Parallel
@@ -27,7 +28,8 @@ getMnistCSV = do
     -- MNIST labels should be 1D functional, but are read from CSV file always as 2D matrix
     let trainLabels = (trainLabels' $| ("","t")) $$| ("i",[0]) 
     let t10kLabels  = (t10kLabels'  $| ("","t")) $$| ("i",[0]) 
-    lift $ return (trainImages, trainLabels, t10kImages, t10kLabels)
+    trainImages `deepseq` trainLabels `deepseq` t10kImages `deepseq` t10kLabels `deepseq` 
+        lift $ return (trainImages, trainLabels, t10kImages, t10kLabels)
 
 {-# INLINE testAccuracy #-}
 testAccuracy :: Int -> IO ()
