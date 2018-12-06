@@ -20,6 +20,7 @@ module Multilinear.Generic.GPU.Serialize (
 ) where
 
 import           Codec.Compression.GZip
+import           Control.DeepSeq
 import           Control.Monad.Trans.Class
 import           Control.Monad.Trans.Except
 import           Control.Monad.Trans.Maybe
@@ -126,11 +127,12 @@ toCSVFile t = MultiCore.toCSVFile (Generic.gpuToMultiCore t)
 
 {-| Read tensor from CSV -}
 fromCSVFile :: (
-  FromField a, Unboxed.Unbox a, Storable a
+  FromField a, Unboxed.Unbox a, Storable a, NFData a
   ) => String -- ^ File path. 
     -> Char   -- ^ CSV separator
     -> String -- ^ Matrix indices names
     -> ExceptT String IO (Tensor a)  -- ^ Deserialized tensor or an error message
 fromCSVFile path sep inames = do
     t <- MultiCore.fromCSVFile path sep inames
-    return $ Generic.multiCoreToGPU t
+    let g = Generic.multiCoreToGPU t
+    g `deepseq` return g

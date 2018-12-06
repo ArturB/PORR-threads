@@ -28,8 +28,7 @@ getMnistCSV = do
     -- MNIST labels should be 1D functional, but are read from CSV file always as 2D matrix
     let trainLabels = (trainLabels' $| ("","t")) $$| ("i",[0]) 
     let t10kLabels  = (t10kLabels'  $| ("","t")) $$| ("i",[0]) 
-    trainImages `deepseq` trainLabels `deepseq` t10kImages `deepseq` t10kLabels `deepseq` 
-        lift $ return (trainImages, trainLabels, t10kImages, t10kLabels)
+    lift $ return (trainImages, trainLabels, t10kImages, t10kLabels)
 
 {-# INLINE testAccuracy #-}
 testAccuracy :: Int -> IO ()

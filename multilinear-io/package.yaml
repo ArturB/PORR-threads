@@ -41,6 +41,7 @@ library:
   - cereal
   - cereal-vector
   - conduit
+  - deepseq
   - either
   - multilinear
   - transformers
