@@ -37,21 +37,28 @@ trap ctrl_c INT
 while [ true ] ; do
     sleep 1
     if [ -f $BNAME ] ; then
-        mv $BNAME benchmark/gpu-results.html
+        mv $BNAME benchmark/2-cores-benchmark.html
         break
     fi
 done
 while [ true ] ; do
     sleep 1
     if [ -f $BNAME ] ; then
-        mv $BNAME benchmark/multicore-results.html
+        mv $BNAME benchmark/3-cores-benchmark.html
         break
     fi
 done
 while [ true ] ; do
     sleep 1
     if [ -f $BNAME ] ; then
-        mv $BNAME benchmark/sequential-results.html
+        mv $BNAME benchmark/multicore-benchmark.html
+        break
+    fi
+done
+while [ true ] ; do
+    sleep 1
+    if [ -f $BNAME ] ; then
+        mv $BNAME benchmark/sequential-benchmark.html
         break
     fi
 done
