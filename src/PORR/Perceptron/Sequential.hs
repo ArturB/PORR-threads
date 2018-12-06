@@ -13,30 +13,25 @@ import qualified Multilinear.Form              as Form
 import qualified Multilinear.Vector            as Vector
 
 -- | Binary (0,1) signum function
-{-# INLINE sgn #-}
 sgn :: (Num a, Ord a) => a -> a
 sgn x = if x > 0 then 1 else 0
 
-{-# INLINE rsgn #-}
 rsgn :: (Num a, Ord a) => a -> a
 rsgn x = if x < 0 then 1 else 0
 
 -- | Return number of images (indexed by lower index) in given data
-{-# INLINE imagesNum #-}
 imagesNum :: Tensor Double -> Int
 imagesNum t = 
     let t' = (t $| ("i","t")) <<<| "t"
     in  fromJust $ indexSize $ head $ indices t'
 
 -- | Return number of PCA components in given data
-{-# INLINE pcaNum #-}
 pcaNum :: Tensor Double -> Int
 pcaNum t = 
     let t' = (t $| ("i","t")) <<<| "i"
     in  fromJust $ indexSize $ head $ indices t'
 
 -- | calculate weights of perceptron in next learning step
-{-# INLINE nextWeights #-}
 nextWeights :: Tensor Double -- ^ positive class inputs
             -> Tensor Double -- ^ negative class inputs
             -> Tensor Double -- ^ current weights
@@ -54,7 +49,6 @@ nextWeights _xpos _xneg _w  =
     in  w + incWpos + incWneg
 
 -- | learn perceptron with given images and given number of learning iterations
-{-# INLINE perceptron #-}
 perceptron :: Tensor Double -- ^ Positive samples
            -> Tensor Double -- ^ Negative samples
            -> Tensor Double -- ^ Initial weights
@@ -66,7 +60,6 @@ perceptron pos neg =
             if n == 0 then x else apply f (f x) (n - 1)
 
 -- | Learn binary perceptron with given training data
-{-# INLINE learnBinaryPerceptron #-}
 learnBinaryPerceptron :: 
     Tensor Double -- ^ training images
  -> Tensor Double -- ^ training labels
@@ -83,7 +76,6 @@ learnBinaryPerceptron trainImages' trainLabels' (pos,neg) learnIters =
     in  perceptron trainPositiveImages trainNegativeImages w0 learnIters
 
 -- | Test binary perceptron with given testing data and labels
-{-# INLINE testBinaryPerceptron #-}
 testBinaryPerceptron ::
     Tensor Double -- ^ perceptron to test
  -> Tensor Double -- ^ testing samples
@@ -109,7 +101,6 @@ testBinaryPerceptron p testImages' testLabels' (pos,neg) =
     --in error $ show (order p) ++ ", " ++ show (order positiveImages)
 
 -- | Given a binary perceptron commitee, try to classify the input using majority voting
-{-# INLINE commiteeAnswer #-}
 commiteeAnswer :: 
     [(Int,Int,Tensor Double)] -- ^ Binary perceptrons commitee
  -> Tensor Double             -- ^ Inputs to classify - one digit per column
@@ -131,7 +122,6 @@ commiteeAnswer comm inp =
     in  fromIntegral maxClass
 
 -- | Answers of perceptron commitee on set of input examples
-{-# INLINE commiteeAnswers #-}
 commiteeAnswers :: 
     [(Int,Int,Tensor Double)] -- ^ Binary perceptrons commitee
  -> Tensor Double             -- ^ Inputs to classify - one digit per column
@@ -142,7 +132,6 @@ commiteeAnswers comm testImages =
     in  Form.fromIndices "t" iNum (testAnswers !!)
 
 -- | Calculate commitee accuracy
-{-# INLINE commiteeAccuracy #-}
 commiteeAccuracy ::
     [(Int,Int,Tensor Double)] -- ^ Binary perceptrons commitee
  -> Tensor Double             -- ^ Inputs to classify - one digit per column
