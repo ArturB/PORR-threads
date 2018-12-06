@@ -17,6 +17,7 @@ fi
 rm -f benchmark/results.html
 rm -f benchmark/2-cores-benchmark.html
 rm -f benchmark/3-cores-benchmark.html
+rm -f benchmark/gpu-benchmark.html
 rm -f benchmark/multicore-benchmark.html
 rm -f benchmark/sequential-benchmark.html
 
