@@ -15,8 +15,10 @@ fi
 
 # Remove earlier benchmarks result if present
 rm -f benchmark/results.html
-rm -f benchmark/multicore-results.html
-rm -f benchmark/sequential-results.html
+rm -f benchmark/2-cores-benchmark.html
+rm -f benchmark/3-cores-benchmark.html
+rm -f benchmark/multicore-benchmark.html
+rm -f benchmark/sequential-benchmark.html
 
 # Perform all benchmarks in background and move on
 stack bench --ba "--output $BNAME" &
