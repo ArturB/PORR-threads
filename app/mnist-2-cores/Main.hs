@@ -15,7 +15,6 @@ learnIters :: Int
 learnIters = 20
 
 -- | read MNIST images from files
-{-# INLINE getMnistCSV #-}
 getMnistCSV :: ExceptT String IO (Tensor Double, Tensor Double, Tensor Double, Tensor Double)
 getMnistCSV = do
     -- read all input files
