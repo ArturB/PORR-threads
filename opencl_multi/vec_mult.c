@@ -12,18 +12,15 @@
 #include <stdbool.h>
 
 ////////////////////////////////////////////////////////////////////////////////
-#define WA 1024
-#define WB 1024
-#define WC 1024
-#define WD 1
+#define WA 2048
+#define WB 2048
 ////////////////////////////////////////////////////////////////////////////////
 
 
 long LoadOpenCLKernel(char const* path, char **buf);
 
 /*LOAD ME TO HASKELL */
-int multAndAddVectors(double* result, 
-                          double* A, 
+double multAndAddVectors(double* A, 
                           double* B,
                           const int len)
 {
@@ -162,9 +159,9 @@ int multAndAddVectors(double* result,
     //    printf("Error: Failed to read output array! %d\n", err);
        exit(1);
    }
-    
+    double result = 0;
     for(int i = 0; i<len; ++i )
-        result[0] += C[i];
+        result += C[i];
 //    printf("%f\n", result[0]);
 //    printf("\n\nMatrix C (Results)\n");
 //    printf("\n");
@@ -184,7 +181,7 @@ int multAndAddVectors(double* result,
    clReleaseContext(context);
 
     
-
+    return result;
  }
 // Allocates a matrix with random float entries.
 void randomMemInit(double* data, int size)
@@ -273,13 +270,8 @@ int main(int argc, char** argv)
    randomMemInit(h_A, size_A);
    randomMemInit(h_B, size_B);
  
-   double* result = (double*) malloc(1);
-
-   multAndAddVectors(result, 
-          h_A, 
-          h_B,
-          size_A);
-    printf("\nRESULT=%f\n", result[0]);
+   double result = multAndAddVectors(h_A, h_B, size_A);
+    printf("\nRESULT=%f\n", result);
 
    //Shutdown and cleanup
    free(h_A);
