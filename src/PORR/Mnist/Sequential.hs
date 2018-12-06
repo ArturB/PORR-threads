@@ -11,6 +11,7 @@ import           PORR.Perceptron.Sequential
 import           System.IO
 
 -- | read MNIST images from files
+{-# INLINE getMnistCSV #-}
 getMnistCSV :: ExceptT String IO (Tensor Double, Tensor Double, Tensor Double, Tensor Double)
 getMnistCSV = do
     -- read all input files
@@ -27,6 +28,7 @@ getMnistCSV = do
     let t10kLabels  = (t10kLabels'  $| ("","t")) $$| ("i",[0]) 
     lift $ return (trainImages, trainLabels, t10kImages, t10kLabels)
 
+{-# INLINE testAccuracy #-}
 testAccuracy :: Int -> IO ()
 testAccuracy learnIters = do
     Right (trainImages, trainLabels, testImages, testLabels) <- runExceptT getMnistCSV
