@@ -27,19 +27,23 @@ dependencies:
 - either
 - multilinear
 - multilinear-io
+- parallel
 - transformers
 ghc-options:
 - -O2
 - -W
 
+library:
+  source-dirs: src
+
 benchmarks:
-  mnist-sequential:
+  mnist-sequential-bench:
     main:                Bench.hs
     source-dirs:         benchmark/mnist-sequential
     dependencies:
     - criterion
     - PORR-thread
-  mnist-multicore:
+  mnist-multicore-bench:
     main:                Bench.hs
     source-dirs:         benchmark/mnist-multicore
     ghc-options:
@@ -48,9 +52,8 @@ benchmarks:
     - -with-rtsopts=-N
     dependencies:
     - criterion
-    - parallel
     - PORR-thread
-  mnist-2-cores:
+  mnist-2-cores-bench:
     main:                Bench.hs
     source-dirs:         benchmark/mnist-2-cores
     ghc-options:
@@ -59,9 +62,8 @@ benchmarks:
     - -with-rtsopts=-N2
     dependencies:
     - criterion
-    - parallel
     - PORR-thread
-  mnist-3-cores:
+  mnist-3-cores-bench:
     main:                Bench.hs
     source-dirs:         benchmark/mnist-3-cores
     ghc-options:
@@ -70,7 +72,6 @@ benchmarks:
     - -with-rtsopts=-N3
     dependencies:
     - criterion
-    - parallel
     - PORR-thread
 
 executables:
@@ -87,7 +88,6 @@ executables:
     - -rtsopts
     - -with-rtsopts=-N
     dependencies:
-    - parallel
     - PORR-thread
   mnist-2-cores:
     main:                Main.hs
@@ -97,7 +97,6 @@ executables:
     - -rtsopts
     - -with-rtsopts=-N2
     dependencies:
-    - parallel
     - PORR-thread
   mnist-3-cores:
     main:                Main.hs
@@ -107,7 +106,6 @@ executables:
     - -rtsopts
     - -with-rtsopts=-N3
     dependencies:
-    - parallel
     - PORR-thread
 
 tests:
