@@ -1,0 +1,106 @@
+name:                multilinear-io
+version:             0.5.0.0
+github:              "ArturB/multilinear-io"
+license:             BSD3
+author:              "Artur M. Brodzki"
+maintainer:          "artur@brodzki.org"
+copyright:           "2018 Artur M. Brodzki"
+
+extra-source-files:
+- README.md
+- ChangeLog.md
+
+# Metadata used when publishing your package
+synopsis:            Conduit-based input/output capability for multilinear package. 
+category:            Machine learning
+
+# To avoid duplicated efforts in documentation and dealing with the
+# complications of embedding Haddock markup inside cabal files, it is
+# common to point users to the README.md file.
+description:         "Conduit-based input & output capability for multilinear package <https://hackage.haskell.org/package/multilinear>. Supports various file formats: binary, CSV, JSON. More information available on GitHub: <https://github.com/ArturB/multilinear-io#readme>"
+
+dependencies:
+- base >= 4.7 && < 5
+ghc-options:
+- -O2
+- -W
+
+default-extensions:
+- DeriveGeneric
+- FlexibleContexts
+- FlexibleInstances
+- MultiParamTypeClasses
+- ScopedTypeVariables
+
+library:
+  source-dirs: src
+  dependencies:
+  - aeson
+  - bytestring
+  - cassava
+  - cereal
+  - cereal-vector
+  - conduit
+  - either
+  - multilinear
+  - transformers
+  - vector
+  - zlib
+
+tests:
+  binary:
+    main:                Spec.hs
+    source-dirs:         test/binary
+    ghc-options:
+    - -threaded
+    - -rtsopts
+    - -with-rtsopts=-N  
+    dependencies:
+    - directory
+    - either
+    - multilinear
+    - multilinear-io
+    - transformers
+  json:
+    main:                Spec.hs
+    source-dirs:         test/json
+    ghc-options:
+    - -threaded
+    - -rtsopts
+    - -with-rtsopts=-N  
+    dependencies:
+    - directory
+    - either
+    - multilinear
+    - multilinear-io
+    - transformers
+  csv:
+    main:                Spec.hs
+    source-dirs:         test/csv
+    ghc-options:
+    - -threaded
+    - -rtsopts
+    - -with-rtsopts=-N  
+    dependencies:
+    - directory
+    - either
+    - multilinear
+    - multilinear-io
+    - transformers
+
+benchmarks:
+  multilinear-io-bench:
+    main:                Bench.hs
+    source-dirs:         benchmark
+    ghc-options:
+    - -threaded
+    - -rtsopts
+    - -with-rtsopts=-N
+    dependencies:
+    - criterion
+    - directory
+    - multilinear
+    - multilinear-io
+    - deepseq
+    - either
+    - transformers

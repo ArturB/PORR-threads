@@ -1,0 +1,10 @@
+# Untracked directiories
+*.stack-work*
+*.vscode*
+
+# Untracked files extensions
+*.cabal
+*.csv*
+*.zlib*
+*.json*
+*.html*

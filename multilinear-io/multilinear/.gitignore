@@ -1,0 +1,8 @@
+# Untracked directories
+*.stack-work*
+*.vscode*
+
+# Untracked files extensions
+*.cabal
+*.html*
+*.prof

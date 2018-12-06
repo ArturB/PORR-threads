@@ -1,0 +1,179 @@
+name:                multilinear
+version:             0.5.0.0
+github:              "ArturB/multilinear"
+license:             BSD3
+author:              "Artur M. Brodzki"
+maintainer:          "artur@brodzki.org"
+copyright:           "2018 Artur M. Brodzki"
+
+extra-source-files:
+- README.md
+- ChangeLog.md
+
+# Metadata used when publishing your package
+synopsis:            Comprehensive and efficient (multi)linear algebra implementation. 
+category:            Machine learning
+
+# To avoid duplicated efforts in documentation and dealing with the
+# complications of embedding Haddock markup inside cabal files, it is
+# common to point users to the README.md file.
+description:         "Comprehensive and efficient (multi)linear algebra implementation, based on generic tensor formalism and concise Ricci-Curbastro index syntax. More information available on GitHub: <https://github.com/ArturB/multilinear#readme>"
+
+dependencies:
+- base >= 4.7 && < 5
+ghc-options:
+- -O2
+- -W
+
+default-extensions:
+- DeriveGeneric
+- FlexibleContexts
+- FlexibleInstances
+- ForeignFunctionInterface 
+- GADTs
+- GeneralizedNewtypeDeriving
+- LambdaCase
+- MultiParamTypeClasses
+- ScopedTypeVariables
+- StandaloneDeriving
+- TypeFamilies
+- UndecidableInstances
+
+library:
+  source-dirs: src
+  c-sources:
+  - cbits/dot.c
+  cc-options: -O3
+  dependencies:
+  - containers
+  - deepseq
+  - parallel
+  - vector
+
+tests:
+  sequential:
+    main:                Spec.hs
+    source-dirs:         test/sequential
+    ghc-options:
+    - -threaded
+    - -rtsopts
+    - -with-rtsopts=-N  
+    dependencies:
+    - containers
+    - multilinear
+    - deepseq
+    - QuickCheck
+    - quickcheck-instances
+    - generic-random
+  multicore:
+    main:                Spec.hs
+    source-dirs:         test/multicore
+    ghc-options:
+    - -threaded
+    - -rtsopts
+    - -with-rtsopts=-N  
+    dependencies:
+    - containers
+    - multilinear
+    - deepseq
+    - QuickCheck
+    - quickcheck-instances
+    - generic-random
+  gpu:
+    main:                Spec.hs
+    source-dirs:         test/gpu
+    ghc-options:
+    - -threaded
+    - -rtsopts
+    - -with-rtsopts=-N  
+    dependencies:
+    - containers
+    - multilinear
+    - deepseq
+    - QuickCheck
+    - quickcheck-instances
+    - generic-random
+
+benchmarks:
+  sequential-time:
+    main:                Bench.hs
+    source-dirs:         benchmark/sequential/time
+    dependencies:
+    - criterion
+    - multilinear
+  sequential-memory:
+    main:                Bench.hs
+    source-dirs:         benchmark/sequential/memory
+    dependencies:
+    - multilinear
+    - weigh
+  sequential-profile:
+    main:                Bench.hs
+    source-dirs:         benchmark/sequential/profile
+    dependencies:
+    - deepseq
+    - multilinear
+  multicore-time:
+    main:                Bench.hs
+    source-dirs:         benchmark/multicore/time
+    ghc-options:
+    - -threaded
+    - -rtsopts
+    - -with-rtsopts=-N
+    dependencies:
+    - criterion
+    - multilinear
+  multicore-memory:
+    main:                Bench.hs
+    source-dirs:         benchmark/multicore/memory
+    ghc-options:
+    - -threaded
+    - -rtsopts
+    - -with-rtsopts=-N
+    dependencies:
+    - multilinear
+    - weigh
+  multicore-profile:
+    main:                Bench.hs
+    source-dirs:         benchmark/multicore/profile
+    ghc-options:
+    - -threaded
+    - -rtsopts
+    - -with-rtsopts=-N
+    dependencies:
+    - deepseq
+    - multilinear
+  gpu-time:
+    main:                Bench.hs
+    source-dirs:         benchmark/gpu/time
+    ghc-options:
+    - -threaded
+    - -rtsopts
+    - -with-rtsopts=-N
+    dependencies:
+    - criterion
+    - deepseq
+    - multilinear
+  gpu-memory:
+    main:                Bench.hs
+    source-dirs:         benchmark/gpu/memory
+    ghc-options:
+    - -threaded
+    - -rtsopts
+    - -with-rtsopts=-N
+    dependencies:
+    - deepseq
+    - multilinear
+    - vector
+    - weigh
+  gpu-profile:
+    main:                Bench.hs
+    source-dirs:         benchmark/gpu/profile
+    ghc-options:
+    - -threaded
+    - -rtsopts
+    - -with-rtsopts=-N
+    dependencies:
+    - deepseq
+    - multilinear
+  
