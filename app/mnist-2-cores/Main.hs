@@ -2,7 +2,7 @@ module Main (
     main
 ) where
 
-import           PORR2.Mnist.MultiCore
+import           PORR.Mnist.MultiCore
 
 -- | ENTRY POINT
 main :: IO ()

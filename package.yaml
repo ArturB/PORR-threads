@@ -73,16 +73,6 @@ benchmarks:
     dependencies:
     - criterion
     - PORR-thread
-  mnist-gpu-bench:
-    main:                Bench.hs
-    source-dirs:         benchmark/mnist-gpu
-    ghc-options:
-    - -threaded
-    - -rtsopts
-    - -with-rtsopts=-N
-    dependencies:
-    - criterion
-    - PORR-thread
 
 executables:
   mnist-sequential:

@@ -8,6 +8,6 @@ import           PORR.Mnist.MultiCore
 
 -- | ENTRY POINT
 main :: IO ()
-main = defaultMainWith (defaultConfig { timeLimit = 100, reportFile = Just "benchmark/2-cores-benchmark.html" }) [
+main = defaultMainWith (defaultConfig { reportFile = Just "benchmark/2-cores-bench.html" }) [
     bench "MNIST perceptrons commitee accuracy" $ whnfIO $ testAccuracy 20
     ]

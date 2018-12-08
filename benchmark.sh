@@ -1,7 +1,8 @@
 #!/bin/bash
 
-# Benchmark results filename
-BNAME="benchmark/results.html"
+# Generate build ID
+let "TODAY_SEC = $( date +%s ) % 86400"
+BUILD_ID="$( date +%y%j ).$TODAY_SEC"
 
 # Build all benchmartks and push changes to git if successful
 # If build failed, don't go on, but exit
@@ -13,62 +14,5 @@ else
     exit 1
 fi
 
-# Remove earlier benchmarks result if present
-rm -f benchmark/results.html
-rm -f benchmark/2-cores-benchmark.html
-rm -f benchmark/3-cores-benchmark.html
-rm -f benchmark/gpu-benchmark.html
-rm -f benchmark/multicore-benchmark.html
-rm -f benchmark/sequential-benchmark.html
-
 # Perform all benchmarks in background and move on
-stack bench --ba "--output $BNAME" &
-STACK_PID=$!
-
-function ctrl_c {
-    echo "Terminating stack..."
-    kill $STACK_PID
-    echo Done!
-    exit 0
-}
-trap ctrl_c INT
-
-# Here we have three benchmarks, GPU, MultiCore and Sequential. Both are written by stack to benchmark/results.html
-# so when results of first benchmark (MultiCore) are available, rename them to multicore-results.html 
-# and after second results (sequential) are available, rename them to sequential-results.html
-while [ true ] ; do
-    sleep 1
-    if [ -f $BNAME ] ; then
-        mv $BNAME benchmark/2-cores-benchmark.html
-        break
-    fi
-done
-while [ true ] ; do
-    sleep 1
-    if [ -f $BNAME ] ; then
-        mv $BNAME benchmark/3-cores-benchmark.html
-        break
-    fi
-done
-while [ true ] ; do
-    sleep 1
-    if [ -f $BNAME ] ; then
-        mv $BNAME benchmark/gpu-benchmark.html
-        break
-    fi
-done
-while [ true ] ; do
-    sleep 1
-    if [ -f $BNAME ] ; then
-        mv $BNAME benchmark/multicore-benchmark.html
-        break
-    fi
-done
-while [ true ] ; do
-    sleep 1
-    if [ -f $BNAME ] ; then
-        mv $BNAME benchmark/sequential-benchmark.html
-        break
-    fi
-done
-
+stack bench 
