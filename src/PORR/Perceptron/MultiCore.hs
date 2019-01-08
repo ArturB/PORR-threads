@@ -35,14 +35,12 @@ pcaNum t =
 -- | calculate weights of perceptron in next learning step
 nextWeights :: Tensor Double -- ^ positive class inputs
             -> Tensor Double -- ^ negative class inputs
+            -> Int           -- ^ posNum
+            -> Int           -- ^ negNum
             -> Tensor Double -- ^ current weights
             -> Tensor Double -- ^ next weights
-nextWeights _xpos _xneg _w  = 
-    let xpos = _xpos $| ("i","t")
-        xneg = (-1) *. ( _xneg $| ("i","t") )
-        posNum = imagesNum xpos
-        negNum = imagesNum xneg
-        w = _w $| ("","i")
+nextWeights xpos xneg posNum negNum _w  = 
+    let w = _w $| ("","i")
         ypos = rsgn `MultiCore.map` (w * xpos) -- y $| ("","t")
         yneg = rsgn `MultiCore.map` (w * xneg) -- y $| ("","t")
         incWpos = (ypos * xpos \/ "i") * Vector.const "t" posNum 1.0
@@ -55,10 +53,14 @@ perceptron :: Tensor Double -- ^ Positive samples
            -> Tensor Double -- ^ Initial weights
            -> Int           -- ^ Number of learning iterations
            -> Tensor Double -- ^ Trained weights
-perceptron pos neg = 
-    apply (nextWeights pos neg)
-    where apply f x n = 
-            if n == 0 then x else apply f (f x) (n - 1)
+perceptron pos neg = let
+    xpos = pos $| ("i","t")
+    xneg = (-1) *. ( neg $| ("i","t") )
+    posNum = imagesNum pos
+    negNum = imagesNum neg
+    apply f x n = 
+        if n == 0 then x else apply f (f x) (n - 1)
+    in apply (nextWeights xpos xneg posNum negNum)
 
 -- | Learn binary perceptron with given training data
 learnBinaryPerceptron :: 
