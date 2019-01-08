@@ -35,6 +35,9 @@ ghc-options:
 
 library:
   source-dirs: src
+  c-sources:
+  - cbits/dot_sequential.c
+  cc-options: -O3
 
 benchmarks:
   mnist-sequential-bench:
