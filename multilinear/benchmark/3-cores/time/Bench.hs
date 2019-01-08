@@ -15,7 +15,7 @@ module Main (
 
 import           Criterion.Main
 import           Criterion.Types
-import           Multilinear.Generic.GPU
+import           Multilinear.Generic.MultiCore
 import qualified Multilinear.Matrix                  as Matrix
 
 -- | Simple generator function for bencharking matrices
@@ -40,7 +40,7 @@ sizedMatrixAddBench s =
 
 -- | ENTRY POINT
 main :: IO ()
-main = defaultMainWith defaultConfig { reportFile = Just "benchmark/gpu-bench.html"} [
+main = defaultMainWith defaultConfig { reportFile = Just "benchmark/3-cores-bench.html" } [
     bgroup "matrix addition" $ sizedMatrixAddBench <$> [64, 128, 256, 512, 1024],
     bgroup "matrix multiplication" $ sizedMatrixMultBench <$> [64, 128, 256, 512, 1024]
     ]

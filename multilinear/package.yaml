@@ -51,37 +51,9 @@ library:
   - vector
 
 tests:
-  sequential:
+  all:
     main:                Spec.hs
-    source-dirs:         test/sequential
-    ghc-options:
-    - -threaded
-    - -rtsopts
-    - -with-rtsopts=-N  
-    dependencies:
-    - containers
-    - multilinear
-    - deepseq
-    - QuickCheck
-    - quickcheck-instances
-    - generic-random
-  multicore:
-    main:                Spec.hs
-    source-dirs:         test/multicore
-    ghc-options:
-    - -threaded
-    - -rtsopts
-    - -with-rtsopts=-N  
-    dependencies:
-    - containers
-    - multilinear
-    - deepseq
-    - QuickCheck
-    - quickcheck-instances
-    - generic-random
-  gpu:
-    main:                Spec.hs
-    source-dirs:         test/gpu
+    source-dirs:         test/all
     ghc-options:
     - -threaded
     - -rtsopts
@@ -94,6 +66,7 @@ tests:
     - quickcheck-instances
     - generic-random
 
+
 benchmarks:
   sequential-time:
     main:                Bench.hs
@@ -101,17 +74,25 @@ benchmarks:
     dependencies:
     - criterion
     - multilinear
-  sequential-memory:
+  2-cores-time:
     main:                Bench.hs
-    source-dirs:         benchmark/sequential/memory
+    source-dirs:         benchmark/2-cores/time
+    ghc-options:
+    - -threaded
+    - -rtsopts
+    - -with-rtsopts=-N2
     dependencies:
+    - criterion
     - multilinear
-    - weigh
-  sequential-profile:
+  3-cores-time:
     main:                Bench.hs
-    source-dirs:         benchmark/sequential/profile
+    source-dirs:         benchmark/3-cores/time
+    ghc-options:
+    - -threaded
+    - -rtsopts
+    - -with-rtsopts=-N3
     dependencies:
-    - deepseq
+    - criterion
     - multilinear
   multicore-time:
     main:                Bench.hs
@@ -122,26 +103,6 @@ benchmarks:
     - -with-rtsopts=-N
     dependencies:
     - criterion
-    - multilinear
-  multicore-memory:
-    main:                Bench.hs
-    source-dirs:         benchmark/multicore/memory
-    ghc-options:
-    - -threaded
-    - -rtsopts
-    - -with-rtsopts=-N
-    dependencies:
-    - multilinear
-    - weigh
-  multicore-profile:
-    main:                Bench.hs
-    source-dirs:         benchmark/multicore/profile
-    ghc-options:
-    - -threaded
-    - -rtsopts
-    - -with-rtsopts=-N
-    dependencies:
-    - deepseq
     - multilinear
   gpu-time:
     main:                Bench.hs

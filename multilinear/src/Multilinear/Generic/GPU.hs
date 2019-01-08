@@ -13,15 +13,13 @@ module Multilinear.Generic.GPU (
     -- * Generic tensor datatype and its instances
     Tensor(..), 
     -- * Auxiliary functions
-    (!), isScalar, isSimple, isFiniteTensor,
-    tensorIndex, _mergeScalars, 
-    _contractedIndices, _elemByElem, zipT, fastDot,
+    _mergeScalars, _elemByElem, zipT, fastDot,
     -- * Additional functions
     (.+), (.-), (.*), (+.), (-.), (*.),
     Multilinear.Generic.GPU.map, 
-    Multilinear.Generic.GPU.filter,
-    Multilinear.Generic.GPU.filterIndex,
-    Multilinear.Generic.GPU.zipWith
+    Multilinear.Generic.GPU.zipWith,
+    fromPtrTensor, toPtrTensor,
+    toVector, fromVector
 ) where
 
 import           Control.DeepSeq
@@ -29,7 +27,6 @@ import qualified Control.Parallel.Strategies   as Parallel
 import           Data.Foldable
 import           Data.List
 import           Data.Maybe
-import qualified Data.Set                      as Set
 import qualified Data.Vector                   as Boxed
 import qualified Data.Vector.Storable          as StorableV
 import           Foreign.ForeignPtr
@@ -96,6 +93,7 @@ data Tensor a where
     } -> Tensor a
     deriving (Eq, Generic)
 
+-- | Convert GPU tensor to PtrTensor
 toPtrTensor :: Storable a => Tensor a -> Ptr.Tensor a
 toPtrTensor (Scalar x) = Ptr.Scalar x
 toPtrTensor (SimpleFinite i ts) = let
@@ -103,6 +101,7 @@ toPtrTensor (SimpleFinite i ts) = let
     in Ptr.SimpleFinite i (unsafeForeignPtrToPtr ptr, StorableV.length ts)
 toPtrTensor (FiniteTensor i ts) = Ptr.FiniteTensor i (toPtrTensor <$> ts)
 
+-- | Convert PtrTensor to GPU tensor
 fromPtrTensor :: Storable a => Ptr.Tensor a -> Tensor a
 fromPtrTensor (Ptr.Scalar x) = Scalar x
 fromPtrTensor (Ptr.SimpleFinite i (ptr,len)) = let
@@ -111,53 +110,29 @@ fromPtrTensor (Ptr.SimpleFinite i (ptr,len)) = let
     in SimpleFinite i ts
 fromPtrTensor (Ptr.FiniteTensor i ts) = FiniteTensor i (fromPtrTensor <$> ts)
 
+-- | Convert GPU tensor to StorableV.Vector by concatenating all its rows (functionals)
+toVector :: (
+    Multilinear Tensor a, Storable a
+ ) => Tensor a 
+   -> StorableV.Vector a
+toVector (Scalar x) = StorableV.singleton x
+toVector (SimpleFinite _ ts) = ts
+toVector (FiniteTensor _ ts) = foldr' (StorableV.++) StorableV.empty $ toVector <$> ts 
 
-{-| Return true if tensor is a scalar -}
-{-# INLINE isScalar #-}
-isScalar :: Storable a => Tensor a -> Bool
-isScalar x = case x of
-    Scalar _ -> True
-    _        -> False
+-- | Deserialize tensor from vector using given indices
+fromVector :: Storable a => [Index.TIndex] -> StorableV.Vector a -> Tensor a
+fromVector [] v = Scalar $ StorableV.head v
+fromVector [i] v = SimpleFinite (Finite.fromTIndex i) v
+fromVector is v = 
+    let inds = Finite.fromTIndex <$> is
+        sizes = Finite.indexSize <$> inds
+        subtensors = head sizes
+        chunk = product $ tail sizes
+    in  if StorableV.length v /= product sizes then
+            error "StorableV.Vector deserialization error!"
+        else FiniteTensor (head inds) $ Boxed.generate subtensors
+                $ \i -> fromVector (tail is) $ StorableV.slice (i * chunk) chunk v
 
-{-| Return true if tensor is a simple tensor -}
-{-# INLINE isSimple #-}
-isSimple :: Storable a => Tensor a -> Bool
-isSimple x = case x of
-    SimpleFinite _ _ -> True
-    _                -> False
-
-{-| Return True if tensor is a complex tensor -}
-{-# INLINE isFiniteTensor #-}
-isFiniteTensor :: Storable a => Tensor a -> Bool
-isFiniteTensor x = case x of
-    FiniteTensor _ _ -> True
-    _                -> False
-
-{-| Return generic tensor index -}
-{-# INLINE tensorIndex #-}
-tensorIndex :: Storable a => Tensor a -> Index.TIndex
-tensorIndex x = case x of
-    Scalar _           -> error scalarIndices
-    SimpleFinite i _   -> Index.toTIndex i
-    FiniteTensor i _   -> Index.toTIndex i
-
-{-| Returns sample tensor on deeper recursion level.Used to determine some features common for all tensors -}
-{-# INLINE firstTensor #-}
-firstTensor :: Storable a => Tensor a -> Tensor a
-firstTensor x = case x of
-    FiniteTensor _ ts   -> Boxed.head ts
-    _                   -> x
-
-{-| Recursive indexing on list tensor. If index is greater than index size, performs modulo indexing
-    @t ! i = t[i]@ -}
-{-# INLINE (!) #-}
-(!) :: Storable a => Tensor a      -- ^ tensor @t@
-    -> Int           -- ^ index @i@
-    -> Tensor a      -- ^ tensor @t[i]@
-t ! i = case t of
-    Scalar _            -> error scalarIndices
-    SimpleFinite ind ts -> Scalar $ ts StorableV.! (i `mod` Finite.indexSize ind)
-    FiniteTensor ind ts -> ts Boxed.! (i `mod` Finite.indexSize ind)
 
 -- | NFData instance
 instance NFData a => NFData (Tensor a)
@@ -206,21 +181,6 @@ _transpose v =
         l = Boxed.toList $ Boxed.generate innerS (\i -> Boxed.generate outerS $ \j -> v Boxed.! j Boxed.! i)
         lp = l `Parallel.using` Parallel.parListChunk (innerS `div` 8) Parallel.rdeepseq
     in  Boxed.fromList lp
-
--- | Contracted indices have to be consumed in result tensor.
-_contractedIndices :: 
-    Tensor Double -- ^ first tensor to contract
- -> Tensor Double -- ^ second tensor to contract
- -> Set.Set String
-_contractedIndices t1 t2 = 
-    let iContravariantNames1 = Set.fromList $ Index.indexName <$> (Index.isContravariant `Prelude.filter` indices t1)
-        iCovariantNames1 = Set.fromList $ Index.indexName <$> (Index.isCovariant `Prelude.filter` indices t1)
-        iContravariantNames2 = Set.fromList $ Index.indexName <$> (Index.isContravariant `Prelude.filter` indices t2)
-        iCovariantNames2 = Set.fromList $ Index.indexName <$> (Index.isCovariant `Prelude.filter` indices t2)
-    in  -- contracted are indices covariant in the first tensor and contravariant in the second
-        Set.intersection iCovariantNames1 iContravariantNames2 `Set.union`
-        -- or contravariant in the first tensor and covariant in the second
-        Set.intersection iContravariantNames1 iCovariantNames2
 
 {-| Apply a tensor operator (here denoted by (+) ) elem by elem, trying to connect as many common indices as possible -}
 {-# INLINE _elemByElem' #-}
@@ -373,7 +333,7 @@ dot (FiniteTensor i1@(Finite.Contravariant count1 _) ts1') (FiniteTensor i2@(Fin
     | otherwise = contractionErr "finite-finite" (Index.toTIndex i1) (Index.toTIndex i2)
 dot t1@(FiniteTensor _ _) t2@(FiniteTensor _ _) = zipT (*) t1 t2
 -- Other cases cannot happen!
-dot t1' t2' = contractionErr "other" (tensorIndex t1') (tensorIndex t2')
+dot t1' t2' = contractionErr "other" (head $ indices t1') (head $ indices t2')
 
 -- | contraction error
 {-# INLINE contractionErr #-}
@@ -520,7 +480,7 @@ instance Multilinear Tensor Double where
     -- Scalar has only one element
     el (Scalar x) _ = Scalar x
     -- simple tensor case
-    el t1@(SimpleFinite index1 _) (inds,vals) =
+    el t1@(SimpleFinite index1 ts) (inds,vals) =
             -- zip indices with their given values
         let indvals = zip inds vals
             -- find value for simple tensor index if given
@@ -528,11 +488,11 @@ instance Multilinear Tensor Double where
             -- if value for current index is given
         in  if isJust val
             -- then get it from current tensor
-            then t1 ! snd (fromJust val)
+            then Scalar $ ts StorableV.! snd (fromJust val)
             -- otherwise return whole tensor - no filtering defined
             else t1
     -- finite tensor case
-    el t1@(FiniteTensor index1 v1) (inds,vals) =
+    el (FiniteTensor index1 v1) (inds,vals) =
             -- zip indices with their given values
         let indvals = zip inds vals
             -- find value for current index if given
@@ -546,7 +506,7 @@ instance Multilinear Tensor Double where
             -- if value for current index was given
         in  if isJust val
             -- then get it from current tensor and recursively process other indices
-            then el (t1 ! snd (fromJust val)) (inds1,vals1)
+            then el (v1 Boxed.! snd (fromJust val)) (inds1,vals1)
             -- otherwise recursively access elements of all child tensors
             else FiniteTensor index1 $ (\t -> el t (inds,vals)) <$> v1
 
@@ -564,8 +524,8 @@ instance Multilinear Tensor Double where
         SimpleFinite index _ -> case index of
             Finite.Contravariant _ _ -> (1,0)
             Finite.Covariant _ _     -> (0,1)
-        _ -> let (cnvr, covr) = order $ firstTensor x
-             in case tensorIndex x of
+        FiniteTensor _ ts -> let (cnvr, covr) = order $ (ts Boxed.! 0)
+             in case (head $ indices x) of
                 Index.Contravariant _ _ -> (cnvr+1,covr)
                 Index.Covariant _ _     -> (cnvr,covr+1)
 
@@ -577,10 +537,10 @@ instance Multilinear Tensor Double where
             if Index.indexName index == iname 
             then Finite.indexSize index 
             else error indexNotFound
-        FiniteTensor index _ -> 
+        FiniteTensor index ts -> 
             if Index.indexName index == iname
             then Finite.indexSize index
-            else size (firstTensor t) iname
+            else size (ts Boxed.! 0) iname
 
     -- Rename tensor indices
     {-# INLINE ($|) #-}
@@ -662,6 +622,23 @@ instance Multilinear Tensor Double where
     -- | Move contravariant indices to lower recursion level
     standardize tens = foldl' (<<<|) tens $ Index.indexName <$> (Index.isContravariant `Prelude.filter` indices tens)
 
+    -- | Filter tensor
+    filter _ (Scalar x) = Scalar x
+    filter f (SimpleFinite index ts) = 
+        let iname = Finite.indexName' index
+            ts' = (\i _ -> f iname i) `StorableV.ifilter` ts
+        in  SimpleFinite index { Finite.indexSize = StorableV.length ts' } ts'
+    filter f (FiniteTensor index ts) = 
+        let iname = Finite.indexName' index
+            ts' = Multilinear.filter f <$> ((\i _ -> f iname i) `Boxed.ifilter` ts)
+            ts'' = 
+                (\case 
+                    (SimpleFinite _ ts) -> not $ StorableV.null ts
+                    (FiniteTensor _ ts) -> not $ Boxed.null ts
+                    _ -> error $ "Filter: " ++ tensorOfScalars
+                ) `Boxed.filter` ts'
+        in  FiniteTensor index { Finite.indexSize = Boxed.length ts'' } ts''
+
 -- Add scalar right
 {-# INLINE (.+) #-}
 (.+) :: (
@@ -733,48 +710,6 @@ map f x = case x of
             lts = Boxed.toList $ Multilinear.Generic.GPU.map f <$> ts
             ltsp = lts `Parallel.using` Parallel.parListChunk (len `div` 8) Parallel.rdeepseq
         in  FiniteTensor index $ Boxed.fromList ltsp
-
-{-| Filtering tensor. 
-    Filtering multi-dimensional arrray may be dangerous, as we always assume, 
-    that on each recursion level, all tensors have the same size (length). 
-    To disable invalid filters, filtering is done over indices, not tensor elements. 
-    Filter function takes and index name and index value and if it returns True, this index value remains in result tensor. 
-    This allows to remove whole columns or rows of eg. a matrix: 
-        filter (\i n -> i /= "a" || i > 10) filters all rows of "a" index (because if i /= "a", filter returns True)
-        and for "a" index filter elements with index value <= 10
-    But this disallow to remove particular matrix element. 
-    If for some index all elements are removed, the index itself is removed from tensor. -}
-{-# INLINE filter #-}
-filter :: (
-    Multilinear Tensor a, NFData a
-    ) => (String -> Int -> Bool) -- ^ filter function
-      -> Tensor a                -- ^ tensor to filter
-      -> Tensor a
-filter _ (Scalar x) = Scalar x
-filter f (SimpleFinite index ts) = 
-    let iname = Finite.indexName' index
-        ts' = (\i _ -> f iname i) `StorableV.ifilter` ts
-    in  SimpleFinite index { Finite.indexSize = StorableV.length ts' } ts'
-filter f (FiniteTensor index ts) = 
-    let iname = Finite.indexName' index
-        ts' = Multilinear.Generic.GPU.filter f <$> ((\i _ -> f iname i) `Boxed.ifilter` ts)
-        ts'' = 
-            (\case 
-                (SimpleFinite _ ts) -> not $ StorableV.null ts
-                (FiniteTensor _ ts) -> not $ Boxed.null ts
-                _ -> error $ "Filter: " ++ tensorOfScalars
-            ) `Boxed.filter` ts'
-    in  FiniteTensor index { Finite.indexSize = Boxed.length ts'' } ts''
-
-{-| Filtering one index of tensor. -}
-{-# INLINE filterIndex #-}
-filterIndex :: (
-    Multilinear Tensor a, NFData a
-    ) => String        -- ^ Index name to filter
-      -> (Int -> Bool) -- ^ filter function
-      -> Tensor a      -- ^ tensor to filter
-      -> Tensor a
-filterIndex iname f = Multilinear.Generic.GPU.filter (\i n -> i /= iname || f n)
 
 {-| Zip tensors with binary combinator, assuming they have all indices the same -}
 {-# INLINE zipWith' #-}

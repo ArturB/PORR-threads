@@ -146,11 +146,11 @@ module Multilinear.Class (
 ) where
 
 import           Data.Maybe
-import           Data.Set
+import qualified Data.Set            as Set
 import qualified Data.Vector.Unboxed as Unboxed
 import           Foreign.Storable
 import           GHC.Generics
-import           Multilinear.Index
+import qualified Multilinear.Index  as Index
 
 {-| Multidimensional array treated as multilinear map - tensor 
     Superclasses:
@@ -170,7 +170,7 @@ class (
       -> [Int]                   -- ^ Upper indices sizes
       -> [Int]                   -- ^ Lower indices sizes
       -> ([Int] -> [Int] -> a)   -- ^ Combinator function (f [u1,u2,...] [d1,d2,...] returns a tensor element at t [u1,u2,...] [d1,d2,...])
-      -> t a                -- ^ Generated tensor
+      -> t a                     -- ^ Generated tensor
 
     {-| Tensor constructor, that returns tensor with all elments equal to v. -}
     {-# INLINE const #-}
@@ -179,7 +179,7 @@ class (
       -> String -- ^ Lower indices names (one character per index)
       -> [Int]  -- ^ Upper indices sizes
       -> [Int]  -- ^ Lower indices sizes
-      -> a      -- Value of tensor elements
+      -> a      -- ^ Value of tensor elements
       -> t a    -- ^ Generated tensor
     const u d usize dsize v = fromIndices u d usize dsize (\_ _ -> v)
 
@@ -197,12 +197,12 @@ class (
     t $$| is = el t is
 
     {-| List of all tensor indices -}
-    indices :: t a -> [TIndex]
+    indices :: t a -> [Index.TIndex]
 
     {-| List of tensor indices names -}
     {-# INLINE indicesNames #-}
     indicesNames :: t a -> [String]
-    indicesNames t = indexName <$> indices t
+    indicesNames t = Index.indexName <$> indices t
 
     {-| Tensor order - number of covariant and contravariant indices -}
     {-| @order t = (cv, cov)@ where @cv@ is number of upper and @cov@ is number of lower indices -}
@@ -214,7 +214,7 @@ class (
     {-| Check if tensors are equivalent (have same indices but in different order) -}
     {-# INLINE equiv #-}
     equiv :: t a -> t a -> Bool
-    equiv t1 t2 = Data.Set.fromList (indices t1) == Data.Set.fromList (indices t2)
+    equiv t1 t2 = Set.fromList (indices t1) == Set.fromList (indices t2)
 
     {-| Infix equivalent of 'equiv'. Has low priority equal to 1. |-}
     {-# INLINE (|==|) #-}
@@ -321,3 +321,63 @@ class (
 
     -- | Move covariant indices to deeper recursion level
     standardize :: t a -> t a
+
+    -- | Return list of indices with the same name and type in two tensors
+    commonIndices :: t a -> t a -> [Index.TIndex]
+    commonIndices t1 t2 = let 
+        indices1 = Set.fromList $ indices t1
+        indices2 = Set.fromList $ indices t2
+        in Set.toList $ Set.intersection indices1 indices2
+
+    -- | Return just names of common indices of tensors. 
+    commonIndicesNames :: t a -> t a -> [String]
+    commonIndicesNames t1 t2 = Index.indexName <$> commonIndices t1 t2
+
+    -- | Return list of contracted indices in two tensors
+    contractedIndicesNames :: t a -> t a -> [String]
+    contractedIndicesNames t1 t2 = 
+      let iContravariantNames1 = Set.fromList $ Index.indexName <$> (Index.isContravariant `Prelude.filter` indices t1)
+          iCovariantNames1 = Set.fromList $ Index.indexName <$> (Index.isCovariant `Prelude.filter` indices t1)
+          iContravariantNames2 = Set.fromList $ Index.indexName <$> (Index.isContravariant `Prelude.filter` indices t2)
+          iCovariantNames2 = Set.fromList $ Index.indexName <$> (Index.isCovariant `Prelude.filter` indices t2)
+      in  Set.toList $ 
+          -- contracted are indices covariant in the first tensor and contravariant in the second
+          Set.intersection iCovariantNames1 iContravariantNames2 `Set.union`
+          -- or contravariant in the first tensor and covariant in the second
+          Set.intersection iContravariantNames1 iCovariantNames2
+
+    -- | Check if tensor is a scalar
+    isScalar :: t a -> Bool
+    isScalar = null . indices
+
+    -- | Check if tensor is a one-dimensional tensor
+    isSimple :: t a -> Bool
+    isSimple t = length (indices t) == 1
+
+    -- | Check if tensor is a complex tensor
+    isComplexTensor :: t a -> Bool
+    isComplexTensor t = length (indices t) > 1
+
+    {-| Filtering tensor. 
+    Filtering multi-dimensional arrray may be dangerous, as we always assume, 
+    that on each recursion level, all tensors have the same size (length). 
+    To disable invalid filters, filtering is done over indices, not tensor elements. 
+    Filter function takes and index name and index value and if it returns True, this index value remains in result tensor. 
+    This allows to remove whole columns or rows of eg. a matrix: 
+        filter (\i n -> i /= "a" || i > 10) filters all rows of "a" index (because if i /= "a", filter returns True)
+        and for "a" index filter elements with index value <= 10
+    But this disallow to remove particular matrix element. 
+    If for some index all elements are removed, the index itself is removed from tensor. -}
+    filter :: 
+          (String -> Int -> Bool) -- ^ filter function
+          -> t a                  -- ^ tensor to filter
+          -> t a
+
+    {-| Filtering one index of tensor. -}
+    {-# INLINE filterIndex #-}
+    filterIndex :: 
+             String        -- ^ Index name to filter
+          -> (Int -> Bool) -- ^ filter function
+          -> t a           -- ^ tensor to filter
+          -> t a
+    filterIndex iname f = Multilinear.Class.filter (\i n -> i /= iname || f n)

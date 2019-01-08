@@ -69,9 +69,9 @@ learnBinaryPerceptron ::
  -> Tensor Double 
 learnBinaryPerceptron trainImages' trainLabels' (pos,neg) learnIters =
         -- from all MNIST images and labels, filter only required 
-    let trainPositiveImages = MultiCore.filterIndex "t" 
+    let trainPositiveImages = Multilinear.Class.filterIndex "t" 
             (\i -> (trainLabels' $$| ("t",[i])) == Scalar (fromIntegral pos) ) trainImages'
-        trainNegativeImages = MultiCore.filterIndex "t" 
+        trainNegativeImages = Multilinear.Class.filterIndex "t" 
             (\i -> (trainLabels' $$| ("t",[i])) == Scalar (fromIntegral neg) ) trainImages'
         w0 = Form.const "i" (pcaNum trainImages') 1.0
     in  perceptron trainPositiveImages trainNegativeImages w0 learnIters
@@ -85,9 +85,9 @@ testBinaryPerceptron ::
  -> Double        -- ^ Perceptron accuracy in %
 testBinaryPerceptron p testImages' testLabels' (pos,neg) = 
     let -- from all MNIST images and labels, filter only required  
-        positiveImages = MultiCore.filterIndex "t" 
+        positiveImages = Multilinear.Class.filterIndex "t" 
             (\i -> (testLabels' $$| ("t",[i])) == Scalar (fromIntegral pos) ) testImages'
-        negativeImages = MultiCore.filterIndex "t" 
+        negativeImages = Multilinear.Class.filterIndex "t" 
             (\i -> (testLabels' $$| ("t",[i])) == Scalar (fromIntegral neg) ) testImages'
         -- nums
         posNum = imagesNum positiveImages
