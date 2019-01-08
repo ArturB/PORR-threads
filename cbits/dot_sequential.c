@@ -89,23 +89,23 @@ void matrixFreeMem(double** dm, int outerSize, int innerSize) {
 //     printf("The end!\n");
 // }
 
-int main() {
-    double* m1 = malloc(3 * sizeof(double));
-    double* m2 = malloc(9 * sizeof(double));
-    for(int i = 0; i < 3; ++i) {
-        m1[i] = i;
-    }
-    for(int i = 0; i < 9; ++i) {
-        m2[i] = i;
-    } 
-    // const int times = 1800; 
-    // printf("Starting calulating matrix product %i times...\n", times); fflush(stdout);
-    // for(int i = 0; i < times; ++i) {
-    //     double* m3 = matrixMult(m1, m2, 1, 40, 40, 60000);
-    //     double** dm3 = matrixDeserializeAsVector(m3, 1, 60000);
-    //     matrixFreeMem(dm3, 1, 60000); free(m3);
-    // }
-    double** dm3 = matrixDeserializeAsVector(matrixMult(m2, m2, 3, 3, 3, 3), 3, 3);
-    matrixPrintf(dm3, 3, 3); matrixFreeMem(dm3, 3, 3);
-    printf("All done!\n"); 
-}
+// int main() {
+//     double* m1 = malloc(3 * sizeof(double));
+//     double* m2 = malloc(9 * sizeof(double));
+//     for(int i = 0; i < 3; ++i) {
+//         m1[i] = i;
+//     }
+//     for(int i = 0; i < 9; ++i) {
+//         m2[i] = i;
+//     } 
+//     // const int times = 1800; 
+//     // printf("Starting calulating matrix product %i times...\n", times); fflush(stdout);
+//     // for(int i = 0; i < times; ++i) {
+//     //     double* m3 = matrixMult(m1, m2, 1, 40, 40, 60000);
+//     //     double** dm3 = matrixDeserializeAsVector(m3, 1, 60000);
+//     //     matrixFreeMem(dm3, 1, 60000); free(m3);
+//     // }
+//     double** dm3 = matrixDeserializeAsVector(matrixMult(m2, m2, 3, 3, 3, 3), 3, 3);
+//     matrixPrintf(dm3, 3, 3); matrixFreeMem(dm3, 3, 3);
+//     printf("All done!\n"); 
+// }

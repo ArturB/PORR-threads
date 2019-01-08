@@ -73,18 +73,27 @@ pcaNum t =
     in  fromJust $ indexSize $ head $ indices t'
 
 -- | calculate weights of perceptron in next learning step
-nextWeights :: Tensor Double -- ^ positive class inputs
-            -> Tensor Double -- ^ negative class inputs
+nextWeights :: Tensor Double           -- ^ positive class inputs tensor
+            -> StorableV.Vector Double -- ^ positive class inputs
+            -> Tensor Double           -- ^ negative class inputs tensor
+            -> StorableV.Vector Double -- ^ negative class inputs
+            -> [TIndex]                -- ^ positive class indices
+            -> [TIndex]                -- ^ negative class indices
+            -> Int                     -- ^ PosNum
+            -> Int                     -- ^ NegNum
             -> Tensor Double -- ^ current weights
             -> Tensor Double -- ^ next weights
-nextWeights _xpos _xneg _w  = 
-    let xpos = _xpos $| ("i","t")
-        xneg = (-1) *. ( _xneg $| ("i","t") )
-        posNum = imagesNum xpos
-        negNum = imagesNum xneg
-        w = _w $| ("","i")
-        ypos = rsgn `GPU.map` (w * xpos) -- y $| ("","t")
-        yneg = rsgn `GPU.map` (w * xneg) -- y $| ("","t")
+nextWeights xpos xposV xneg xnegV indsPos indsNeg posNum negNum _w  = 
+    let w = _w $| ("","i")
+        wInds = Multilinear.Index.Contravariant (Just 1) "a" : indices w
+        wV = GPU.toVector w
+        wXposV = c_mmult wV xposV wInds indsPos
+        wXpos = GPU.fromVector (tail indsPos) wXposV
+        wXnegV = c_mmult wV xnegV wInds indsNeg
+        wXneg = GPU.fromVector (tail indsNeg) wXnegV
+
+        ypos = rsgn `GPU.map` wXpos -- y $| ("","t")
+        yneg = rsgn `GPU.map` wXneg -- y $| ("","t")
         incWpos = (ypos * xpos \/ "i") * Vector.const "t" posNum 1.0
         incWneg = (yneg * xneg \/ "i") * Vector.const "t" negNum 1.0
     in  w + incWpos + incWneg
@@ -95,10 +104,17 @@ perceptron :: Tensor Double -- ^ Positive samples
            -> Tensor Double -- ^ Initial weights
            -> Int           -- ^ Number of learning iterations
            -> Tensor Double -- ^ Trained weights
-perceptron pos neg = 
-    apply (nextWeights pos neg)
-    where apply f x n = 
-            if n == 0 then x else apply f (f x) (n - 1)
+perceptron pos neg = let 
+    xpos = pos $| ("i","t")
+    xneg = (-1) *. ( neg $| ("i","t") )
+    posNum = (imagesNum xpos)
+    negNum = imagesNum xneg
+    vPos = GPU.toVector $ Multilinear.Class.standardize xpos
+    vNeg = GPU.toVector $ Multilinear.Class.standardize xneg
+    apply f x n = 
+        if n == 0 then x else apply f (f x) (n - 1)
+    in apply (nextWeights xpos vPos xneg vNeg (indices pos) (indices neg) posNum negNum)
+  
 
 -- | Learn binary perceptron with given training data
 learnBinaryPerceptron :: 

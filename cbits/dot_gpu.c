@@ -101,31 +101,31 @@ double* dot(double* A, double* B) {
     return C;
 }
 
-int main(void) {
-    // Create the two input vectors
-    int i;
-    double *A = (double*)malloc(sizeof(double)*LIST_SIZE);
-    double *B = (double*)malloc(sizeof(double)*LIST_SIZE);
-    for(i = 0; i < LIST_SIZE; i++) {
-        A[i] = i;
-        B[i] = LIST_SIZE - i;
-    }
+// int main(void) {
+//     // Create the two input vectors
+//     int i;
+//     double *A = (double*)malloc(sizeof(double)*LIST_SIZE);
+//     double *B = (double*)malloc(sizeof(double)*LIST_SIZE);
+//     for(i = 0; i < LIST_SIZE; i++) {
+//         A[i] = i;
+//         B[i] = LIST_SIZE - i;
+//     }
 
-    double* C = NULL;
-    for(int i = 0; i < 10; ++i) {
-            for(int j = 0; j < 600; j++) {
-                C = dot(A, B);
-                // if(i == 0 && j == 0) {
-                //         for(int k = 0; k < LIST_SIZE; k++) {
-                //                 printf("%f + %f = %f\n", A[k], B[k], C[k]); fflush(stdout); 
-                //         }
-                // }
-            }
-    }
+//     double* C = NULL;
+//     for(int i = 0; i < 10; ++i) {
+//             for(int j = 0; j < 600; j++) {
+//                 C = dot(A, B);
+//                 // if(i == 0 && j == 0) {
+//                 //         for(int k = 0; k < LIST_SIZE; k++) {
+//                 //                 printf("%f + %f = %f\n", A[k], B[k], C[k]); fflush(stdout); 
+//                 //         }
+//                 // }
+//             }
+//     }
     
-    // Clean up
-    free(A);
-    free(B);
-    free(C);
-    return 0;
-}
+//     // Clean up
+//     free(A);
+//     free(B);
+//     free(C);
+//     return 0;
+// }
