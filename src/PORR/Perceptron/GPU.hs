@@ -7,11 +7,51 @@ module PORR.Perceptron.GPU (
 import qualified Control.Parallel.Strategies   as Parallel
 import           Data.Foldable
 import           Data.Maybe
+import           Foreign.ForeignPtr
+import           Foreign.ForeignPtr.Unsafe
+import           Foreign.Ptr
 import           Multilinear.Class
 import           Multilinear.Generic.GPU       as GPU
 import           Multilinear.Index
+import qualified Multilinear.Index.Finite      as Finite
 import qualified Multilinear.Form              as Form
 import qualified Multilinear.Vector            as Vector
+import qualified Data.Vector.Storable          as StorableV
+import           System.IO.Unsafe
+
+foreign import ccall "matrixMult" 
+    matrixMult :: 
+        Ptr Double -- ^ First matrix to mult
+     -> Ptr Double -- ^ Second matrix to mult
+     -> Int        -- ^ Rows1
+     -> Int        -- ^ Cols1
+     -> Int        -- ^ Rows2
+     -> Int        -- ^ Cols2
+     -> Ptr Double -- ^ Multiplication result in serialized format
+
+foreign import ccall unsafe "stdlib.h &free" c_free_ptr :: FinalizerPtr Double
+
+c_mmult :: 
+    StorableV.Vector Double -- ^ First matrix to mult
+ -> StorableV.Vector Double -- ^ Second matrix to mult
+ -> [TIndex]                -- ^ indices of first matrix
+ -> [TIndex]                -- ^ indices of second matrix
+ -> StorableV.Vector Double -- ^ result matrix
+c_mmult m1 m2 i1 i2 = let
+    inds1 = Finite.fromTIndex <$> i1
+    inds2 = Finite.fromTIndex <$> i2
+    (fp1, _, _) = StorableV.unsafeToForeignPtr m1
+    (fp2, _, _) = StorableV.unsafeToForeignPtr m2
+    p1 = unsafeForeignPtrToPtr fp1
+    p2 = unsafeForeignPtrToPtr fp2
+    rows1 = Finite.indexSize $ head inds1
+    cols1 = Finite.indexSize $ inds1 !! 1
+    rows2 = Finite.indexSize $ head inds2
+    cols2 = Finite.indexSize $ inds2 !! 1
+    result = matrixMult p1 p2 rows1 cols1 rows2 cols2
+    fpResult = unsafePerformIO $ newForeignPtr c_free_ptr result
+    in StorableV.unsafeFromForeignPtr0 fpResult (rows1 * cols2)
+
 
 -- | Binary (0,1) signum function
 sgn :: (Num a, Ord a) => a -> a
