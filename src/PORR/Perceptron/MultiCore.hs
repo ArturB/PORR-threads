@@ -41,8 +41,8 @@ nextWeights :: Tensor Double -- ^ positive class inputs
             -> Tensor Double -- ^ next weights
 nextWeights xpos xneg posNum negNum _w  = 
     let w = _w $| ("","i")
-        ypos = rsgn `MultiCore.map` (w * xpos) -- y $| ("","t")
-        yneg = rsgn `MultiCore.map` (w * xneg) -- y $| ("","t")
+        ypos = rsgn `MultiCore.map` (xpos * w) -- y $| ("","t")
+        yneg = rsgn `MultiCore.map` (xneg * w) -- y $| ("","t")
         incWpos = (ypos * xpos \/ "i") * Vector.const "t" posNum 1.0
         incWneg = (yneg * xneg \/ "i") * Vector.const "t" negNum 1.0
     in  w + incWpos + incWneg
