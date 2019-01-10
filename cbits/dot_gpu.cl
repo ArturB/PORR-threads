@@ -1,8 +1,22 @@
-__kernel void vector_add(__global const double *A, __global const double *B, __global double *C) {
+__kernel void matrix_mult(
+    __global const double *A, 
+    __global const double *B, 
+    __global double *C, 
+    int rows1, 
+    int cols1, 
+    int rows2, 
+    int cols2) {
  
-    // Get the index of the current element to be processed
-    int i = get_global_id(0);
+    // Thread identifiers
+    const int globalRow = get_global_id(0); // Row ID of C (0..M)
+    const int globalCol = get_global_id(1); // Col ID of C (0..N)
  
-    // Do the operation
-    C[i] = A[i] + B[i];
+    // Compute a single element (loop over K)
+    double acc = 0.0;
+    for (int k = 0; k < cols1; ++k) {
+        acc += A[globalRow * cols1 + k] * B[k * rows2 + globalCol];
+    }
+ 
+    // Store the result
+    C[globalRow * cols2 + globalCol] = acc;
 }

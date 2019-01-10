@@ -5,12 +5,9 @@
 #define MAX_SOURCE_SIZE (0x100000)
 
 struct MatrixMultContext {
+        cl_context context; 
         cl_command_queue command_queue;
         cl_kernel kernel;
-
-        cl_mem a_mem_obj;
-        cl_mem b_mem_obj;
-        cl_mem c_mem_obj;
 };
 
 const int LIST_SIZE = 240000;
@@ -44,13 +41,6 @@ struct MatrixMultContext* getInstance() {
                 cl_context context = clCreateContext( NULL, 1, &device_id, NULL, NULL, &ret);
                 // Create a command queue
                 cl_command_queue command_queue = clCreateCommandQueue(context, device_id, 0, &ret);
-                // Create memory buffers on the device for each vector 
-                cl_mem a_mem_obj = clCreateBuffer(context, CL_MEM_READ_ONLY, 
-                        LIST_SIZE * sizeof(double), NULL, &ret);
-                cl_mem b_mem_obj = clCreateBuffer(context, CL_MEM_READ_ONLY,
-                        LIST_SIZE * sizeof(double), NULL, &ret);
-                cl_mem c_mem_obj = clCreateBuffer(context, CL_MEM_WRITE_ONLY, 
-                        LIST_SIZE * sizeof(double), NULL, &ret);
                 // Create a program from the kernel source
                 cl_program program = clCreateProgramWithSource(context, 1, 
                         (const char **)&source_str, (const size_t *)&source_size, &ret);
@@ -62,70 +52,153 @@ struct MatrixMultContext* getInstance() {
                 // Set structure fields
                 
                 mmc = malloc(sizeof(struct MatrixMultContext));
+                mmc->context = context;
                 mmc->command_queue = command_queue;
                 mmc->kernel = kernel;
-                mmc->a_mem_obj = a_mem_obj;
-                mmc->b_mem_obj = b_mem_obj;
-                mmc->c_mem_obj = c_mem_obj;
                 printf("MMC singleton created!\n"); fflush(stdout);
         }
         return mmc;
 }
 
-double* dot(double* A, double* B) {
+double* CL_CALL(double* A, double* B, int rows1, int cols1, int rows2, int cols2) {
     // Set necessary parameters for convenience
-    cl_command_queue command_queue; command_queue = getInstance()->command_queue;
-    cl_kernel kernel; kernel = getInstance()->kernel;
-    cl_mem a_mem_obj; a_mem_obj = getInstance()->a_mem_obj;
-    cl_mem b_mem_obj; b_mem_obj = getInstance()->b_mem_obj;
-    cl_mem c_mem_obj; c_mem_obj = getInstance()->c_mem_obj;
+    cl_context context = getInstance()->context;
+    cl_command_queue command_queue = getInstance()->command_queue;
+    cl_kernel kernel = getInstance()->kernel;
 
-    // Copy the lists A and B to their respective memory buffers
+    // Create memory buffers on the device for each matrix 
+    cl_mem a_mem_obj = clCreateBuffer(context, CL_MEM_READ_ONLY, 
+        rows1 * cols1 * sizeof(double), NULL, NULL);
+    cl_mem b_mem_obj = clCreateBuffer(context, CL_MEM_READ_ONLY,
+        rows2 * cols2 * sizeof(double), NULL, NULL);
+    cl_mem c_mem_obj = clCreateBuffer(context, CL_MEM_WRITE_ONLY, 
+        rows1 * cols2 * sizeof(double), NULL, NULL);
+    // Copy the matrices A and B to their respective memory buffers
     clEnqueueWriteBuffer(command_queue, a_mem_obj, CL_TRUE, 0,
-            LIST_SIZE * sizeof(double), A, 0, NULL, NULL);
+            rows1 * cols1 * sizeof(double), A, 0, NULL, NULL);
     clEnqueueWriteBuffer(command_queue, b_mem_obj, CL_TRUE, 0, 
-            LIST_SIZE * sizeof(double), B, 0, NULL, NULL);
+            rows2 * cols2 * sizeof(double), B, 0, NULL, NULL);
     // Set the arguments of the kernel
     clSetKernelArg(kernel, 0, sizeof(cl_mem), (void *)&(a_mem_obj));
     clSetKernelArg(kernel, 1, sizeof(cl_mem), (void *)&(b_mem_obj));
     clSetKernelArg(kernel, 2, sizeof(cl_mem), (void *)&(c_mem_obj));
-    // Execute the OpenCL kernel on the list
-    size_t global_item_size = LIST_SIZE; // Process the entire lists
-    size_t local_item_size = 64; // Divide work items into groups of 64
+    clSetKernelArg(kernel, 3, sizeof(int), (void *)&(rows1));
+    clSetKernelArg(kernel, 4, sizeof(int), (void *)&(cols1));
+    clSetKernelArg(kernel, 5, sizeof(int), (void *)&(rows2));
+    clSetKernelArg(kernel, 6, sizeof(int), (void *)&(cols2));
+    // Execute the OpenCL kernel on the matrices
+    const size_t global_item_size[2] = { rows1, cols2}; // Process the entire matrices
+    const size_t local_item_size[2] = {32, 32}; // Divide work items into groups of 32
     clEnqueueNDRangeKernel(command_queue, kernel, 1, NULL, 
-            &global_item_size, &local_item_size, 0, NULL, NULL);
+            global_item_size, local_item_size, 0, NULL, NULL);
     // Read the memory buffer C on the device to the local variable C
-    double *C = (double*)malloc(sizeof(double)*LIST_SIZE);
+    double *C = (double*)malloc(sizeof(double)*rows1*cols2);
     clEnqueueReadBuffer(command_queue, c_mem_obj, CL_TRUE, 0, 
-            LIST_SIZE * sizeof(double), C, 0, NULL, NULL);
+            rows1 * cols2 * sizeof(double), C, 0, NULL, NULL);
     return C;
 }
 
-// int main(void) {
-//     // Create the two input vectors
-//     int i;
-//     double *A = (double*)malloc(sizeof(double)*LIST_SIZE);
-//     double *B = (double*)malloc(sizeof(double)*LIST_SIZE);
-//     for(i = 0; i < LIST_SIZE; i++) {
-//         A[i] = i;
-//         B[i] = LIST_SIZE - i;
-//     }
 
-//     double* C = NULL;
-//     for(int i = 0; i < 10; ++i) {
-//             for(int j = 0; j < 600; j++) {
-//                 C = dot(A, B);
-//                 // if(i == 0 && j == 0) {
-//                 //         for(int k = 0; k < LIST_SIZE; k++) {
-//                 //                 printf("%f + %f = %f\n", A[k], B[k], C[k]); fflush(stdout); 
-//                 //         }
-//                 // }
-//             }
-//     }
+double dot(double* v1, double* v2, int s) {
+    double res = 0; 
+    for(int i = 0; i < s; i++) {
+        res = res + v1[i] * v2[i];
+    }
+    return res;
+}
+
+double** matrixDeserializeAsVector(double* m, int rows, int cols) {
+    double** dm = malloc(rows * sizeof(double*));
+    for(int i = 0; i < rows; ++i) {
+        dm[i] = malloc(cols * sizeof(double));
+        for(int j = 0; j < cols; ++j) {
+            dm[i][j] = m[i * cols + j];
+        }
+    }
+    return dm;
+}
+
+double** matrixDeserializeAsFunctional(double* m, int rows, int cols) {
+    double** dm = malloc(cols * sizeof(double*));
+    for(int i = 0; i < cols; ++i) {
+        dm[i] = malloc(rows * sizeof(double));
+        for(int j = 0; j < rows; ++j) {
+            dm[i][j] = m[j * cols + i];
+        }
+    }
+    return dm;
+}
+
+double* matrixMult(double* m1, double* m2, int rows1, int cols1, int rows2, int cols2) {
+    if(cols1 != rows2) {
+        printf("Incompatible matrix sizes!\n"); fflush(stdout);
+        return NULL;
+    }
+
+    double** dm1 = matrixDeserializeAsVector(m1, rows1, cols1);
+    double** dm2 = matrixDeserializeAsFunctional(m2, rows2, cols2);
+    double*   m3 = malloc(rows1 * cols2 * sizeof(double));
+    for(int i = 0; i < rows1; ++i) {
+        for(int j = 0; j < cols2; ++j) {
+            m3[i * cols2 + j] = dot(dm1[i], dm2[j], cols1);
+        }
+    }
+    for(int i = 0; i < rows1; ++i) {
+        free(dm1[i]);
+    }
+    for(int i = 0; i < cols2; ++i) {
+        free(dm2[i]);
+    }
+    free(dm1); free(dm2);
+    return m3;
+}
+
+void matrixPrintf(double** dm, int outerSize, int innerSize) {
+    for(int i = 0; i < outerSize; ++i) {
+        printf("[ "); 
+        for(int j = 0; j < innerSize; ++j) {
+            printf("%.1f ", dm[i][j]);
+        }
+        printf("]\n"); fflush(stdout);
+    }
+}
+
+void matrixFreeMem(double** dm, int outerSize, int innerSize) {
+    for(int i = 0; i < outerSize; ++i) {
+        free(dm[i]);
+    }
+    free(dm);
+}
+
+
+
+
+int main(void) {
+    // Create the two input vectors
+    int i;
+    double *A = (double*)malloc(sizeof(double)*40*60000);
+    double *B = (double*)malloc(sizeof(double)*40);
+    for(i = 0; i < 40*60000; i++) {
+        A[i] = i;
+    }
+    for(i = 0; i < 40; ++i) {
+        B[i] = i;
+    }
+
+    double* C = NULL;
+    for(int i = 0; i < 100; ++i) {
+            for(int j = 0; j < 100; j++) {
+                C = CL_CALL(A, B, 60000, 40, 40, 1); free(C);
+                // if(i == 0 && j == 0) {
+                //         for(int k = 0; k < LIST_SIZE; k++) {
+                //                 printf("%f + %f = %f\n", A[k], B[k], C[k]); fflush(stdout); 
+                //         }
+                // }
+            }
+    }
     
-//     // Clean up
-//     free(A);
-//     free(B);
-//     free(C);
-//     return 0;
-// }
+    // Clean up
+    free(A);
+    free(B);
+    return 0;
+}
