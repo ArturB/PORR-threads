@@ -1,4 +1,4 @@
-__kernel void matrix_mult(
+__kernel void matrixMult(
     __global const double *A, 
     __global const double *B, 
     __global double *C, 
@@ -11,7 +11,7 @@ __kernel void matrix_mult(
     const int globalRow = get_global_id(0); // Row ID of C (0..M)
     const int globalCol = get_global_id(1); // Col ID of C (0..N)
  
-    // Compute a single element (loop over K)
+    // Compute a single element (loop over contracted index)
     double acc = 0.0;
     for (int k = 0; k < cols1; ++k) {
         acc += A[globalRow * cols1 + k] * B[k * rows2 + globalCol];
@@ -20,3 +20,4 @@ __kernel void matrix_mult(
     // Store the result
     C[globalRow * cols2 + globalCol] = acc;
 }
+

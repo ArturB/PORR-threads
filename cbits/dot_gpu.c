@@ -34,20 +34,20 @@ struct MatrixMultContext* getInstance() {
                 cl_device_id device_id = NULL;   
                 cl_uint ret_num_devices;
                 cl_uint ret_num_platforms;
-                cl_int ret = clGetPlatformIDs(1, &platform_id, &ret_num_platforms);
-                ret = clGetDeviceIDs( platform_id, CL_DEVICE_TYPE_DEFAULT, 1, 
+                clGetPlatformIDs(1, &platform_id, &ret_num_platforms);
+                clGetDeviceIDs( platform_id, CL_DEVICE_TYPE_DEFAULT, 1, 
                         &device_id, &ret_num_devices);
                 // Create an OpenCL context
-                cl_context context = clCreateContext( NULL, 1, &device_id, NULL, NULL, &ret);
+                cl_context context = clCreateContext( NULL, 1, &device_id, NULL, NULL, NULL);
                 // Create a command queue
-                cl_command_queue command_queue = clCreateCommandQueue(context, device_id, 0, &ret);
+                cl_command_queue command_queue = clCreateCommandQueue(context, device_id, 0, NULL);
                 // Create a program from the kernel source
                 cl_program program = clCreateProgramWithSource(context, 1, 
-                        (const char **)&source_str, (const size_t *)&source_size, &ret);
+                        (const char **)&source_str, (const size_t *)&source_size, NULL);
                 // Build the program
-                ret = clBuildProgram(program, 1, &device_id, NULL, NULL, NULL);
+                clBuildProgram(program, 1, &device_id, NULL, NULL, NULL);
                 // Create the OpenCL kernel
-                cl_kernel kernel = clCreateKernel(program, "vector_add", &ret);
+                cl_kernel kernel = clCreateKernel(program, "matrixMult", NULL);
  
                 // Set structure fields
                 
@@ -87,9 +87,9 @@ double* CL_CALL(double* A, double* B, int rows1, int cols1, int rows2, int cols2
     clSetKernelArg(kernel, 5, sizeof(int), (void *)&(rows2));
     clSetKernelArg(kernel, 6, sizeof(int), (void *)&(cols2));
     // Execute the OpenCL kernel on the matrices
-    const size_t global_item_size[2] = { rows1, cols2}; // Process the entire matrices
-    const size_t local_item_size[2] = {32, 32}; // Divide work items into groups of 32
-    clEnqueueNDRangeKernel(command_queue, kernel, 1, NULL, 
+    const size_t global_item_size[2] = { rows1, cols2 }; // Process the entire matrices
+    const size_t local_item_size[2] = {1, 1}; // Divide work items into groups of 32
+    clEnqueueNDRangeKernel(command_queue, kernel, 2, NULL, 
             global_item_size, local_item_size, 0, NULL, NULL);
     // Read the memory buffer C on the device to the local variable C
     double *C = (double*)malloc(sizeof(double)*rows1*cols2);
@@ -176,24 +176,25 @@ void matrixFreeMem(double** dm, int outerSize, int innerSize) {
 int main(void) {
     // Create the two input vectors
     int i;
-    double *A = (double*)malloc(sizeof(double)*40*60000);
-    double *B = (double*)malloc(sizeof(double)*40);
-    for(i = 0; i < 40*60000; i++) {
+    double *A = (double*)malloc(sizeof(double)*40);
+    double *B = (double*)malloc(sizeof(double)*40*6000);
+    for(i = 0; i < 40; i++) {
         A[i] = i;
     }
-    for(i = 0; i < 40; ++i) {
+    for(i = 0; i < 40*6000; ++i) {
         B[i] = i;
     }
 
     double* C = NULL;
-    for(int i = 0; i < 100; ++i) {
-            for(int j = 0; j < 100; j++) {
-                C = CL_CALL(A, B, 60000, 40, 40, 1); free(C);
+    for(int i = 0; i < 45; ++i) {
+            for(int j = 0; j < 20; j++) {
+                C = CL_CALL(A, B, 1, 40, 40, 6000); 
                 // if(i == 0 && j == 0) {
-                //         for(int k = 0; k < LIST_SIZE; k++) {
-                //                 printf("%f + %f = %f\n", A[k], B[k], C[k]); fflush(stdout); 
-                //         }
+                //         double** dmC = matrixDeserializeAsVector(C,3,3);
+                //         matrixPrintf(dmC, 3, 3);
+                //         matrixFreeMem(dmC, 3, 3);
                 // }
+                free(C);
             }
     }
     
