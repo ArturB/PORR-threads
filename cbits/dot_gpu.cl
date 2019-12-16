@@ -1,3 +1,5 @@
+
+
 __kernel void matrixMult(
     __global const double *A, 
     __global const double *B, 
@@ -14,7 +16,7 @@ __kernel void matrixMult(
     // Compute a single element (loop over contracted index)
     double acc = 0.0;
     for (int k = 0; k < cols1; ++k) {
-        acc += A[globalRow * cols1 + k] * B[k * rows2 + globalCol];
+        acc += A[globalRow * cols1 + k] * B[k * cols2 + globalCol];
     }
  
     // Store the result

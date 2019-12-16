@@ -173,33 +173,33 @@ void matrixFreeMem(double** dm, int outerSize, int innerSize) {
 
 
 
-int main(void) {
-    // Create the two input vectors
-    int i;
-    double *A = (double*)malloc(sizeof(double)*40);
-    double *B = (double*)malloc(sizeof(double)*40*6000);
-    for(i = 0; i < 40; i++) {
-        A[i] = i;
-    }
-    for(i = 0; i < 40*6000; ++i) {
-        B[i] = i;
-    }
+// int main(void) {
+//     // Create the two input vectors
+//     int i;
+//     double *A = (double*)malloc(sizeof(double)*3);
+//     double *B = (double*)malloc(sizeof(double)*9);
+//     for(i = 0; i < 3; i++) {
+//         A[i] = i;
+//     }
+//     for(i = 0; i < 9; ++i) {
+//         B[i] = i;
+//     }
 
-    double* C = NULL;
-    for(int i = 0; i < 45; ++i) {
-            for(int j = 0; j < 20; j++) {
-                C = CL_CALL(A, B, 1, 40, 40, 6000); 
-                // if(i == 0 && j == 0) {
-                //         double** dmC = matrixDeserializeAsVector(C,3,3);
-                //         matrixPrintf(dmC, 3, 3);
-                //         matrixFreeMem(dmC, 3, 3);
-                // }
-                free(C);
-            }
-    }
+//     double* C = NULL;
+//     for(int i = 0; i < 45; ++i) {
+//             for(int j = 0; j < 20; j++) {
+//                 C = CL_CALL(A, B, 1, 3, 3, 3); 
+//                 if(i == 0 && j == 0) {
+//                         double** dmC = matrixDeserializeAsVector(C,1,3);
+//                         matrixPrintf(dmC, 1, 3);
+//                         matrixFreeMem(dmC, 1, 3);
+//                 }
+//                 free(C);
+//             }
+//     }
     
-    // Clean up
-    free(A);
-    free(B);
-    return 0;
-}
+//     // Clean up
+//     free(A);
+//     free(B);
+//     return 0;
+// }
